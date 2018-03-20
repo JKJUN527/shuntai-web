@@ -9,19 +9,19 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use App\Region;
+use App\Protype;
 use Illuminate\Http\Request;
 
 class RegionController extends Controller {
 
-    //显示已添加地区
+    //显示已添加产品分类
     public function index() {
         $uid = AdminAuthController::getUid();
         if ($uid == 0)
             return view('admin.login');
 
         $data = DashboardController::getLoginInfo();
-        $data['region'] = Region::all();
+        $data['region'] = Protype::all();
         //return $data;
         return view('admin/region', ['data' => $data]);
     }
@@ -37,30 +37,26 @@ class RegionController extends Controller {
 
         switch ($option) {
             case 'add':
-                if ($request->has('name')) {
-                    $name = $request->input('name');
+                if ($request->has('ch_name') && $request->has('en_name')) {
+                    $ch_name = $request->input('ch_name');
+                    $en_name = $request->input('en_name');
+                    $describe = $request->input('describe');
 
-                    $region = new Region();
-                    $region->name = $name;
-
-                    if ($region->save()) {
-                        $resultData['status'] = 200;
-                    } else {
+                    //判断是否存在该分类
+                    $is_exist = Protype::where('ch_name',$ch_name)
+                        ->orwhere('en_name',$en_name)
+                        ->count();
+                    if($is_exist >=1){
                         $resultData['status'] = 400;
-                        $resultData['msg'] = "添加失败";
+                        $resultData['msg'] = "分类已存在";
+                        return $resultData;
                     }
-                }
-                break;
-            case 'addcity':
-                if ($request->has('name') && $request->has('parent_id')) {
-                    $name = $request->input('name');
-                    $parent_id = $request->input('parent_id');
+                    $protype = new Protype();
+                    $protype->ch_name = $ch_name;
+                    $protype->en_name = $en_name;
+                    $protype->describe = $describe;
 
-                    $region = new Region();
-                    $region->name = $name;
-                    $region->parent_id = $parent_id;
-
-                    if ($region->save()) {
+                    if ($protype->save()) {
                         $resultData['status'] = 200;
                     } else {
                         $resultData['status'] = 400;

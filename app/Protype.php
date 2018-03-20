@@ -9,10 +9,10 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class About extends Model
+class Protype extends Model
 {
     //指定表明
-    protected $table = 'st_webinfo';
+    protected $table = 'st_product_type';
 
     //指定主键id
     protected $primaryKey = 'id';

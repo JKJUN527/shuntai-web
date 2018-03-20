@@ -27,26 +27,29 @@
 
                 <dl>
                     <dt><span>邮箱</span></dt>
-                    <dd><span><a
-                                    href="{{$data['webinfo']->email or '#'}}">{{$data['webinfo']->email or '邮箱未填写'}}</a></span>
+                    <dd><span>{{$data['webinfo']->email or '邮箱未填写'}}</span>
                     </dd>
+                </dl>
+                <dl>
+                    <dt><span>传真</span></dt>
+                    <dd><span>{{$data['webinfo']->fax or '传真未填写'}}</span></dd>
                 </dl>
 
                 <dl>
                     <dt><span>地址</span></dt>
                     <dd>
                         <span>{{$data['webinfo']->address or '地址未填写'}}</span>
-                        <br>
-                        <span class="secondary">
-                            邮编：200433
-                        </span>
                     </dd>
                 </dl>
-
+                <dl>
+                    <dt><span>邮编</span></dt>
+                    <dd><span>{{$data['webinfo']->postcodes or '邮编未填写'}}</span>
+                    </dd>
+                </dl>
                 <dl>
                     <dt><span>介绍</span></dt>
                     <dd>
-                        <span>{{$data['webinfo']->content or '无介绍'}}</span>
+                        <span>{{$data['webinfo']->describe or '无介绍'}}</span>
                     </dd>
                 </dl>
             </div>
@@ -57,6 +60,12 @@
         </button>
         <button class="btn bg-teal waves-effect"
                 data-toggle="modal" data-target="#setEmailModal">修改公司邮箱
+        </button>
+        <button class="btn bg-teal waves-effect"
+                data-toggle="modal" data-target="#setFaxModal">修改公司传真
+        </button>
+        <button class="btn bg-teal waves-effect"
+                data-toggle="modal" data-target="#setCodeModal">修改邮编
         </button>
         <button class="btn bg-teal waves-effect"
                 data-toggle="modal" data-target="#setAddressModal">修改公司地址
@@ -80,10 +89,60 @@
 
                         <div class="input-group">
                             <div class="form-line">
-                                <input type="text" id="tel" name="tel" class="form-control"
+                                <input type="tel" id="tel" name="tel" class="form-control"
                                        placeholder="公司联系电话">
                             </div>
                             <label id="tel-error" class="error" for="tel"></label>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-link waves-effect" data-dismiss="modal">取消</button>
+                        <button type="submit" class="btn btn-primary waves-effect">设置</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <div class="modal fade" id="setFaxModal" tabindex="-1" role="dialog">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title">设置公司传真</h4>
+                </div>
+                <form role="form" method="post" id="set-fax-form">
+                    <div class="modal-body">
+
+                        <div class="input-group">
+                            <div class="form-line">
+                                <input type="text" id="fax" name="fax" class="form-control"
+                                       placeholder="公司传真">
+                            </div>
+                            <label id="tel-error" class="error" for="fax"></label>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-link waves-effect" data-dismiss="modal">取消</button>
+                        <button type="submit" class="btn btn-primary waves-effect">设置</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <div class="modal fade" id="setCodeModal" tabindex="-1" role="dialog">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title">设置邮编</h4>
+                </div>
+                <form role="form" method="post" id="set-code-form">
+                    <div class="modal-body">
+
+                        <div class="input-group">
+                            <div class="form-line">
+                                <input type="text" id="code" name="code" class="form-control"
+                                       placeholder="公司邮编">
+                            </div>
+                            <label id="tel-error" class="error" for="code"></label>
                         </div>
                     </div>
                     <div class="modal-footer">
@@ -200,6 +259,74 @@
                 data: formData,
                 success: function (data) {
                     $("#setTelModal").modal('toggle');
+                    var result = JSON.parse(data);
+
+                    checkResult(result.status, "修改成功", result.msg, null);
+                    setTimeout(function () {
+                        location.reload();
+                    }, 1200);
+                }
+            })
+
+        });
+        $("#set-fax-form").submit(function (event) {
+            event.preventDefault();
+            var fax = $("#fax");
+
+            if (fax.val() === '') {
+                setError(fax, 'fax', "不能为空");
+                return;
+            } else {
+                removeError(fax, 'fax');
+            }
+
+            var formData = new FormData();
+            formData.append("fax", fax.val());
+
+            $.ajax({
+                url: "/admin/about/setFax",
+                type: "post",
+                dataType: 'text',
+                cache: false,
+                contentType: false,
+                processData: false,
+                data: formData,
+                success: function (data) {
+                    $("#setFaxModal").modal('toggle');
+                    var result = JSON.parse(data);
+
+                    checkResult(result.status, "修改成功", result.msg, null);
+                    setTimeout(function () {
+                        location.reload();
+                    }, 1200);
+                }
+            })
+
+        });
+        $("#set-code-form").submit(function (event) {
+            event.preventDefault();
+            var code = $("#code");
+
+            if (code.val() === '') {
+                setError(code, 'code', "不能为空");
+                return;
+            } else {
+                removeError(code, 'code');
+            }
+
+            var formData = new FormData();
+            formData.append("code", code.val());
+
+            $.ajax({
+                url: "/admin/about/setCode",
+                type: "post",
+                dataType: 'text',
+                cache: false,
+                contentType: false,
+                processData: false,
+                data: formData,
+                success: function (data) {
+                    $("#setCodeModal").modal('toggle');
                     var result = JSON.parse(data);
 
                     checkResult(result.status, "修改成功", result.msg, null);

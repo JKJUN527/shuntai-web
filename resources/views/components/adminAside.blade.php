@@ -26,18 +26,6 @@
                         <span>管理员</span>
                     </a>
                 </li>
-
-                <li
-                        @if($title === 'enterprise')
-                        class="active"
-                        @endif
-                >
-                    <a href="/admin/enterprise">
-                        <i class="material-icons">people</i>
-                        <span>企业审核</span>
-                    </a>
-                </li>
-
                 <li
                         @if($title === 'region')
                         class="active"
@@ -45,7 +33,7 @@
                 >
                     <a href="/admin/region">
                         <i class="material-icons">place</i>
-                        <span>地区</span>
+                        <span>产品分类</span>
                     </a>
                 </li>
 

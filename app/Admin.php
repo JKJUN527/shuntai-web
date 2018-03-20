@@ -9,13 +9,13 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class About extends Model
+class Admin extends Model
 {
     //指定表明
-    protected $table = 'st_webinfo';
+    protected $table = 'st_admin';
 
     //指定主键id
-    protected $primaryKey = 'id';
+    protected $primaryKey = 'aid';
 
     //允许批量赋值,自定义允许批量赋值的字段名
     //protected $fillable = ['name','age','sex'];

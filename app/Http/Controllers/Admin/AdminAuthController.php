@@ -7,6 +7,7 @@
  */
 
 namespace App\Http\Controllers\admin;
+use App\Admin;
 use App\Admininfo;
 use App\Http\Controllers\Controller;
 
@@ -23,7 +24,7 @@ class AdminAuthController extends Controller
     public static function isAdmin() {            //判断是否未超级管理员，如是返回1，
         $uid = AdminAuthController::getUid();
         if ($uid) {
-            $role = Admininfo::where('uid',$uid)->first();
+            $role = Admin::where('aid',$uid)->first();
             if($role['role'] ==1){
                 return 1;
             }

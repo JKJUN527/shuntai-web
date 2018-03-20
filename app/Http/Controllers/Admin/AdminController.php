@@ -8,6 +8,7 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Admin;
 use App\Admininfo;
 use App\Http\Controllers\Controller;
 use App\User;
@@ -35,17 +36,13 @@ class AdminController extends Controller {
             ]);
             if (!($validator->fails())) {
                 $username = $input['username'];
-                $isexist = User::where('username', '=', $username)
+                $isexist = Admin::where('username', '=', $username)
                     ->get();
                 if (!($isexist->count())) {
-                    $user = new User();
+                    $user = new Admin();
                     $user->username = $input['username'];
                     $user->password = bcrypt($input['password']);
-                    $user->type = 3;
                     if ($user->save()) {
-                        $adminInfo = new Admininfo();
-                        $adminInfo->uid = $user->uid;
-                        $adminInfo->save();
                         $data['status'] = 200;
                         $data['msg'] = '管理员添加成功';
                     } else {
@@ -79,23 +76,17 @@ class AdminController extends Controller {
         $aid = $request->input('id');
 
         if (AdminAuthController::isAdmin()) {
-            $admin = Admininfo::find($aid);
+            $admin = Admin::find($aid);
             if (!$admin) {
                 $data['status'] = 400;
                 $data['msg'] = '删除的管理员ID不存在';
                 return $data;
             }
-            $uid = $admin->uid;
+            $uid = $admin->aid;
             $flag = $admin->delete();
             if ($flag) {
-                $user = User::find($uid);
-                if ($user->delete()) {
-                    $data['status'] = 200;
-                    $data['msg'] = '删除成功';
-                } else {
-                    $data['status'] = 400;
-                    $data['msg'] = '删除失败';
-                }
+                $data['status'] = 200;
+                $data['msg'] = '删除成功';
             } else {
                 $data['status'] = 400;
                 $data['msg'] = '删除失败';
@@ -113,11 +104,11 @@ class AdminController extends Controller {
         if ($uid == 0) {
             return redirect('admin/login');
         }
-
-        $admins = DB::table('jobs_users')
-            ->join('jobs_admininfo', 'jobs_admininfo.uid', '=', 'jobs_users.uid')
-            ->select('aid', 'username', 'permission', 'role', 'status')
-            ->get();
+        $admins = Admin::all();
+//        $admins = DB::table('jobs_users')
+//            ->join('jobs_admininfo', 'jobs_admininfo.uid', '=', 'jobs_users.uid')
+//            ->select('aid', 'username', 'permission', 'role', 'status')
+//            ->get();
 
         return $admins;
     }

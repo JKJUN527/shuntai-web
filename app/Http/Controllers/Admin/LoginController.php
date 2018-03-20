@@ -7,6 +7,7 @@
  */
 namespace App\Http\Controllers\Admin;
 
+use App\Admin;
 use App\Http\Controllers\Controller;
 use App\About;
 use Illuminate\Support\Facades\DB;
@@ -36,23 +37,17 @@ class LoginController extends Controller
         $input = $request->all();
         $username = $input['username'];
         $password = $input['password'];
-        $isexist = User::where('username', '=', $username)->where('type',3)
-            ->get();
+        $isexist = Admin::where('username', '=', $username)->get();
         if($isexist->count())
         {
-            $res = User::where('username','=',$username)->first();
+            $res = Admin::where('username','=',$username)->first();
             if(Hash::check($password, $res->password))
             {
-//                $uid = User::where('username','=',$username)->select('uid')->first()->uid;
-                $uid = $res->uid;
+                $uid = $res->aid;
                 session()->put('backUid',$uid);
-                $type =User::where('uid','=',$uid)
-                    ->select('type')
-                    ->get();
-                $type = $type[0]['type'];
-                session()->put('adminType',$type);
+
                 $last_login = date('Y-m-d H-i-s',time());
-                $affectedRows = Admininfo::where('uid',$uid)
+                $affectedRows = Admin::where('aid',$uid)
                     ->update(['last_login'=>$last_login]);
                 if($affectedRows)
                 {

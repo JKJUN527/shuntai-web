@@ -5,11 +5,13 @@
 //测试生成session uid
 Route::any('session', ['uses' => 'PositionController@test1']);
 
-//Route::any('/index', ['uses' => 'HomeController@index']);//完成
+Route::any('/', ['uses' => 'HomeController@index']);//完成
+Route::get('/index', ['uses' => 'HomeController@changeLang']);//完成
+//Route::any('/', ['uses' => 'HomeController@index']);//完成
 //Route::any('/index/search', ['uses' => 'HomeController@indexSearch']);//完成
-Route::any('/',function (){
-    return view('index');
-});
+//Route::any('/',function (){
+//    return view('index');
+//});
 Route::any('/about',function (){
     return view('about');
 });
@@ -96,6 +98,8 @@ Route::any('admin/position/offposition', ['uses' => 'Admin\PositionController@Of
 //管理网站信息
 Route::any('admin/about', ['uses' => 'Admin\WebinfoController@index']);//显示已发布广告信息
 Route::any('admin/about/setPhone', ['uses' => 'Admin\WebinfoController@setPhone']);
+Route::any('admin/about/setFax', ['uses' => 'Admin\WebinfoController@setFax']);
+Route::any('admin/about/setCode', ['uses' => 'Admin\WebinfoController@setCode']);
 Route::any('admin/about/setEmail', ['uses' => 'Admin\WebinfoController@setEmail']);
 Route::any('admin/about/setAddress', ['uses' => 'Admin\WebinfoController@setAddress']);
 Route::any('admin/about/setContent', ['uses' => 'Admin\WebinfoController@setContent']);

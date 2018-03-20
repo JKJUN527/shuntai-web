@@ -44,6 +44,42 @@ class WebinfoController extends Controller {
 
         return $data;
     }
+    public function setFax(Request $request) {
+        $uid = AdminAuthController::getUid();
+        if ($uid == 0) {
+            return redirect('admin/login');
+        }
+
+        $webinfo = About::find(1);
+        $webinfo->fax = $request->input('fax');
+
+        if ($webinfo->save()) {
+            $data['status'] = 200;
+        } else {
+            $data['status'] = 400;
+            $data['msg'] = "设置失败";
+        }
+
+        return $data;
+    }
+    public function setCode(Request $request) {
+        $uid = AdminAuthController::getUid();
+        if ($uid == 0) {
+            return redirect('admin/login');
+        }
+
+        $webinfo = About::find(1);
+        $webinfo->postcodes = $request->input('code');
+
+        if ($webinfo->save()) {
+            $data['status'] = 200;
+        } else {
+            $data['status'] = 400;
+            $data['msg'] = "设置失败";
+        }
+
+        return $data;
+    }
 
     public function setEmail(Request $request) {
         $uid = AdminAuthController::getUid();
@@ -90,7 +126,7 @@ class WebinfoController extends Controller {
         }
 
         $webinfo = About::find(1);
-        $webinfo->content = $request->input('content');
+        $webinfo->describe = $request->input('content');
 
         if ($webinfo->save()) {
             $data['status'] = 200;

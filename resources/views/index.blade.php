@@ -75,6 +75,20 @@
     <section class="slider">
         <div class="flexslider">
             <ul class="slides">
+                @if($data['about']->carousel != null)
+                    <?php
+                    $pics = explode('@', $data['about']->carousel);
+                    $baseurl = $pics[0];
+                    $imagepath = array_shift($pics);
+                    ?>
+                    @foreach($imagepath as $item)
+                            <li clearfix>
+                                <div class="col-sm-6">
+                                    <img src="{{$baseurl}}{{$item}}" alt=""/>
+                                </div>
+                            </li>
+                    @endforeach
+                @else
                 <li clearfix>
                     <div class="col-sm-6 slider_right">
                         <div class="col-sm-12 slider_caption">
@@ -82,10 +96,14 @@
                             <h4>Lorem Ipsum</h4>
                         </div>
                     </div>
-                    <div class="col-sm-6"><img src="images/4.png" alt=""/></div>
+                    <div class="col-sm-6">
+                        <img src="images/4.png" alt=""/>
+                    </div>
                 </li>
                 <li clearfix>
-                    <div class="col-sm-6"><img src="images/9.png" alt=""/></div>
+                    <div class="col-sm-6">
+                        <img src="images/9.png" alt=""/>
+                    </div>
                     <div class="col-sm-6 slider_left">
                         <div class="col-sm-12 slider_caption1">
                             <h3>Entrepreneurs</h3>
@@ -93,13 +111,14 @@
                         </div>
                     </div>
                 </li>
+                @endif
             </ul>
         </div>
         <div class="clearfix"> </div>
     </section>
     <div class="product_center">
         <div class="product_index index_title">
-            <p class="product_title">产品中心
+            <p class="product_title">产品中心{{$data['lang']}}
             <span>Product</span>
             </p>
             <p class="product_subtitle">主营化学试剂、塑料助剂、食品添加剂、医药中间体、化工原料等。</p>
@@ -139,63 +158,6 @@
             <div class="clearfix"> </div>
         </div>
     </div>
-    {{--企业展示图片--}}
-    {{--<script src="js/jquery.chocolat.js"></script>--}}
-    {{--<link rel="stylesheet" href="css/chocolat.css" type="text/css" media="screen" charset="utf-8" />--}}
-    {{--<!--light-box-files -->--}}
-    {{--<script type="text/javascript" charset="utf-8">--}}
-        {{--$(function() {--}}
-            {{--$('#example1 a').Chocolat();--}}
-        {{--});--}}
-    {{--</script>--}}
-    {{--<!-- requried-jsfiles-for owl -->--}}
-    {{--<link href="css/owl.carousel.css" rel="stylesheet">--}}
-    {{--<script src="js/owl.carousel.js"></script>--}}
-    {{--<script>--}}
-        {{--$(document).ready(function() {--}}
-            {{--$("#owl-demo").owlCarousel({--}}
-                {{--items : 5,--}}
-                {{--lazyLoad : true,--}}
-                {{--autoPlay : true,--}}
-                {{--pagination : false,--}}
-            {{--});--}}
-        {{--});--}}
-    {{--</script>--}}
-    {{--<div id="example1">--}}
-        {{--<div class="product_index index_title">--}}
-            {{--<p class="product_title company_title">企业展示--}}
-                {{--<span>company</span>--}}
-            {{--</p>--}}
-            {{--<p class="product_subtitle">本公司占地500亩，拥有全套生产设备，标准化流水线，专业员工。</p>--}}
-        {{--</div>--}}
-        {{--<div id="owl-demo" class="owl-carousel text-center">--}}
-            {{--<div class="item">--}}
-                {{--<a href="images/pic19.jpg" title="Rose" rel="title1">--}}
-                    {{--<img class="lazyOwl" data-src="images/pic19.jpg" alt="name">--}}
-                {{--</a>--}}
-            {{--</div>--}}
-            {{--<div class="item">--}}
-                {{--<a href="images/pic20.jpg" title="Rose" rel="title1">--}}
-                    {{--<img class="lazyOwl" data-src="images/pic20.jpg" alt="name">--}}
-                {{--</a>--}}
-            {{--</div>--}}
-            {{--<div class="item">--}}
-                {{--<a href="images/pic21.jpg" title="Rose" rel="title1">--}}
-                    {{--<img class="lazyOwl" data-src="images/pic21.jpg" alt="name">--}}
-                {{--</a>--}}
-            {{--</div>--}}
-            {{--<div class="item">--}}
-                {{--<a href="images/pic22.jpg" title="Rose" rel="title1">--}}
-                    {{--<img class="lazyOwl" data-src="images/pic22.jpg" alt="name">--}}
-                {{--</a>--}}
-            {{--</div>--}}
-            {{--<div class="item">--}}
-                {{--<a href="images/pic23.jpg" title="Rose" rel="title1">--}}
-                    {{--<img class="lazyOwl" data-src="images/pic23.jpg" alt="name">--}}
-                {{--</a>--}}
-            {{--</div>--}}
-        {{--</div>--}}
-    {{--</div>--}}
     <div id="example1">
     <section id="team">
         <div class="container">
@@ -213,6 +175,27 @@
                     <!-- Wrapper for slides -->
                     <div class="carousel-inner">
                         <div class="item active">
+                            @if($data['about']->picture != null)
+                                <?php
+                                $pics = explode('@', $data['about']->picture);
+                                $baseurl = $pics[0];
+                                $imagepath = array_shift($pics);
+                                ?>
+                                @foreach($imagepath as $item)
+                                        <div class="col-sm-3 col-xs-6">
+                                            <div class="team-single-wrapper">
+                                                <div class="team-single">
+                                                    <div class="person-thumb">
+                                                        <img src="{{$baseurl}}{{$item}}" class="img-responsive" alt="">
+                                                    </div>
+                                                </div>
+                                                <div class="person-info">
+                                                    <h3>John Doe</h3>
+                                                </div>
+                                            </div>
+                                        </div>
+                                @endforeach
+                            @endif
                             <div class="col-sm-3 col-xs-6">
                                 <div class="team-single-wrapper">
                                     <div class="team-single">

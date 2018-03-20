@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\About;
+use App\Admin;
 use App\Http\Controllers\Controller;
 use App\User;
 
@@ -13,9 +14,7 @@ class DashboardController extends Controller {
             return view('admin.login');
 
         $data = self::getLoginInfo();
-        $data['webinfo'] = about::orderBy('updated_at', 'desc')
-            ->take(1)
-            ->get()[0];
+        $data['webinfo'] = About::orderBy('updated_at', 'desc')->first();
 
         //return $data;
         return view('admin.dashboard', ["data" => $data]);
@@ -25,7 +24,7 @@ class DashboardController extends Controller {
         $uid = AdminAuthController::getUid();
         $data = array();
         $data['uid'] = $uid;
-        $user = User::where("uid", $uid)->first();
+        $user = Admin::where("aid", $uid)->first();
 
         if ($user == null)
             return view('admin.login');
