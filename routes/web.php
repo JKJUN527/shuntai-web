@@ -43,21 +43,11 @@ Route::get('admin/dashboard', ['uses' => 'Admin\DashboardController@view']);
 
 Route::get('admin/admin', ['uses' => 'Admin\AdminController@view']);
 
+Route::any('admin/region', ['uses' => 'Admin\RegionController@index']);//显示产品分类
+Route::any('admin/region/{option}', ['uses' => 'Admin\RegionController@edit'])->where('option', '[A-Za-z]+');//操作产品分类
 
-Route::any('admin/industry', ['uses' => 'Admin\IndustryController@index']);//显示行业
-Route::any('admin/industry/{option}', ['uses' => 'Admin\IndustryController@edit'])->where('option', '[A-Za-z]+');//显示行业
-
-Route::any('admin/occupation', ['uses' => 'Admin\OccupationController@index']);//显示职业
-Route::any('admin/occupation/{option}', ['uses' => 'Admin\OccupationController@edit'])->where('option', '[A-Za-z]+');//显示职业
-
-Route::any('admin/egame', ['uses' => 'Admin\EgamenameController@index']);//显示游戏
-Route::any('admin/egame/{option}', ['uses' => 'Admin\EgamenameController@edit'])->where('option', '[A-Za-z]+');//显示行业
-
-Route::any('admin/egrade', ['uses' => 'Admin\EgradeController@index']);//显示职业
-Route::any('admin/egrade/{option}', ['uses' => 'Admin\EgradeController@edit'])->where('option', '[A-Za-z]+');//显示职业
-
-Route::any('admin/region', ['uses' => 'Admin\RegionController@index']);//显示地区
-Route::any('admin/region/{option}', ['uses' => 'Admin\RegionController@edit'])->where('option', '[A-Za-z]+');//显示地区
+Route::any('admin/products', ['uses' => 'Admin\RegionController@productView']);//显示产品列表
+Route::any('admin/products/{option}', ['uses' => 'Admin\RegionController@productEdit'])->where('option', '[A-Za-z]+');//操作产品
 
 //审批企业信息
 Route::any('admin/enterprise/{option?}', ['uses' => 'Admin\VerificationController@index'])->where('option', '[0-2]{1}');//显示待审核或已审核的企业信息

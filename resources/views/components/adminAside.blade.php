@@ -36,17 +36,17 @@
                         <span>产品分类</span>
                     </a>
                 </li>
-
                 <li
-                        @if($title === 'industry')
+                        @if($title === 'products')
                         class="active"
                         @endif
                 >
-                    <a href="/admin/industry">
+                    <a href="/admin/products">
                         <i class="material-icons">business</i>
-                        <span>行业-职业</span>
+                        <span>产品列表</span>
                     </a>
                 </li>
+
                 <li
                         @if($title === 'egame')
                         class="active"
