@@ -71,11 +71,14 @@
                             </tr>
                         @empty
                             <tr>
-                                <td colspan="3">暂无新闻</td>
+                                <td colspan="4">暂无新闻</td>
                             </tr>
                         @endforelse
                         </tbody>
                     </table>
+                    <nav>
+                        {!! $data['news']->render() !!}
+                    </nav>
                 </div>
             </div>
         </div>

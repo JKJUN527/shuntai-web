@@ -80,7 +80,7 @@
     </div>
 </div>
 
-<script src="{{asset('js/jquery-3.2.1.js')}}"></script>
+<script src="{{asset('js/jquery.min.js')}}"></script>
 <script src="{{asset('plugins/bootstrap/js/bootstrap.min.js')}}"></script>
 <script src="{{asset('js/material.js')}}"></script>
 <script src="{{asset('plugins/sweetalert/sweetalert.min.js')}}"></script>
@@ -106,9 +106,8 @@
         if (!checkPassword($("#password"))) {
             return false;
         }
-
         $.ajax({
-            url: "/admin/login",
+            url: "admin/login",
             type: "post",
             dataType: 'text',
             data: serializedData,

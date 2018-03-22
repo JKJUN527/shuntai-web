@@ -8,6 +8,7 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\About;
 use App\Adverts;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
@@ -29,16 +30,7 @@ class AdvertsController extends Controller {
             return view('admin.login');
 
         $data = DashboardController::getLoginInfo();
-        if ($request->has('type')) {
-            $type = $request->input('type');
-            $data['adlist'] = Adverts::where('type', '=', $type)
-                ->orderBy('updated_at', 'desc')
-                ->paginate(20);
-        } else {
-            $data['adlist'] = Adverts::orderBy('updated_at', 'desc')
-                ->paginate(20);
-        }
-
+        $data['picture'] = About::first();
         //return $data;
         return view('admin.ads', ['data' => $data]);
     }

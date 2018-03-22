@@ -101,7 +101,7 @@ class RegionController extends Controller {
         $data['region'] = Protype::all();
         $data['products'] = DB::table('st_product')
             ->leftjoin('st_product_type','st_product.type','st_product_type.id')
-            ->select('st_product.id','st_product.ch_name','st_product.en_name','model','cas_code','package','st_product_type.ch_name as typename')
+            ->select('st_product.id','st_product.ch_name','st_product.en_name','model','cas_code','package','is_urgency','st_product_type.ch_name as typename')
             ->orderBy('st_product.created_at','desc')
             ->paginate(10);
         //return $data;
@@ -164,6 +164,24 @@ class RegionController extends Controller {
                         $resultData['msg'] = "删除失败";
                     }
                 }
+                break;
+            case 'urgency':
+                if ($request->has('rid')) {
+                    $rid = $request->input('rid');
+                    $urgency = $request->input('urgency');
+
+                    $data = Product::find($rid);
+                    $data->is_urgency = (int)$urgency;
+
+                    if ($data->save()) {
+                        $resultData['status'] = 200;
+                        $resultData['msg'] = "设置成功";
+                        return $resultData;
+                        //return redirect()->back()->with('success','设置成功');
+                    }
+                }
+                $resultData['status'] = 400;
+                $resultData['msg'] = "设置失败";
                 break;
             default:
                 $resultData['status'] = 400;

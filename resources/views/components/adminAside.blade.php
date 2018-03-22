@@ -32,7 +32,7 @@
                         @endif
                 >
                     <a href="/admin/region">
-                        <i class="material-icons">place</i>
+                        <i class="material-icons">work</i>
                         <span>产品分类</span>
                     </a>
                 </li>
@@ -46,29 +46,6 @@
                         <span>产品列表</span>
                     </a>
                 </li>
-
-                <li
-                        @if($title === 'egame')
-                        class="active"
-                        @endif
-                >
-                    <a href="/admin/egame">
-                        <i class="material-icons">face</i>
-                        <span>游戏-段位</span>
-                    </a>
-                </li>
-
-                <li
-                        @if($title === 'position')
-                        class="active"
-                        @endif
-                >
-                    <a href="/admin/position">
-                        <i class="material-icons">work</i>
-                        <span>已发布职位</span>
-                    </a>
-                </li>
-
                 <li
                         @if($title === 'news')
                         class="active"
@@ -103,7 +80,7 @@
                 >
                     <a href="javascript:void(0);" class="menu-toggle">
                         <i class="material-icons">business_center</i>
-                        <span>广告</span>
+                        <span>企业展示照片</span>
                     </a>
                     <ul class="ml-menu">
                         <li
@@ -111,41 +88,14 @@
                                 class="active"
                                 @endif
                         >
-                            <a href="/admin/ads">广告列表</a>
+                            <a href="/admin/ads">展示照片列表</a>
                         </li>
                         <li
                                 @if($subtitle === 'addAds')
                                 class="active"
                                 @endif
                         >
-                            <a href="/admin/addAds">发布广告</a>
-                        </li>
-                    </ul>
-                </li>
-
-                <li
-                        @if($title === 'resume')
-                        class="active"
-                        @endif
-                >
-                    <a href="javascript:void(0);" class="menu-toggle">
-                        <i class="material-icons">contacts</i>
-                        <span>临时简历</span>
-                    </a>
-                    <ul class="ml-menu">
-                        <li
-                                @if($subtitle === 'resumeList')
-                                class="active"
-                                @endif
-                        >
-                            <a href="/admin/resumes">简历列表</a>
-                        </li>
-                        <li
-                                @if($subtitle === 'addresume')
-                                class="active"
-                                @endif
-                        >
-                            <a href="/admin/addresume">新增简历</a>
+                            <a href="/admin/addAds">新增展示照片</a>
                         </li>
                     </ul>
                 </li>

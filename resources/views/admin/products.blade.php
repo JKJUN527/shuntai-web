@@ -17,6 +17,9 @@
         i.material-icons {
             cursor: pointer;
         }
+        .hot {
+            color: #F44336;
+        }
     </style>
 @endsection
 
@@ -72,6 +75,8 @@
                                 <td>{{$product->cas_code}}</td>
                                 <td>
                                     <i class="material-icons delete" data-content="{{$product->id}}">delete</i>
+                                    <i class="material-icons set-hot @if($product->is_urgency == 1) hot @endif"
+                                       data-content="{{$product->id}}">whatshot</i>
                                 </td>
                             </tr>
                         @empty
@@ -267,6 +272,37 @@
                     }
                 })
             });
+        });
+        $(".set-hot").click(function () {
+            var element = $(this);
+            var setUrgency = element.hasClass("hot") ? 0 : 1;
+            var text = "";
+            if(setUrgency == 0)
+                text = "确定取消该优势产品吗?";
+            else
+                text= "确定设置该产品为优势产品吗?";
+
+            swal({
+                type: "warning",
+                title: "确认",
+                text: text,
+                confirmButtonText: "确定",
+                cancelButtonText: "取消",
+                showCancelButton: true,
+                closeOnConfirm: true
+            }, function () {
+                $.ajax({
+                    url: "/admin/products/urgency?rid=" + element.attr("data-content")+ "&urgency=" + setUrgency,
+                    type: "get",
+                    success: function (data) {
+                        checkResult(data['status'], '操作成功', data['msg'], null);
+                        setTimeout(function () {
+                            location.reload();
+                        }, 1200);
+                    }
+                })
+            });
+
         })
     </script>
 @show

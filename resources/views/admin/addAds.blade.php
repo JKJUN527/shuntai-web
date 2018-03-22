@@ -123,19 +123,6 @@
                         </div>
                     </div>
                 </div>
-
-                {{--<div class="col-lg-3 col-md-4 col-sm-6 col-xs-12 operate-btn hiring--btn">--}}
-                {{--<div class="info-box-3 bg-red hover-zoom-effect">--}}
-                {{--<div class="icon">--}}
-                {{--<i class="material-icons">whatshot</i>--}}
-                {{--</div>--}}
-                {{--<div class="content">--}}
-                {{--<div class="text">设置急聘职位</div>--}}
-                {{--<div class="number" id="cu-users-num"></div>--}}
-                {{--</div>--}}
-                {{--</div>--}}
-                {{--</div>--}}
-
                 <div style="clear:both;"></div>
             </div>
 

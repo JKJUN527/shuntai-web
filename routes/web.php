@@ -33,9 +33,9 @@ Route::any('/detail',function (){
 
 
 //网站后台
-Route::get('admin/login', function () {
-    return view('admin/login');
-});
+//Route::get('admin/login', function () {
+//    return view('admin/login');
+//});
 Route::post('admin/login', ['uses' => 'Admin\LoginController@postLogin']);
 
 Route::get('admin/', ['uses' => 'Admin\DashboardController@view']);
