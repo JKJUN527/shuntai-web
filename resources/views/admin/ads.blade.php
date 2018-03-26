@@ -17,6 +17,15 @@
         i.material-icons {
             cursor: pointer;
         }
+        .big-image--btn{
+            border: 1px solid antiquewhite;
+        }
+        .big-image--btn h5{
+            text-align: center;
+        }
+        .big-image--btn img{
+            width: 100% !important;
+        }
     </style>
 @endsection
 
@@ -29,19 +38,17 @@
         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
             <div class="card">
                 <div class="body">
-                    <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12 operate-btn big-image--btn">
-                        <img src="{{asset('images/c1.jpg')}}"/>
-                    </div>
-
-                    <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12 operate-btn big-image--btn">
-                        <img src="{{asset('images/c2.jpg')}}"/>
-                    </div>
-                    <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12 operate-btn big-image--btn">
-                        <img src="{{asset('images/c3.jpg')}}"/>
-                    </div>
-                    <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12 operate-btn big-image--btn">
-                        <img src="{{asset('images/c4.jpg')}}"/>
-                    </div>
+                    <?php
+                    $pics = explode(';', $data['picture']->picture);
+                    ?>
+                    @foreach($pics as $pic)
+                        <?php $temp = explode('@', $pic);?>
+                        <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12 operate-btn big-image--btn">
+                            <img src="{{$temp[1]}}"/>
+                            <h5>{{$temp[0]}}</h5>
+                            <input class="delete" type="button" data-content="{{$temp[1]}}" value="删除"/>
+                        </div>
+                    @endforeach
                     <div style="clear:both;"></div>
                 </div>
             </div>
@@ -53,10 +60,9 @@
     <script type="text/javascript">
         $(".delete").click(function () {
             var element = $(this);
-
             swal({
                 title: "确认",
-                text: "确认该广告吗?",
+                text: "确认该展示图吗?",
                 type: "warning",
                 confirmButtonText: "删除",
                 cancelButtonText: "取消",
@@ -64,7 +70,7 @@
                 closeOnConfirm: true
             }, function () {
                 $.ajax({
-                    url: "/admin/ads/del?id=" + element.attr('data-content'),
+                    url: "/admin/ads/del?keyword=" + element.attr('data-content'),
                     type: "get",
                     success: function (data) {
                         checkResult(data['status'], "删除成功", data['msg'], null);
