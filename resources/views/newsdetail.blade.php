@@ -6,7 +6,7 @@
 @endsection
 
 @section('header-nav')
-    @include('components.headerNav',['activeIndex'=>3])
+    @include('components.headerNav',['activeIndex'=>3,'lang'=>$data['lang']])
 @endsection
 
 @section('custom-style')
@@ -76,17 +76,17 @@
         <div class="info-panel">
             <div class="mdl-card mdl-shadow--2dp info-card news-detail">
                 <div class="mdl-card__title">
-                    <h5 class="mdl-card__title-text" data-content="624">
-                        LPL周最佳阵容：卡萨领衔RW下路入选
+                    <h5 class="mdl-card__title-text" data-content="{{$data['news']->nid}}">
+                        {{$data['news']->title}}
                     </h5>
                 </div>
 
                 <div class="mdl-card__actions mdl-card--border base-info--panel">
 
-                    <label><span>责任编辑: admin</span></label>
-                    <label><span>发布时间: 2018-03-19</span></label>
-
-                    <label><i class="material-icons">comment</i> <span>0</span></label>
+                    <label><span>责任编辑: {{$data['news']->subtitle or 'admin'}}</span></label>
+                    <label><span>发布时间: {{mb_substr($data['news']->created_at,0,10,'utf-8')}}</span></label>
+                    <label><i class="material-icons">visibility</i><span>{{$data['news']->view_count}}</span></label>
+                    {{--<label><i class="material-icons">comment</i> <span>{{sizeof($data['review'])}}</span></label>--}}
                 </div>
 
                 <div class="mdl-card__supporting-text">
@@ -101,4 +101,34 @@
     @include('components.myfooter')
 @endsection
 @section('custom-script')
+    <script>
+            var nid = $(".mdl-card__title-text").attr("data-content");
+            $.ajax({
+                url: "/news/content?nid=" + nid,
+                type: "get",
+                success: function (data) {
+                    var content = data['news']['content'];
+                    var images = data['news']['picture'];
+                    var imageTemp = images.split(";");
+                    var imagesArray = [];
+
+                    for (var i in imageTemp) {
+                        imagesArray[i + ''] = imageTemp[i + ''].split("@");
+                    }
+
+                    var baseUrl = imagesArray[0][0].substring(0, imagesArray[0][0].length - 1);
+                    imagesArray[0][0] = imagesArray[0][0].replace(baseUrl, '');
+
+//                    console.log(imagesArray);
+//                    console.log(baseUrl);
+                    console.log(content);
+
+                    for (var j = 0; j < imagesArray.length; j++) {
+                        content = content.replace("[图片" + imagesArray[j][0] + "]", "<div class='news-image'><img src='" + baseUrl + imagesArray[j][1] + "'/></div>");
+                    }
+
+                    $(".mdl-card__supporting-text").html(content);
+                }
+            });
+    </script>
 @endsection

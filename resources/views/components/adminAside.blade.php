@@ -99,6 +99,16 @@
                         </li>
                     </ul>
                 </li>
+                <li
+                        @if($title === 'message')
+                        class="active"
+                        @endif
+                >
+                    <a href="/admin/message">
+                        <i class="material-icons">message</i>
+                        <span>留言板</span>
+                    </a>
+                </li>
 
                 <li class="header"></li>
 

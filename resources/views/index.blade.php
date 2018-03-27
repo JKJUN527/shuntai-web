@@ -6,7 +6,7 @@
 @endsection
 
 @section('header-nav')
-    @include('components.headerNav',['activeIndex'=>1])
+    @include('components.headerNav',['activeIndex'=>1,'lang'=>$data['lang']])
 @endsection
 
 @section('custom-style')
@@ -118,7 +118,7 @@
     </section>
     <div class="product_center">
         <div class="product_index index_title">
-            <p class="product_title">产品中心{{$data['lang']}}
+            <p class="product_title">产品中心
             <span>Product</span>
             </p>
             <p class="product_subtitle">主营化学试剂、塑料助剂、食品添加剂、医药中间体、化工原料等。</p>
@@ -127,14 +127,14 @@
             <div class="col-sm-6 box_1">
                 <div class="feature-box">
                     <i class="fa fa-meh-o face"></i>
-                    <h4>fast and friendly</h4>
+                    <h4>化学试剂</h4>
                     <p>It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.</p>
                 </div>
             </div>
             <div class="col-sm-6 box_3">
                 <div class="feature-box">
                     <i class="fa fa-bullseye face"></i>
-                    <h4>injected humour</h4>
+                    <h4>食品添加剂</h4>
                     <p>It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.</p>
                 </div>
             </div>
@@ -144,14 +144,14 @@
             <div class="col-sm-6 box_1">
                 <div class="feature-box">
                     <i class="fa fa-html5 face"></i>
-                    <h4> repeat predefined</h4>
+                    <h4>化工原料</h4>
                     <p>It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.</p>
                 </div>
             </div>
             <div class="col-sm-6 box_3">
                 <div class="feature-box">
                     <i class="fa fa-thumbs-o-up face"></i>
-                    <h4> nulla pariatur</h4>
+                    <h4>塑料助剂</h4>
                     <p>It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.</p>
                 </div>
             </div>
@@ -177,127 +177,29 @@
                         <div class="item active">
                             @if($data['about']->picture != null)
                                 <?php
-                                $pics = explode('@', $data['about']->picture);
-                                $baseurl = $pics[0];
-                                $imagepath = array_shift($pics);
+                                $pics = explode(';', $data['about']->picture);
                                 ?>
-                                @foreach($imagepath as $item)
+                                @foreach($pics as $pic)
+                                        <?php $temp = explode('@', $pic);?>
                                         <div class="col-sm-3 col-xs-6">
                                             <div class="team-single-wrapper">
                                                 <div class="team-single">
                                                     <div class="person-thumb">
-                                                        <img src="{{$baseurl}}{{$item}}" class="img-responsive" alt="">
+                                                        <img src="{{$temp[1]}}" class="img-responsive" alt="">
                                                     </div>
                                                 </div>
                                                 <div class="person-info">
-                                                    <h3>John Doe</h3>
+                                                    <h3>{{$temp[0]}}</h3>
                                                 </div>
                                             </div>
                                         </div>
                                 @endforeach
                             @endif
-                            <div class="col-sm-3 col-xs-6">
-                                <div class="team-single-wrapper">
-                                    <div class="team-single">
-                                        <div class="person-thumb">
-                                            <img src="images/aboutus/1.jpg" class="img-responsive" alt="">
-                                        </div>
-                                    </div>
-                                    <div class="person-info">
-                                        <h3>John Doe</h3>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-sm-3 col-xs-6">
-                                <div class="team-single-wrapper">
-                                    <div class="team-single">
-                                        <div class="person-thumb">
-                                            <img src="images/aboutus/2.jpg" class="img-responsive" alt="">
-                                        </div>
-                                    </div>
-                                    <div class="person-info">
-                                        <h3>John Doe</h3>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-sm-3 col-xs-6">
-                                <div class="team-single-wrapper">
-                                    <div class="team-single">
-                                        <div class="person-thumb">
-                                            <img src="images/aboutus/3.jpg" class="img-responsive" alt="">
-                                        </div>
-                                    </div>
-                                    <div class="person-info">
-                                        <h3>John Doe</h3>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-sm-3 col-xs-6">
-                                <div class="team-single-wrapper">
-                                    <div class="team-single">
-                                        <div class="person-thumb">
-                                            <img src="images/aboutus/1.jpg" class="img-responsive" alt="">
-                                        </div>
-                                    </div>
-                                    <div class="person-info">
-                                        <h3>John Doe</h3>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="item">
-                            <div class="col-sm-3 col-xs-6">
-                                <div class="team-single-wrapper">
-                                    <div class="team-single">
-                                        <div class="person-thumb">
-                                            <img src="images/aboutus/4.jpg" class="img-responsive" alt="">
-                                        </div>
-                                    </div>
-                                    <div class="person-info">
-                                        <h3>John Doe</h3>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-sm-3 col-xs-6">
-                                <div class="team-single-wrapper">
-                                    <div class="team-single">
-                                        <div class="person-thumb">
-                                            <img src="images/aboutus/3.jpg" class="img-responsive" alt="">
-                                        </div>
-                                    </div>
-                                    <div class="person-info">
-                                        <h3>John Doe</h3>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-sm-3 col-xs-6">
-                                <div class="team-single-wrapper">
-                                    <div class="team-single">
-                                        <div class="person-thumb">
-                                            <img src="images/aboutus/2.jpg" class="img-responsive" alt="">
-                                        </div>
-                                    </div>
-                                    <div class="person-info">
-                                        <h3>John Doe</h3>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-sm-3 col-xs-6">
-                                <div class="team-single-wrapper">
-                                    <div class="team-single">
-                                        <div class="person-thumb">
-                                            <img src="images/aboutus/1.jpg" class="img-responsive" alt="">
-                                        </div>
-                                    </div>
-                                    <div class="person-info">
-                                        <h3>John Doe</h3>
-                                    </div>
-                                </div>
-                            </div>
                         </div>
                     </div>
                 </div>
             </div>
+
         </div>
     </section>
         </div>

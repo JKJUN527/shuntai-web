@@ -6,7 +6,7 @@
 @endsection
 
 @section('header-nav')
-    @include('components.headerNav',['activeIndex'=>5])
+    @include('components.headerNav',['activeIndex'=>5,'lang'=>$data['lang']])
 @endsection
 
 @section('custom-style')
@@ -122,11 +122,15 @@
             font-size: 12px;
         }
         .portfolio-pagination{
-            margin-left: 25%;
+            text-align: center;
         }
         .row h4{
             text-align: center;
             margin-bottom: 2rem;
+        }
+        .media img{
+            width: 52px;
+            height: 52px;
         }
     </style>
 @endsection
@@ -143,115 +147,79 @@
                 <div class="col-md-3 col-sm-4 padding-top">
                     <div class="sidebar portfolio-sidebar">
                         <div class="sidebar-item categories">
-                            <h3>产品分类</h3>
+                            <h3>@if($data['lang'] == 1) 产品分类 @else Product Type @endif</h3>
                             <ul class="nav navbar-stacked">
-                                <li><a href="#">Branded<span class="pull-right">(1)</span></a></li>
-                                <li class="active"><a href="#">Design<span class="pull-right">(8)</span></a></li>
-                                <li><a href="#">Folio<span class="pull-right">(4)</span></a></li>
-                                <li><a href="#">Logos<span class="pull-right">(9)</span></a></li>
-                                <li><a href="#">Mobile<span class="pull-right">(3)</span></a></li>
-                                <li><a href="#">Mockup<span class="pull-right">(4)</span></a></li>
-                                <li><a href="#">Php<span class="pull-right">(2)</span></a></li>
-                                <li><a href="#">Wordpress<span class="pull-right">(8)</span></a></li>
+                                @foreach($data['type'] as $type)
+                                    <li @if($data['ptype'] == $type->id) class="active" @endif>
+                                        <a href="/advantage?ptype={{$type->id}}">
+                                            @if($data['lang'] == 1)
+                                                {{$type->ch_name}}
+                                            @else
+                                                {{$type->en_name}}
+                                            @endif
+                                            {{--<span class="pull-right">(1)</span>--}}
+                                        </a>
+                                    </li>
+                                @endforeach
                             </ul>
                         </div>
                         <div class="sidebar-item  recent">
-                            <h3>最新新闻</h3>
-                            <div class="media">
-                                <div class="pull-left">
-                                    <a href="#"><img src="images/portfolio/project1.jpg" alt=""></a>
+                            <h3>@if($data['lang'] == 1) 最新新闻 @else Latest news @endif</h3>
+                            @foreach($data['newest'] as $news)
+                                <div class="media" data-content="{{$news->nid}}">
+                                    @if($news->picture != null)
+                                        <?php
+                                        $pics = explode(';', $news->picture);
+                                        $baseurl = explode('@', $pics[0])[0];
+                                        $baseurl = substr($baseurl, 0, strlen($baseurl) - 1);
+                                        $imagepath = explode('@', $pics[0])[1];
+                                        ?>
+                                        <div class="pull-left">
+                                            <img src="{{$baseurl}}{{$imagepath}}"/>
+                                        </div>
+                                    @else
+                                        <div class="pull-left">
+                                            <img src="{{asset('images/news_banner.jpg')}}"/>
+                                        </div>
+                                    @endif
+                                    <div class="media-body">
+                                        <h4><a>{{mb_substr($news->title, 0, 30)}}</a></h4>
+                                        <p>{{mb_substr($news->created_at,0,10,'utf-8')}}</p>
+                                    </div>
                                 </div>
-                                <div class="media-body">
-                                    <h4><a href="#">Lorem ipsum dolor sit amet consectetur adipisicing elit,</a></h4>
-                                    <p>posted on  07 March 2014</p>
-                                </div>
-                            </div>
-                            <div class="media">
-                                <div class="pull-left">
-                                    <a href="#"><img src="images/portfolio/project2.jpg" alt=""></a>
-                                </div>
-                                <div class="media-body">
-                                    <h4><a href="#">Lorem ipsum dolor sit amet consectetur adipisicing elit,</a></h4>
-                                    <p>posted on  07 March 2014</p>
-                                </div>
-                            </div>
-                            <div class="media">
-                                <div class="pull-left">
-                                    <a href="#"><img src="images/portfolio/project3.jpg" alt=""></a>
-                                </div>
-                                <div class="media-body">
-                                    <h4><a href="#">Lorem ipsum dolor sit amet consectetur adipisicing elit,</a></h4>
-                                    <p>posted on  07 March 2014</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="sidebar-item popular">
-                            <h3>Popular Projects</h3>
-                            <ul class="gallery">
-                                <li><a href="#"><img src="images/portfolio/popular1.jpg" alt=""></a></li>
-                                <li><a href="#"><img src="images/portfolio/popular2.jpg" alt=""></a></li>
-                                <li><a href="#"><img src="images/portfolio/popular3.jpg" alt=""></a></li>
-                                <li><a href="#"><img src="images/portfolio/popular4.jpg" alt=""></a></li>
-                                <li><a href="#"><img src="images/portfolio/popular5.jpg" alt=""></a></li>
-                                <li><a href="#"><img src="images/portfolio/popular1.jpg" alt=""></a></li>
-                            </ul>
+                            @endforeach
                         </div>
                     </div>
                 </div>
                 <div class="col-md-9 col-sm-8 padding-top">
                     <div class="row">
-                        <h4>优势产品介绍</h4>
+                        <h4>@if($data['lang'] == 1) 优势产品介绍 @else Advantage Products Detail @endif</h4>
                         <table class="table table-striped">
                             <thead>
                             <tr>
-                                <th>产品ID</th>
-                                <th>中文品名</th>
-                                <th>英文品名</th>
-                                <th>规格</th>
-                                <th>包装</th>
+                                <th>@if($data['lang'] == 1) 产品ID @else ID @endif</th>
+                                <th>@if($data['lang'] == 1) 中文品名 @else ch_name @endif</th>
+                                <th>@if($data['lang'] == 1) 英文品名 @else en_name @endif</th>
+                                <th>@if($data['lang'] == 1) 规格 @else specifications @endif</th>
+                                <th>@if($data['lang'] == 1) 包装 @else Packing @endif</th>
                             </tr>
                             </thead>
                             <tbody>
-                            <tr>
-                                <td>001</td>
-                                <td>Rammohan </td>
-                                <td>Reddy</td>
-                                <td>A+</td>
-                                <td>A+</td>
-                                <td>A+</td>
-                            </tr>
-                            <tr>
-                                <td>002</td>
-                                <td>Smita</td>
-                                <td>Pallod</td>
-                                <td>A</td>
-                                <td>A</td>
-                                <td>A</td>
-                            </tr>
-                            <tr>
-                                <td>003</td>
-                                <td>Rabindranath</td>
-                                <td>Sen</td>
-                                <td>A+</td>
-                                <td>A+</td>
-                                <td>A+</td>
-                            </tr>
+                            @foreach($data['products'] as $product)
+                                <tr>
+                                    <td>{{$product->id}}</td>
+                                    <td>{{$product->ch_name}}</td>
+                                    <td>{{$product->en_name}}</td>
+                                    <td>{{$product->model}}</td>
+                                    <td>{{$product->package}}</td>
+                                </tr>
+                            @endforeach
                             </tbody>
                         </table>
                         <div class="portfolio-pagination">
-                            <ul class="pagination">
-                                <li><a href="#">left</a></li>
-                                <li><a href="#">1</a></li>
-                                <li><a href="#">2</a></li>
-                                <li class="active"><a href="#">3</a></li>
-                                <li><a href="#">4</a></li>
-                                <li><a href="#">5</a></li>
-                                <li><a href="#">6</a></li>
-                                <li><a href="#">7</a></li>
-                                <li><a href="#">8</a></li>
-                                <li><a href="#">9</a></li>
-                                <li><a href="#">right</a></li>
-                            </ul>
+                            <nav>
+                                {!! $data['products']->render() !!}
+                            </nav>
                         </div>
                     </div>
                 </div>
@@ -265,4 +233,9 @@
     @include('components.myfooter')
 @endsection
 @section('custom-script')
+    <script>
+        $(".media").click(function () {
+            window.location.href ="/detail?nid=" + $(this).attr('data-content');
+        });
+    </script>
 @endsection

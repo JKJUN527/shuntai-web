@@ -167,13 +167,13 @@
                         var height = image.height;
                         console.log(width + "//" + height);
 
-                        if (width !== 200 || height !== 200) {
+                        if (width !== 480 || height !== 480) {
                             isCorrect = false;
                             $("#picture-big").val("");
                             swal({
                                 title: "错误",
                                 type: "error",
-                                text: "当前选择图片分辨率为: " + width + "px * " + height + "px \n大图片广告分辨率应为 200像素 * 200像素",
+                                text: "当前选择图片分辨率为: " + width + "px * " + height + "px \n大图片广告分辨率应为 480像素 * 480像素",
                                 cancelButtonText: "关闭",
                                 showCancelButton: true,
                                 showConfirmButton: false

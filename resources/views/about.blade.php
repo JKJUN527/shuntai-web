@@ -6,7 +6,7 @@
 @endsection
 
 @section('header-nav')
-    @include('components.headerNav',['activeIndex'=>2])
+    @include('components.headerNav',['activeIndex'=>2,'lang'=>$data['lang']])
 @endsection
 
 @section('custom-style')
@@ -113,18 +113,12 @@
                         </header>
                         <section class="post-content">
                             <blockquote>
-                                <p>温州市顺泰化工有限公司（原温州市化学用料厂）坐落在浙江省温州市沿江工业区33#地块，占地面积11301.01m2，建筑面积12386.8m2。本厂创办于1975年，是原化工部第一批定点生产化学试剂的专业生产厂家，从事化学试剂行业已有40多年的历史，在化学试剂行业中有很大的知名度和影响力。</p>
+                                <p>{{$data['about']->brief}}</p>
                             </blockquote>
-
-                            <p><img src="http://static.ghostchina.com/image/b/5e/877fa798be75dbe791dba07ac4811.jpg" alt="John O’Nolan 和 Hannah Wolfe" /></p>
-
-                            <p>目前我们单位是中国化学试剂工业协会常务理事单位；浙江省化学试剂工业协会副会长单位；全国化学标准化技术委员会化学试剂分会委员,并单独组织修订了HG/T 2630 -2010 化学试剂 三水合乙酸铅(乙酸铅)标准。 <br />
-                                我公司资金实力雄厚，技术装备精良，技术人员占本厂人数20%以上，注重节能减排、科技创新。特别是最近10年间企业在这方面投入了大量的资金并取得了很好的成效，同时我公司也非常重视产品质量、安全生产和环境保护。我公司是国内第一批获得二级质检机构国家认证的企业之一；还先后通过ISO9001：2008质量管理体系认证、ISO14001：2008环境管理体系认证和温州市安全标准化认证;浙江省科技型中小企业；A级纳税信用企业。
-                            <br>
-                                吉象”牌注册商标已有二十多年历史，产品用户遍布全国，部分产品远销欧美及东南亚等国，赢得了海内外用户的信赖和好评，吉象人将一如继往地为您提供优质的产品和最佳的服务。
-                                稳定的产品质量，良好的经营信誉，完善的售后服务是我们对您的承诺。
-                                “吉象”人愿与您携手共创美好未来！
+                            <p style="text-align: center;">
+                                <img src="{{explode('@',explode(';',$data['about']->picture)[0])[1]}}" alt="{{explode('@',explode(';',$data['about']->picture)[0])[0]}}" />
                             </p>
+                            <p>{!! $data['about']->describe !!}</p>
                             <hr />
 
                             {{--<p>如果你也喜欢 Ghost ，可以通过以下方式与我们交流：</p>--}}
@@ -147,10 +141,10 @@
                     <div class="widget">
                         <h4 class="title">联系我们</h4>
                         <div class="content community">
-                            <p>电话：277327792</p>
-                            <p>邮箱：277327792</p>
-                            <p>传真：277327792</p>
-                            <p>公司地址：277327792</p>
+                            <p>电话：{{$data['about']->tel}}</p>
+                            <p>邮箱：{{$data['about']->email}}</p>
+                            <p>传真：{{$data['about']->fax}}</p>
+                            <p>公司地址：{{$data['about']->address}}</p>
                             <p><a href="http://wenda.ghostchina.com/" title="Ghost中文网问答社区" target="_blank" onclick="_hmt.push(['_trackEvent', 'big-button', 'click', '问答社区'])"><i class="fa fa-comments"></i> 问答社区</a></p>
                             <p><a href="http://weibo.com/ghostchinacom" title="Ghost中文网官方微博" target="_blank" onclick="_hmt.push(['_trackEvent', 'big-button', 'click', '官方微博'])"><i class="fa fa-weibo"></i> 官方微博</a></p>
                         </div>

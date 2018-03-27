@@ -15,16 +15,8 @@ class AboutController extends Controller
     public function index (Request $request)
     {
         $data = array();
-        $data['uid'] = AuthController::getUid();
-        $data['username'] = InfoController::getUsername();
-        $data['type'] = AuthController::getType();
-        $data['about'] = About::orderBy('wid','desc')
-            ->first();
-        if($request->has('page'))
-            $data['tab'] = $request->input('page');
-        else
-            $data['tab'] = 'tab2';
-//        return $data;
-        return view('about/index', ['data' => $data]);
+        $data['lang'] = HomeController::getLang();
+        $data['about'] = About::first();
+        return view('about', ['data' => $data]);
     }
 }

@@ -6,17 +6,18 @@
 @endsection
 
 @section('header-nav')
-    @include('components.headerNav',['activeIndex'=>6])
+    @include('components.headerNav',['activeIndex'=>6,'lang'=>$data['lang']])
 @endsection
 
 @section('custom-style')
     <link href="css/animate.min.css" type="text/css" rel="stylesheet">
     <style>
         .padding {
-            padding: 65px 0;
+            padding: 65px 0 0 0;
         }
-        #company-information .padding-top {
-            padding-top: 172px;
+        #company-information p {
+            /*padding-top: 172px;*/
+            font-size: 1.8rem;
         }
         #team {
             padding: 85px 0;
@@ -80,20 +81,6 @@
             <span class="breadcrumbs"><a href="/"><i class="fa fa-home home_1"></i></a> / <span>联系我们</span></span>
         </div>
     </div>
-    <section id="company-information" class="padding wow fadeIn" data-wow-duration="1000ms" data-wow-delay="300ms">
-        <div class="container">
-            <div class="row">
-                <div class="col-sm-6">
-                    <img src="images/aboutus/1.png" class="img-responsive" alt="">
-                </div>
-                <div class="col-sm-6 padding-top">
-                    <p>Shoulder bresaola sausage consequat ground round duis excepteur exercitation landjaeger sunt. Duis officia sed frankfurter dolore pastrami tenderloin.</p>
-                    <p>When an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
     <section id="services">
         <div class="container">
             <div class="row">
@@ -102,7 +89,7 @@
                         <div class="wow scaleIn" data-wow-duration="500ms" data-wow-delay="300ms">
                             <img src="images/aboutus/icon1.png" alt="">
                         </div>
-                        <h2>Incredibly Responsive</h2>
+                        <h2>优势服务介绍1</h2>
                         <p>Ground round tenderloin flank shank ribeye. Hamkevin meatball swine. Cow shankle beef sirloin chicken ground round.</p>
                     </div>
                 </div>
@@ -111,7 +98,7 @@
                         <div class="wow scaleIn" data-wow-duration="500ms" data-wow-delay="600ms">
                             <img src="images/aboutus/icon2.png" alt="">
                         </div>
-                        <h2>Superior Typography</h2>
+                        <h2>优势服务介绍2</h2>
                         <p>Hamburger ribeye drumstick turkey, strip steak sausage ground round shank pastrami beef brisket pancetta venison.</p>
                     </div>
                 </div>
@@ -120,7 +107,7 @@
                         <div class="wow scaleIn" data-wow-duration="500ms" data-wow-delay="900ms">
                             <img src="images/aboutus/icon3.png" alt="">
                         </div>
-                        <h2>Swift Page Builder</h2>
+                        <h2>优势服务介绍3</h2>
                         <p>Venison tongue, salami corned beef ball tip meatloaf bacon. Fatback pork belly bresaola tenderloin bone pork kevin shankle.</p>
                     </div>
                 </div>
@@ -128,11 +115,23 @@
         </div>
     </section>
     <!--/#services-->
+    <section id="company-information" class="padding wow fadeIn" data-wow-duration="1000ms" data-wow-delay="300ms">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-3">
+                    <img src="{{explode('@',explode(';',$data['about']->picture)[0])[1]}}" class="img-responsive" alt="" width="200" height="200">
+                </div>
+                <div class="col-sm-9 padding-top">
+                    <p>{{$data['about']->brief}}</p>
+                </div>
+            </div>
+        </div>
+    </section>
 
     <section id="team">
         <div class="container">
             <div class="row">
-                <h1 class="title text-center wow fadeInDown" data-wow-duration="500ms" data-wow-delay="300ms">Meet the Team</h1>
+                <h1 class="title text-center wow fadeInDown" data-wow-duration="500ms" data-wow-delay="300ms">公司环境</h1>
                 <p class="text-center wow fadeInDown" data-wow-duration="400ms" data-wow-delay="400ms">Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. <br>
                     Ut enim ad minim veniam, quis nostrud </p>
                 <div id="team-carousel" class="carousel slide wow fadeIn" data-ride="carousel" data-wow-duration="400ms" data-wow-delay="400ms">
@@ -144,112 +143,26 @@
                     <!-- Wrapper for slides -->
                     <div class="carousel-inner">
                         <div class="item active">
-                            <div class="col-sm-3 col-xs-6">
-                                <div class="team-single-wrapper">
-                                    <div class="team-single">
-                                        <div class="person-thumb">
-                                            <img src="images/aboutus/1.jpg" class="img-responsive" alt="">
+                            @if($data['about']->picture != null)
+                                <?php
+                                $pics = explode(';', $data['about']->picture);
+                                ?>
+                                @foreach($pics as $pic)
+                                    <?php $temp = explode('@', $pic);?>
+                                    <div class="col-sm-3 col-xs-6">
+                                        <div class="team-single-wrapper">
+                                            <div class="team-single">
+                                                <div class="person-thumb">
+                                                    <img src="{{$temp[1]}}" class="img-responsive" alt="">
+                                                </div>
+                                            </div>
+                                            <div class="person-info">
+                                                <h3>{{$temp[0]}}</h3>
+                                            </div>
                                         </div>
                                     </div>
-                                    <div class="person-info">
-                                        <h2>John Doe</h2>
-                                        <p>CEO &amp; Developer</p>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-sm-3 col-xs-6">
-                                <div class="team-single-wrapper">
-                                    <div class="team-single">
-                                        <div class="person-thumb">
-                                            <img src="images/aboutus/2.jpg" class="img-responsive" alt="">
-                                        </div>
-                                    </div>
-                                    <div class="person-info">
-                                        <h2>John Doe</h2>
-                                        <p>CEO &amp; Developer</p>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-sm-3 col-xs-6">
-                                <div class="team-single-wrapper">
-                                    <div class="team-single">
-                                        <div class="person-thumb">
-                                            <img src="images/aboutus/3.jpg" class="img-responsive" alt="">
-                                        </div>
-                                    </div>
-                                    <div class="person-info">
-                                        <h2>John Doe</h2>
-                                        <p>CEO &amp; Developer</p>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-sm-3 col-xs-6">
-                                <div class="team-single-wrapper">
-                                    <div class="team-single">
-                                        <div class="person-thumb">
-                                            <img src="images/aboutus/1.jpg" class="img-responsive" alt="">
-                                        </div>
-                                    </div>
-                                    <div class="person-info">
-                                        <h2>John Doe</h2>
-                                        <p>CEO &amp; Developer</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="item">
-                            <div class="col-sm-3 col-xs-6">
-                                <div class="team-single-wrapper">
-                                    <div class="team-single">
-                                        <div class="person-thumb">
-                                            <img src="images/aboutus/4.jpg" class="img-responsive" alt="">
-                                        </div>
-                                    </div>
-                                    <div class="person-info">
-                                        <h2>John Doe</h2>
-                                        <p>CEO &amp; Developer</p>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-sm-3 col-xs-6">
-                                <div class="team-single-wrapper">
-                                    <div class="team-single">
-                                        <div class="person-thumb">
-                                            <img src="images/aboutus/3.jpg" class="img-responsive" alt="">
-                                        </div>
-                                    </div>
-                                    <div class="person-info">
-                                        <h2>John Doe</h2>
-                                        <p>CEO &amp; Developer</p>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-sm-3 col-xs-6">
-                                <div class="team-single-wrapper">
-                                    <div class="team-single">
-                                        <div class="person-thumb">
-                                            <img src="images/aboutus/2.jpg" class="img-responsive" alt="">
-                                        </div>
-                                    </div>
-                                    <div class="person-info">
-                                        <h2>John Doe</h2>
-                                        <p>CEO &amp; Developer</p>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-sm-3 col-xs-6">
-                                <div class="team-single-wrapper">
-                                    <div class="team-single">
-                                        <div class="person-thumb">
-                                            <img src="images/aboutus/1.jpg" class="img-responsive" alt="">
-                                        </div>
-                                    </div>
-                                    <div class="person-info">
-                                        <h2>John Doe</h2>
-                                        <p>CEO &amp; Developer</p>
-                                    </div>
-                                </div>
-                            </div>
+                                @endforeach
+                            @endif
                         </div>
                     </div>
                 </div>
@@ -264,26 +177,23 @@
             </p>
             <div class="col-md-4 col-sm-6">
                 <div class="contact-info bottom">
-                    <h2>Contacts</h2>
+                    <h2>@if($data['lang'] == 1) 联系方式 @else Contacts @endif</h2>
                     <address>
-                        <p> E-mail: <a href="mailto:someone@example.com">email@email.com</a></p>
-                        <p> Phone: +1 (123) 456 7890 </p>
-                        <p> Fax: +1 (123) 456 7891 </p>
+                        <p> @if($data['lang'] == 1) 邮箱 @else E-mail @endif: <a href="mailto:{{$data['about']->email}}">{{$data['about']->email}}</a></p>
+                        <p> @if($data['lang'] == 1) 电话 @else Phone  @endif: {{$data['about']->tel}}</p>
+                        <p> @if($data['lang'] == 1) 传真 @else Fax    @endif: {{$data['about']->fax}}</p>
                     </address>
 
-                    <h2>Address</h2>
+                    <h2>@if($data['lang'] == 1) 公司地址 @else Address @endif</h2>
                     <address>
-                       <p> Unit C2, St.Vincent's Trading Est.,
-                        Feeder Road,
-                        Bristol, BS2 0UY
-                        United Kingdom </p>
+                       <p>{{$data['about']->address}}</p>
                     </address>
                 </div>
             </div>
             <div class="col-md-8 col-sm-12">
                 <div class="contact-form bottom">
                     {{--<h2>联系我们</h2>--}}
-                    <form id="main-contact-form" name="contact-form" method="post" action="sendemail.php">
+                    <form id="main-contact-form" name="contact-form" method="post">
                         <div class="form-group">
                             <input type="text" name="name" class="form-control" required="required" placeholder="Name">
                         </div>
@@ -307,4 +217,31 @@
     @include('components.myfooter')
 @endsection
 @section('custom-script')
+    <script>
+        $('#main-contact-form').submit(function (event) {
+            event.preventDefault();
+            var name = $('input[name="name"]').val();
+            var email = $('input[name="email"]').val();
+            var message = $('textarea[name="message"]').val();
+            var formData = new FormData();
+            formData.append('name', name);
+            formData.append('email', email);
+            formData.append('message', message);
+            $.ajax({
+                url: "/message/add",
+                type: "post",
+                dataType: 'text',
+                cache: false,
+                contentType: false,
+                processData: false,
+                data: formData,
+                success: function (data) {
+                    var result = JSON.parse(data);
+//                    console.log(result);
+                        alert(result.msg);
+                        return;
+                }
+            })
+        });
+    </script>
 @endsection

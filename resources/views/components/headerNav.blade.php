@@ -13,14 +13,67 @@
         <!-- Collect the nav links, forms, and other content for toggling -->
         <div class="collapse navbar-collapse" id="bs-megadropdown-tabs">
             <ul class="nav navbar-nav nav_1">
-                <li @if($activeIndex ==1) class="current_page" @endif><a href="/">主页</a></li>
-                <li @if($activeIndex ==2) class="current_page" @endif><a href="/about">关于我们</a></li>
-                <li @if($activeIndex ==3) class="current_page" @endif><a href="/news">新闻中心</a></li>
-                <li @if($activeIndex ==4) class="current_page" @endif><a href="/products">产品中心</a></li>
-                <li @if($activeIndex ==5) class="current_page" @endif><a href="/advantage">优势产品</a></li>
-                <li @if($activeIndex ==6) class="current_page" @endif><a href="/contact">联系我们</a></li>
+                <li @if($activeIndex ==1) class="current_page" @endif>
+                    <a href="/">
+                        @if($lang == 1)
+                            主页
+                        @else
+                            Home
+                        @endif
+                    </a>
+                </li>
+                <li @if($activeIndex ==2) class="current_page" @endif>
+                    <a href="/about">
+                        @if($lang == 1)
+                            关于我们
+                        @else
+                            About
+                        @endif
+                    </a>
+                </li>
+                <li @if($activeIndex ==3) class="current_page" @endif>
+                    <a href="/news">
+                        @if($lang == 1)
+                            新闻中心
+                        @else
+                            News
+                        @endif
+                    </a>
+                </li>
+                <li @if($activeIndex ==4) class="current_page" @endif>
+                    <a href="/products">
+                        @if($lang == 1)
+                            产品中心
+                        @else
+                            Products
+                        @endif
+                    </a>
+                </li>
+                <li @if($activeIndex ==5) class="current_page" @endif>
+                    <a href="/advantage">
+                        @if($lang == 1)
+                            优势产品
+                        @else
+                            advantage
+                        @endif
+                    </a>
+                </li>
+                <li @if($activeIndex ==6) class="current_page" @endif>
+                    <a href="/contact">
+                        @if($lang == 1)
+                            联系我们
+                        @else
+                            contact
+                        @endif
+                    </a>
+                </li>
             </ul>
-            <div class="help_line"><div id="txtblnk"><p>HELP LINE : (+91)-2548713984</p></div></div>
+            <div class="help_line"><div id="txtblnk"><p>
+                        @if($lang == 1)
+                            热线电话
+                        @else
+                            Help Line
+                        @endif : (+86)-13738713800</p></div></div>
         </div><!-- /.navbar-collapse -->
     </div>
 </nav>

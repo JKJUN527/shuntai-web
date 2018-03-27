@@ -7,29 +7,31 @@ Route::any('session', ['uses' => 'PositionController@test1']);
 
 Route::any('/', ['uses' => 'HomeController@index']);//完成
 Route::get('/index', ['uses' => 'HomeController@changeLang']);//完成
-//Route::any('/', ['uses' => 'HomeController@index']);//完成
-//Route::any('/index/search', ['uses' => 'HomeController@indexSearch']);//完成
-//Route::any('/',function (){
-//    return view('index');
+Route::get('/about', ['uses' => 'AboutController@index']);//完成
+Route::any('news/{pagnum?}', ['uses' => 'NewsController@SearchNews'])->where('pagnum', '[0-9]+');//完成
+Route::any('detail', ['uses' => 'NewsController@detail']);
+Route::any('news/content', ['uses' => 'NewsController@requestNewsContent']);
+
+Route::get('products', ['uses' => 'ProductsController@index']);
+Route::get('advantage', ['uses' => 'ProductsController@advantage']);
+
+Route::get('contact', ['uses' => 'HomeController@contact']);
+Route::post('message/add', ['uses' => 'HomeController@AddMeaasge']);
+//Route::any('/detail',function (){
+//    return view('newsdetail');
 //});
-Route::any('/about',function (){
-    return view('about');
-});
-Route::any('/news',function (){
-    return view('news');
-});
-Route::any('/products',function (){
-    return view('products');
-});
-Route::any('/advantage',function (){
-    return view('advantage');
-});
-Route::any('/contact',function (){
-    return view('contact');
-});
-Route::any('/detail',function (){
-    return view('newsdetail');
-});
+//Route::any('/products',function (){
+//    return view('products');
+//});
+//Route::any('/advantage',function (){
+//    return view('advantage');
+//});
+//Route::any('/contact',function (){
+//    return view('contact');
+//});
+//Route::any('/detail',function (){
+//    return view('newsdetail');
+//});
 
 
 //网站后台
@@ -108,3 +110,7 @@ Route::any('admin/resumes', ['uses' => 'Admin\ResumesController@index']);//显�
 Route::any('admin/addresume', ['uses' => 'Admin\ResumesController@addIndex']);//新增临时简历用户页面
 Route::post('admin/addresume', ['uses' => 'Admin\ResumesController@addtempresume']);//新增临时简历用户
 Route::get('admin/resume/del', ['uses' => 'Admin\ResumesController@delResume']);//删除临时简历用户，同时删除所有该临时用户的所有信息。
+
+Route::any('admin/message', ['uses' => 'Admin\WebinfoController@message']);//显示留言信息
+Route::get('admin/message/detail', ['uses' => 'Admin\WebinfoController@messageDetail']);//显示留言信息详情
+Route::get('admin/message/del', ['uses' => 'Admin\WebinfoController@messageDel']);//删除留言信息详情

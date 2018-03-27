@@ -10,6 +10,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\About;
 use App\Http\Controllers\Controller;
+use App\Message;
 use Illuminate\Http\Request;
 
 class WebinfoController extends Controller {
@@ -164,5 +165,33 @@ class WebinfoController extends Controller {
         $data['msg'] = "操作失败";
         return $data;
 //        return redirect()->back()->with('success','操作成功');
+    }
+    public function message(){
+        $uid = AdminAuthController::getUid();
+        if ($uid == 0)
+            return view('admin.login');
+
+        $data = DashboardController::getLoginInfo();
+        $data['message'] = Message::orderBy('created_at','desc')->paginate(20);
+        return view('admin.message', ["data" => $data]);
+    }
+    public function messageDetail(Request $request){
+        $data = array();
+        if($request->has('id')){
+            $id = $request->input('id');
+            $data['message'] = Message::find($id);
+        }
+        return $data;
+    }
+    public function messageDel(Request $request){
+        $data = array();
+        $data['status'] = 400;
+        if($request->has('id')){
+            $id = $request->input('id');
+            $data['message'] = Message::where('id',$id)
+                ->delete();
+            $data['status'] = 200;
+        }
+        return $data;
     }
 }
