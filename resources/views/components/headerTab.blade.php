@@ -1,7 +1,8 @@
 <div class="header">
     <div class="container">
         <div class="col-sm-3 logo">
-            <h1><a href="/"><span class="highlight">顺泰</span>化工</a></h1>
+            <img class="logo-left" src="{{asset('images/logo.png')}}">
+            {{--<h1><a href="/"><span class="highlight">顺泰</span>化工</a></h1>--}}
         </div>
         <div class="col-sm-9 logo_right">
             {{--<div class="social">--}}
