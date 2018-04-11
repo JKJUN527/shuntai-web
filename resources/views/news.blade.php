@@ -55,7 +55,7 @@
         }
         nav#page_tools ul li a,nav#page_tools ul li span{
             display: inline-block;
-            padding: 15px;
+            /*padding: 15px;*/
         }
         nav#page_tools ul li {
             display:inline-block;
@@ -76,6 +76,122 @@
             margin-top: 20px;
             min-height: 560px;
         }
+
+        .post{
+            padding: 35px;
+            background: #ffffff;
+            margin-bottom: 35px;
+            position: relative;
+            overflow: hidden;
+        }
+        .post .post-head {
+            text-align: center;
+        }
+        .post .post-head .post-title {
+            margin: 0;
+            font-size: 2.5em;
+            line-height: 1em;
+        }
+        .post .post-content {
+            margin: 30px 0;
+        }
+        .post-content blockquote {
+            margin-left: -24px;
+            padding-left: 20px;
+            border-width: 4px;
+        }
+        .post-content blockquote {
+            margin: 0 0 1.64em 0;
+            margin-left: 0px;
+            border-left: 3px solid #e67e22;
+            border-left-width: 3px;
+            padding-left: 12px;
+            color: #666664;
+        }
+        blockquote {
+            padding: 10px 20px;
+            padding-left: 20px;
+            margin: 0 0 20px;
+            font-size: 17.5px;
+            border-left: 5px solid #eee;
+        }
+        .post-content p {
+            margin-top: 0;
+            margin-bottom: 1.46em;
+        }
+        .post-content a img {
+            border: none;
+        }
+        .post-content img {
+            max-width: 100%;
+            height: auto;
+            margin: 0.2em 2rem 0 2rem;
+            float: right;
+        }
+        .content-wrap{
+            margin-top: 5rem;
+        }
+        .sidebar .widget {
+            background: #ffffff;
+            padding: 21px 30px;
+        }
+        .widget {
+            margin-bottom: 35px;
+        }
+        .widget .title {
+            margin-top: 0;
+            padding-bottom: 7px;
+            border-bottom: 1px solid #ebebeb;
+            margin-bottom: 21px;
+            position: relative;
+        }
+        .widget a{
+            color: #0f0f0f;
+        }
+        h4 {
+            font-size: 1.5em;
+        }
+        p {
+            margin: 0 0 10px;
+        }
+        .widget .title::after {
+            content: "";
+            width: 90px;
+            height: 1px;
+            background: #e67e22;
+            position: absolute;
+            left: 0;
+            bottom: -1px;
+        }
+
+        .lm_t{
+            line-height: 40px;
+            font-size: 15px;
+            font-weight: bold;
+            border-top: 3px solid #00adb5;
+            border-bottom: 1px solid #e5e5e5;
+        }
+        .box{
+            line-height: 28px;
+            padding: 25px 12px 0;
+            font-size: 14px;
+        }
+        .fl {
+            float: left;
+        }
+        .fl a{
+            color: #333333;
+            text-decoration: none;
+        }
+        .fr {
+            float: right;
+        }
+        .cle {
+            clear: both;
+        }
+        .news_ul{
+            list-style-type:none;
+        }
     </style>
 @endsection
 @section('content')
@@ -85,89 +201,72 @@
             <span class="breadcrumbs"><a href="/"><i class="fa fa-home home_1"></i></a> / <span>新闻动态</span></span>
         </div>
     </div>
-<div class="containter">
-    <div class="news_info_left info_panel left ">
-        <div class="mdl_card_title">
-            <h5 class="mdl_card_title_text">最新</h5>
-        </div>
-        <div class="mdl-card info-card">
-
-            @foreach($data['newest'] as $news)
-                <div class="news-body" data-content="{{$news->nid}}">
-                    @if($news->picture != null)
-                        <?php
-                        $pics = explode(';', $news->picture);
-                        $baseurl = explode('@', $pics[0])[0];
-                        $baseurl = substr($baseurl, 0, strlen($baseurl) - 1);
-                        $imagepath = explode('@', $pics[0])[1];
-                        ?>
-                        <div class="news-aside">
-                            <img src="{{$baseurl}}{{$imagepath}}"/>
+    <section class="content-wrap">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-3 col-sm-4 padding-top">
+                    <div class="sidebar portfolio-sidebar">
+                        <div class="sidebar-item categories">
+                            <div class="widget">
+                                <h3 class="title">@if($data['lang'] == 1) 产品分类 @else Product Type @endif</h3>
+                                <ul class="nav navbar-stacked">
+                                    @foreach($data['type'] as $type)
+                                        <li @if($data['ptype'] == $type->id) class="active" @endif>
+                                            <a href="/products?ptype={{$type->id}}">
+                                                @if($data['lang'] == 1)
+                                                    {{$type->ch_name}}
+                                                @else
+                                                    {{$type->en_name}}
+                                                @endif
+                                                {{--<span class="pull-right">(1)</span>--}}
+                                            </a>
+                                        </li>
+                                    @endforeach
+                                </ul>
+                            </div>
                         </div>
-                    @else
-                        <div class="news-aside">
-                            <img src="{{asset('images/news_banner.jpg')}}"/>
+                        <div class="sidebar-item  recent">
+                            <div class="widget">
+                                <h3 class="title">联系我们</h3>
+                                <div class="content community">
+                                    <p>电话：{{$data['about']->tel}}</p>
+                                    <p>邮箱：{{$data['about']->email}}</p>
+                                    <p>传真：{{$data['about']->fax}}</p>
+                                    <p>公司地址：{{$data['about']->address}}</p>
+                                    <p><a href="http://wenda.ghostchina.com/" title="Ghost中文网问答社区" target="_blank" onclick="_hmt.push(['_trackEvent', 'big-button', 'click', '问答社区'])"><i class="fa fa-comments"></i> 问答社区</a></p>
+                                    <p><a href="http://weibo.com/ghostchinacom" title="Ghost中文网官方微博" target="_blank" onclick="_hmt.push(['_trackEvent', 'big-button', 'click', '官方微博'])"><i class="fa fa-weibo"></i> 官方微博</a></p>
+                                </div>
+                            </div>
                         </div>
-                    @endif
-                    <div class="news-content">
-                        <h3><b>
-                                {{mb_substr($news->title, 0, 30)}}</b></h3>
-                        <p class="content-body">
-                            {{--{{mb_substr(str_replace(array("<br>","<br","<b","&nbsp;", "&nbs"),'', $news->content), 0, 40)}}--}}
-                            {{mb_substr(str_replace(array("[图片1]","[图片2]"),"",strip_tags($news->content)), 0, 70)}}
-                        </p>
-                        <small class="content-appendix">
-                            <span>责任编辑: {{$news->subtitle or 'admin'}}</span>
-                            <span>新闻来源:{{$news->quote}}</span>
-                            <span>发布时间:{{mb_substr($news->created_at,0,10,'utf-8')}}</span>
-                        </small>
                     </div>
                 </div>
-            @endforeach
-            <nav id="page_tools">
-                {!! $data['newest']->render() !!}
-            </nav>
-        </div>
-    </div>
-
-    <div class="news_info_right info_panel right  ">
-        <div class="mdl_card_title">
-            <h5 class="mdl_card_title_text">最热</h5></div>
-        <div class="mdl-card info-card">
-
-            @foreach($data['hottest'] as $news)
-                <div class="hot-news-body" data-content="{{$news->nid}}">
-                    @if($news->picture != null)
-                        <?php
-                        $pics = explode(';', $news->picture);
-                        $baseurl = explode('@', $pics[0])[0];
-                        $baseurl = substr($baseurl, 0, strlen($baseurl) - 1);
-                        $imagepath = explode('@', $pics[0])[1];
-                        ?>
-                        <div class="hot-news-aside">
-                            <img src="{{$baseurl}}{{$imagepath}}" />
+                <div class="col-md-9 col-sm-8 padding-top">
+                    <article class="post page">
+                        <div class="lm_t">新闻中心</div>
+                        <div class="box">
+                            <ul class="news_ul">
+                                @foreach($data['newest'] as $news)
+                                    <li class="news-body" data-content="{{$news->nid}}">
+                                        <div class="fl">
+                                            <p>{{mb_substr($news->title, 0, 16)}}</p>
+                                        </div>
+                                        <div class="fr">
+                                            <span style="color: #cacaca">发布时间: {{mb_substr($news->created_at,0,10,'utf-8')}}</span>
+                                        </div>
+                                        <div class="cle"></div>
+                                    </li>
+                                @endforeach
+                            </ul>
+                            <nav id="page_tools">
+                                {!! $data['newest']->render() !!}
+                            </nav>
                         </div>
-                    @else
-                        <div class="news-aside">
-                            <img src="{{asset('images/news_banner.jpg')}}"/>
-                        </div>
-                    @endif
-                    <div class="hot-news-content">
-                        <h3><b>{{mb_substr($news->title, 0, 8)}}</</h3>
-                        <p class="content-body" style="margin-bottom: 0px;">
-                            {{--{{mb_substr(str_replace(array("<br>","<br","<b","&nbsp;", "&nbs"),'', $news->content), 0, 35)}}--}}
-                            {{mb_substr(str_replace(array("[图片1]","[图片2]"),"",strip_tags($news->content)), 0, 35)}}
-                        </p>
-                        <small class="content-appendix">
-                            <span>发布时间: {{mb_substr($news->created_at,0,10,'utf-8')}}</span></small>
-                    </div>
+
+                    </article>
                 </div>
-            @endforeach
+            </div>
         </div>
-    </div>
-
-    </div>
-    </div>
+    </section>
 
 @endsection
 @section('footer')

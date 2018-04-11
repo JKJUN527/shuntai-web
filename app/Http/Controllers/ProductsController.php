@@ -26,6 +26,7 @@ class ProductsController extends Controller
         //查询新闻
         $news = new NewsController();
         $data['newest'] = $news->searchNewest(6);//最新新闻
+        $data['about'] = About::first();
         //默认显示第一个类型的产品
         $data['products'] = Product::where('type',$data['ptype'])
             ->orderby('created_at','desc')
@@ -50,6 +51,7 @@ class ProductsController extends Controller
             ->where('is_urgency',1)
             ->orderby('created_at','desc')
             ->paginate(10);
+        $data['about'] = About::first();
 
 //        return $data;
         return view('advantage', ['data' => $data]);

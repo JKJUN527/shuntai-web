@@ -16,6 +16,8 @@
         }
         .sidebar-item {
             margin-bottom: 48px;
+            /*border: solid 1px #00adb5;*/
+            /*padding: 10px;*/
         }
         .sidebar h3 {
             color: #404040;
@@ -164,30 +166,17 @@
                             </ul>
                         </div>
                         <div class="sidebar-item  recent">
-                            <h3>@if($data['lang'] == 1) 最新新闻 @else Latest news @endif</h3>
-                            @foreach($data['newest'] as $news)
-                                <div class="media" data-content="{{$news->nid}}">
-                                    @if($news->picture != null)
-                                        <?php
-                                        $pics = explode(';', $news->picture);
-                                        $baseurl = explode('@', $pics[0])[0];
-                                        $baseurl = substr($baseurl, 0, strlen($baseurl) - 1);
-                                        $imagepath = explode('@', $pics[0])[1];
-                                        ?>
-                                            <div class="pull-left">
-                                                <img src="{{$baseurl}}{{$imagepath}}"/>
-                                            </div>
-                                    @else
-                                        <div class="pull-left">
-                                            <img src="{{asset('images/news_banner.jpg')}}"/>
-                                        </div>
-                                    @endif
-                                    <div class="media-body">
-                                        <h4><a>{{mb_substr($news->title, 0, 30)}}</a></h4>
-                                        <p>{{mb_substr($news->created_at,0,10,'utf-8')}}</p>
-                                    </div>
+                            <div class="widget">
+                                <h3 class="title">联系我们</h3>
+                                <div class="content community">
+                                    <p>电话：{{$data['about']->tel}}</p>
+                                    <p>邮箱：{{$data['about']->email}}</p>
+                                    <p>传真：{{$data['about']->fax}}</p>
+                                    <p>公司地址：{{$data['about']->address}}</p>
+                                    <p><a href="http://wenda.ghostchina.com/" title="Ghost中文网问答社区" target="_blank" onclick="_hmt.push(['_trackEvent', 'big-button', 'click', '问答社区'])"><i class="fa fa-comments"></i> 问答社区</a></p>
+                                    <p><a href="http://weibo.com/ghostchinacom" title="Ghost中文网官方微博" target="_blank" onclick="_hmt.push(['_trackEvent', 'big-button', 'click', '官方微博'])"><i class="fa fa-weibo"></i> 官方微博</a></p>
                                 </div>
-                            @endforeach
+                            </div>
                         </div>
                     </div>
                 </div>

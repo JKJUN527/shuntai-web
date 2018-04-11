@@ -8,13 +8,21 @@
 
 namespace App\Http\Controllers;
 
+use App\About;
 use App\News;
+use App\Protype;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
 class NewsController extends Controller {
-    public function index() {
-        $data['type'] = AuthController::getType();
+    public function index(Request $request) {
+//        $data['type'] = AuthController::getType();
+        $data['type'] = Protype::all();
+        if($request->has('ptype'))
+            $data['ptype'] = $request->input('ptype');
+        else
+            $data['ptype'] = $data['type'][0]->id;
+        $data['lang'] = HomeController::getLang();
         return view('news/index');
     }
 
@@ -54,7 +62,14 @@ class NewsController extends Controller {
         $data = array();
 
         $data['newest'] = NewsController::searchNewest($pagnum);//最新新闻
-        $data['hottest'] = NewsController::searchHottest();//最热新闻
+//        $data['hottest'] = NewsController::searchHottest();//最热新闻
+
+        $data['type'] = Protype::all();
+        if($request->has('ptype'))
+            $data['ptype'] = $request->input('ptype');
+        else
+            $data['ptype'] = $data['type'][0]->id;
+        $data['about'] = About::first();
         $data['lang'] = HomeController::getLang();
 //        return $data;
         return view('news', ['data' => $data]);

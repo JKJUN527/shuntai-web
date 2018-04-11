@@ -68,12 +68,21 @@
                     </a>
                 </li>
             </ul>
-            <div class="help_line"><div id="txtblnk"><p>
-                        @if($lang == 1)
-                            热线电话
-                        @else
-                            Help Line
-                        @endif : (+86)-13738713800</p></div></div>
+            {{--<div class="help_line">--}}
+                {{--<div id="txtblnk"><p>--}}
+                        {{--@if($lang == 1)--}}
+                            {{--热线电话--}}
+                        {{--@else--}}
+                            {{--Help Line--}}
+                        {{--@endif : (+86)-13738713800</p>--}}
+                {{--</div>--}}
+            {{--</div>--}}
+            <div class="help_line">
+                <form>
+                    <input class="search-product" type="text" id="product_name" placeholder="请输入产品名称">
+                    <input class="search-product" type="button" id="go_search" value="立即查询">
+                </form>
+            </div>
         </div><!-- /.navbar-collapse -->
     </div>
 </nav>

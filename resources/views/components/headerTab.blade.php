@@ -4,13 +4,13 @@
             <h1><a href="/"><span class="highlight">顺泰</span>化工</a></h1>
         </div>
         <div class="col-sm-9 logo_right">
-            <div class="social">
-                <a href="" class="link facebook" target="_parent"><span class="fa fa-facebook"></span></a>
-                <a href="" class="link twitter" target="_parent"><span class="fa fa-twitter"></span></a>
-                <a href="" class="link google" target="_parent"><span class="fa fa-google-plus"></span></a>
-                <a href="" class="link google" target="_parent"><span class="fa fa-linkedin"></span></a>
-                <a href="" class="link google" target="_parent"><span class="fa fa-tumblr"></span></a>
-            </div>
+            {{--<div class="social">--}}
+                {{--<a href="" class="link facebook" target="_parent"><span class="fa fa-facebook"></span></a>--}}
+                {{--<a href="" class="link twitter" target="_parent"><span class="fa fa-twitter"></span></a>--}}
+                {{--<a href="" class="link google" target="_parent"><span class="fa fa-google-plus"></span></a>--}}
+                {{--<a href="" class="link google" target="_parent"><span class="fa fa-linkedin"></span></a>--}}
+                {{--<a href="" class="link google" target="_parent"><span class="fa fa-tumblr"></span></a>--}}
+            {{--</div>--}}
             <!-- script for menu -->
             <span class="menu"></span>
             <div class="top-menu">

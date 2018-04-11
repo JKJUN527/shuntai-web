@@ -9,6 +9,7 @@ namespace App\Http\Controllers;
 
 use App\About;
 use App\Message;
+use App\Protype;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
@@ -40,9 +41,15 @@ class HomeController extends Controller
             $data['lang'] = $lang;
         return $data['lang'];
     }
-    public function contact(){
+    public function contact(Request $request){
         $data = array();
-        $data['lang'] = $this->getLang();
+        $data['type'] = Protype::all();
+        if($request->has('ptype'))
+            $data['ptype'] = $request->input('ptype');
+        else
+            $data['ptype'] = $data['type'][0]->id;
+
+        $data['lang'] = HomeController::getLang();
         $data['about'] = About::first();
 //        return $data;
         return view('contact',['data'=>$data]);

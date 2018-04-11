@@ -72,6 +72,109 @@
             box-shadow: none;
             padding: 10px;
         }
+
+        .post{
+            padding: 35px;
+            background: #ffffff;
+            margin-bottom: 35px;
+            position: relative;
+            overflow: hidden;
+        }
+        .post .post-head {
+            text-align: center;
+        }
+        .post .post-head .post-title {
+            margin: 0;
+            font-size: 2.5em;
+            line-height: 1em;
+        }
+        .post .post-content {
+            margin: 30px 0;
+        }
+        .post-content blockquote {
+            margin-left: -24px;
+            padding-left: 20px;
+            border-width: 4px;
+        }
+        .post-content blockquote {
+            margin: 0 0 1.64em 0;
+            margin-left: 0px;
+            border-left: 3px solid #e67e22;
+            border-left-width: 3px;
+            padding-left: 12px;
+            color: #666664;
+        }
+        blockquote {
+            padding: 10px 20px;
+            padding-left: 20px;
+            margin: 0 0 20px;
+            font-size: 17.5px;
+            border-left: 5px solid #eee;
+        }
+        .post-content p {
+            margin-top: 0;
+            margin-bottom: 1.46em;
+        }
+        .post-content a img {
+            border: none;
+        }
+        .post-content img {
+            max-width: 100%;
+            height: auto;
+            margin: 0.2em 2rem 0 2rem;
+            float: right;
+        }
+        .content-wrap{
+            margin-top: 5rem;
+        }
+        .sidebar .widget {
+            background: #ffffff;
+            padding: 21px 30px;
+        }
+        .widget {
+            margin-bottom: 35px;
+        }
+        .widget .title {
+            margin-top: 0;
+            padding-bottom: 7px;
+            border-bottom: 1px solid #ebebeb;
+            margin-bottom: 21px;
+            position: relative;
+        }
+        .widget a{
+            color: #0f0f0f;
+        }
+        h4 {
+            font-size: 1.5em;
+        }
+        p {
+            margin: 0 0 10px;
+        }
+        .widget .title::after {
+            content: "";
+            width: 90px;
+            height: 1px;
+            background: #e67e22;
+            position: absolute;
+            left: 0;
+            bottom: -1px;
+        }
+
+        .lm_t{
+            line-height: 40px;
+            font-size: 15px;
+            font-weight: bold;
+            border-top: 3px solid #00adb5;
+            border-bottom: 1px solid #e5e5e5;
+        }
+        .box{
+            line-height: 28px;
+            padding: 25px 12px 0;
+            font-size: 14px;
+        }
+        #map{
+            height: 300px;
+        }
     </style>
 @endsection
 @section('content')
@@ -81,97 +184,74 @@
             <span class="breadcrumbs"><a href="/"><i class="fa fa-home home_1"></i></a> / <span>联系我们</span></span>
         </div>
     </div>
-    <section id="services">
+    <section class="content-wrap">
         <div class="container">
             <div class="row">
-                <div class="col-sm-4 text-center padding wow fadeIn" data-wow-duration="1000ms" data-wow-delay="300ms">
-                    <div class="single-service">
-                        <div class="wow scaleIn" data-wow-duration="500ms" data-wow-delay="300ms">
-                            <img src="images/aboutus/icon1.png" alt="">
+                <div class="col-md-3 col-sm-4 padding-top">
+                    <div class="sidebar portfolio-sidebar">
+                        <div class="sidebar-item categories">
+                            <div class="widget">
+                                <h3 class="title">@if($data['lang'] == 1) 产品分类 @else Product Type @endif</h3>
+                                <ul class="nav navbar-stacked">
+                                    @foreach($data['type'] as $type)
+                                        <li @if($data['ptype'] == $type->id) class="active" @endif>
+                                            <a href="/products?ptype={{$type->id}}">
+                                                @if($data['lang'] == 1)
+                                                    {{$type->ch_name}}
+                                                @else
+                                                    {{$type->en_name}}
+                                                @endif
+                                                {{--<span class="pull-right">(1)</span>--}}
+                                            </a>
+                                        </li>
+                                    @endforeach
+                                </ul>
+                            </div>
                         </div>
-                        <h2>优势服务介绍1</h2>
-                        <p>Ground round tenderloin flank shank ribeye. Hamkevin meatball swine. Cow shankle beef sirloin chicken ground round.</p>
+                        {{--<div class="sidebar-item  recent">--}}
+                            {{--<div class="widget">--}}
+                                {{--<h3 class="title">联系我们</h3>--}}
+                                {{--<div class="content community">--}}
+                                    {{--<p>电话：{{$data['about']->tel}}</p>--}}
+                                    {{--<p>邮箱：{{$data['about']->email}}</p>--}}
+                                    {{--<p>传真：{{$data['about']->fax}}</p>--}}
+                                    {{--<p>公司地址：{{$data['about']->address}}</p>--}}
+                                    {{--<p><a href="http://wenda.ghostchina.com/" title="Ghost中文网问答社区" target="_blank" onclick="_hmt.push(['_trackEvent', 'big-button', 'click', '问答社区'])"><i class="fa fa-comments"></i> 问答社区</a></p>--}}
+                                    {{--<p><a href="http://weibo.com/ghostchinacom" title="Ghost中文网官方微博" target="_blank" onclick="_hmt.push(['_trackEvent', 'big-button', 'click', '官方微博'])"><i class="fa fa-weibo"></i> 官方微博</a></p>--}}
+                                {{--</div>--}}
+                            {{--</div>--}}
+                        {{--</div>--}}
                     </div>
                 </div>
-                <div class="col-sm-4 text-center padding wow fadeIn" data-wow-duration="1000ms" data-wow-delay="600ms">
-                    <div class="single-service">
-                        <div class="wow scaleIn" data-wow-duration="500ms" data-wow-delay="600ms">
-                            <img src="images/aboutus/icon2.png" alt="">
+                <div class="col-md-9 col-sm-8 padding-top">
+                    <article class="post page">
+                        <div class="lm_t">联系我们</div>
+                        <div class="box">
+                            <p>
+                                地址：{{$data['about']->address}}
+                                <br>
+                                邮编：{{$data['about']->postcodes}}
+                                <br>
+                                电话：{{$data['about']->tel}}
+                                <br>
+                                传真：{{$data['about']->fax}}
+                                <br>
+                                E-mail：{{$data['about']->email}}
+                                <br>
+                                网址：http://www.wzshuntaichem.com
+                                <br>
+                            </p>
+                            <p id="map"></p>
                         </div>
-                        <h2>优势服务介绍2</h2>
-                        <p>Hamburger ribeye drumstick turkey, strip steak sausage ground round shank pastrami beef brisket pancetta venison.</p>
-                    </div>
-                </div>
-                <div class="col-sm-4 text-center padding wow fadeIn" data-wow-duration="1000ms" data-wow-delay="900ms">
-                    <div class="single-service">
-                        <div class="wow scaleIn" data-wow-duration="500ms" data-wow-delay="900ms">
-                            <img src="images/aboutus/icon3.png" alt="">
-                        </div>
-                        <h2>优势服务介绍3</h2>
-                        <p>Venison tongue, salami corned beef ball tip meatloaf bacon. Fatback pork belly bresaola tenderloin bone pork kevin shankle.</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-    <!--/#services-->
-    <section id="company-information" class="padding wow fadeIn" data-wow-duration="1000ms" data-wow-delay="300ms">
-        <div class="container">
-            <div class="row">
-                <div class="col-sm-3">
-                    <img src="{{explode('@',explode(';',$data['about']->picture)[0])[1]}}" class="img-responsive" alt="" width="200" height="200">
-                </div>
-                <div class="col-sm-9 padding-top">
-                    <p>{{$data['about']->brief}}</p>
+                    </article>
                 </div>
             </div>
         </div>
     </section>
 
-    <section id="team">
-        <div class="container">
-            <div class="row">
-                <h1 class="title text-center wow fadeInDown" data-wow-duration="500ms" data-wow-delay="300ms">公司环境</h1>
-                <p class="text-center wow fadeInDown" data-wow-duration="400ms" data-wow-delay="400ms">Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. <br>
-                    Ut enim ad minim veniam, quis nostrud </p>
-                <div id="team-carousel" class="carousel slide wow fadeIn" data-ride="carousel" data-wow-duration="400ms" data-wow-delay="400ms">
-                    <!-- Indicators -->
-                    <ol class="carousel-indicators visible-xs">
-                        <li data-target="#team-carousel" data-slide-to="0" class="active"></li>
-                        <li data-target="#team-carousel" data-slide-to="1"></li>
-                    </ol>
-                    <!-- Wrapper for slides -->
-                    <div class="carousel-inner">
-                        <div class="item active">
-                            @if($data['about']->picture != null)
-                                <?php
-                                $pics = explode(';', $data['about']->picture);
-                                ?>
-                                @foreach($pics as $pic)
-                                    <?php $temp = explode('@', $pic);?>
-                                    <div class="col-sm-3 col-xs-6">
-                                        <div class="team-single-wrapper">
-                                            <div class="team-single">
-                                                <div class="person-thumb">
-                                                    <img src="{{$temp[1]}}" class="img-responsive" alt="">
-                                                </div>
-                                            </div>
-                                            <div class="person-info">
-                                                <h3>{{$temp[0]}}</h3>
-                                            </div>
-                                        </div>
-                                    </div>
-                                @endforeach
-                            @endif
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
     <div class="container">
         <div class="raw">
-            <h1 class="title text-center wow fadeInDown" data-wow-duration="500ms" data-wow-delay="300ms">联系我们</h1>
+            <h1 class="title text-center wow fadeInDown" data-wow-duration="500ms" data-wow-delay="300ms">给我留言</h1>
             <p class="text-center wow fadeInDown" style="margin-bottom: 80px;" data-wow-duration="400ms" data-wow-delay="400ms">
                 欢迎您光临本公司网站，请您填写以下信息，我们将会与您保持联系，谢谢!
             </p>
@@ -217,6 +297,29 @@
     @include('components.myfooter')
 @endsection
 @section('custom-script')
+    <script type="text/javascript" src="http://webapi.amap.com/maps?v=1.3&key=e143b33668668e4b9be611be3584b0e7"></script>
+    <script>
+        map = new AMap.Map('map', {
+            resizeEnable: true,
+            zoom: 13,
+            center: [120.783616,27.805866]
+        });
+
+        AMap.plugin(['AMap.ToolBar', 'AMap.Scale'],
+                function () {
+                    map.addControl(new AMap.ToolBar());
+
+                    map.addControl(new AMap.Scale());
+
+                    map.setStatus({scrollWheel: false});
+                });
+
+        marker = new AMap.Marker({
+            position: [120.783616,27.805866],
+            title: "温州市金海化学品市场有限公司",
+            map: map
+        });
+    </script>
     <script>
         $('#main-contact-form').submit(function (event) {
             event.preventDefault();
