@@ -13,7 +13,9 @@ Route::any('detail', ['uses' => 'NewsController@detail']);
 Route::any('news/content', ['uses' => 'NewsController@requestNewsContent']);
 
 Route::get('products', ['uses' => 'ProductsController@index']);
+Route::post('products', ['uses' => 'ProductsController@index']);
 Route::get('advantage', ['uses' => 'ProductsController@advantage']);
+Route::get('market', ['uses' => 'HomeController@marketIndex']);
 
 Route::get('contact', ['uses' => 'HomeController@contact']);
 Route::post('message/add', ['uses' => 'HomeController@AddMeaasge']);

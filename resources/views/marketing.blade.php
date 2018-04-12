@@ -1,15 +1,16 @@
 @extends('layout.master')
-@section('title', '温江顺泰化工|关于我们')
+@section('title', '温江顺泰化工|营销网络')
 
 @section('header-tab')
     @include('components.headerTab')
 @endsection
 
 @section('header-nav')
-    @include('components.headerNav',['activeIndex'=>2,'lang'=>$data['lang']])
+    @include('components.headerNav',['activeIndex'=>7,'lang'=>$data['lang']])
 @endsection
 
 @section('custom-style')
+    <link media="all" href="css/news.css" type="text/css" rel="stylesheet">
     <style>
         .post{
             padding: 35px;
@@ -97,69 +98,53 @@
             left: 0;
             bottom: -1px;
         }
+
+        .lm_t{
+            line-height: 40px;
+            font-size: 15px;
+            font-weight: bold;
+            border-top: 3px solid #00adb5;
+            border-bottom: 1px solid #e5e5e5;
+        }
+        .box{
+            line-height: 28px;
+            padding: 25px 12px 0;
+            font-size: 14px;
+        }
+        .fl {
+            float: left;
+        }
+        .fl a{
+            color: #333333;
+            text-decoration: none;
+        }
+        .fr {
+            float: right;
+        }
+        .cle {
+            clear: both;
+        }
+        .news_ul{
+            list-style-type:none;
+        }
+        .news_ul span{
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #00adb5;
+        }
+        .box img{
+            /*text-align: center;*/
+            width: 100%;
+        }
     </style>
 @endsection
 @section('content')
     <div class="about_banner">
         <div class="container">
             <h2>顺泰化工</h2>
-            <span class="breadcrumbs"><a href="/"><i class="fa fa-home home_1"></i></a> / <span>关于我们</span></span>
+            <span class="breadcrumbs"><a href="/"><i class="fa fa-home home_1"></i></a> / <span>营销网络</span></span>
         </div>
     </div>
-
-    {{--<section class="content-wrap">--}}
-        {{--<div class="container">--}}
-            {{--<div class="row">--}}
-                {{--<main class="col-md-8 main-content">--}}
-                    {{--<article class="post page">--}}
-                        {{--<header class="post-head">--}}
-                            {{--<h1 class="post-title">温州市顺泰化工有限公司</h1>--}}
-                        {{--</header>--}}
-                        {{--<section class="post-content">--}}
-                            {{--<blockquote>--}}
-                                {{--<p>{{$data['about']->brief}}</p>--}}
-                            {{--</blockquote>--}}
-                            {{--<p style="text-align: center;">--}}
-                                {{--<img src="{{explode('@',explode(';',$data['about']->picture)[0])[1]}}" alt="{{explode('@',explode(';',$data['about']->picture)[0])[0]}}" />--}}
-                            {{--</p>--}}
-                            {{--<p>{!! $data['about']->describe !!}</p>--}}
-                            {{--<hr />--}}
-
-                            {{--<p>如果你也喜欢 Ghost ，可以通过以下方式与我们交流：</p>--}}
-
-                            {{--<ul>--}}
-                                {{--<li>微博：<a href="http://weibo.com/ghostchinacom">@ghostchinacom</a></li>--}}
-                                {{--<li>QQ群：309172035</li>--}}
-                            {{--</ul>--}}
-                        {{--</section>--}}
-
-                    {{--</article>--}}
-
-                {{--</main>--}}
-
-                {{--<aside class="col-md-4 sidebar">--}}
-                    {{--<!-- start widget -->--}}
-                    {{--<!-- end widget -->--}}
-
-                    {{--<!-- start tag cloud widget -->--}}
-                    {{--<div class="widget">--}}
-                        {{--<h4 class="title">联系我们</h4>--}}
-                        {{--<div class="content community">--}}
-                            {{--<p>电话：{{$data['about']->tel}}</p>--}}
-                            {{--<p>邮箱：{{$data['about']->email}}</p>--}}
-                            {{--<p>传真：{{$data['about']->fax}}</p>--}}
-                            {{--<p>公司地址：{{$data['about']->address}}</p>--}}
-                            {{--<p><a href="http://wenda.ghostchina.com/" title="Ghost中文网问答社区" target="_blank" onclick="_hmt.push(['_trackEvent', 'big-button', 'click', '问答社区'])"><i class="fa fa-comments"></i> 问答社区</a></p>--}}
-                            {{--<p><a href="http://weibo.com/ghostchinacom" title="Ghost中文网官方微博" target="_blank" onclick="_hmt.push(['_trackEvent', 'big-button', 'click', '官方微博'])"><i class="fa fa-weibo"></i> 官方微博</a></p>--}}
-                        {{--</div>--}}
-                    {{--</div>--}}
-
-                {{--</aside>--}}
-
-            {{--</div>--}}
-        {{--</div>--}}
-    {{--</section>--}}
-
     <section class="content-wrap">
         <div class="container">
             <div class="row">
@@ -201,28 +186,31 @@
                 </div>
                 <div class="col-md-9 col-sm-8 padding-top">
                     <article class="post page">
-                        <header class="post-head">
-                            <h1 class="post-title">温州市顺泰化工有限公司</h1>
-                        </header>
-                        <section class="post-content">
-                            <blockquote>
-                                <p>{{$data['about']->brief}}</p>
-                            </blockquote>
-                            <p>
-                                <img src="{{explode('@',explode(';',$data['about']->picture)[0])[1]}}" alt="{{explode('@',explode(';',$data['about']->picture)[0])[0]}}" />
-                                {!! $data['about']->describe !!}
-                            </p>
-                            <hr />
-                        </section>
+                        <div class="lm_t">营销网络</div>
+                        <div class="box">
+                            <ul class="news_ul">
+                                <li class="news-body">
+                                    <span>国内网络：</span>{{$data['about']->market_in}}
+                                </li>
+                                <li class="news-body">
+                                    <span>国外网络：</span>{{$data['about']->market_out}}
+                                </li>
+                            </ul>
+                            <img src="{{asset('images/marking.jpg')}}">
+                        </div>
 
                     </article>
                 </div>
             </div>
         </div>
     </section>
+
 @endsection
 @section('footer')
     @include('components.myfooter')
 @endsection
 @section('custom-script')
+    <script>
+
+    </script>
 @endsection

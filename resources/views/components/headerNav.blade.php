@@ -54,7 +54,16 @@
                         @if($lang == 1)
                             优势产品
                         @else
-                            advantage
+                            Advantage
+                        @endif
+                    </a>
+                </li>
+                <li @if($activeIndex ==7) class="current_page" @endif>
+                    <a href="/market">
+                        @if($lang == 1)
+                            营销网络
+                        @else
+                            Marketing
                         @endif
                     </a>
                 </li>
@@ -78,9 +87,9 @@
                 {{--</div>--}}
             {{--</div>--}}
             <div class="help_line">
-                <form>
-                    <input class="search-product" type="text" id="product_name" placeholder="请输入产品名称">
-                    <input class="search-product" type="button" id="go_search" value="立即查询">
+                <form action="/products" method="post">
+                    <input class="search-product" type="text" id="product_name" name="product_name"placeholder="请输入产品名称">
+                    <input class="search-product" type="submit" id="go_search" value="立即查询">
                 </form>
             </div>
         </div><!-- /.navbar-collapse -->

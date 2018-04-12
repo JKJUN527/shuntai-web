@@ -24,7 +24,7 @@
         }
         .title {
             color: #404040;
-            font-weight: 300;
+            /*font-weight: 300;*/
         }
         .single-service img {
             height: 85px;
@@ -154,7 +154,7 @@
             content: "";
             width: 90px;
             height: 1px;
-            background: #e67e22;
+            background: #00adb5;
             position: absolute;
             left: 0;
             bottom: -1px;

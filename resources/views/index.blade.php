@@ -56,17 +56,29 @@
             /*margin-left: 15%;*/
             margin-top: 2rem;
         }
-        #map{
-            /*width:50%;*/
-            height: 400px;
-            /*margin-left: 25%;*/
-            margin-top: 2rem;
+        .about{
+            background-color: white;
+            height: 500px;
         }
         .about_top{
             padding-top: 0;
         }
         #team-carousel{
             margin-top: 4rem;
+        }
+
+        .about-content{
+            margin-top: 4rem;
+            margin-bottom: 4rem;
+            width: 80%;
+            margin-left: 10%;
+        }
+        .about-content p{
+            line-height: 28px;
+            font-size: 1.5rem;
+        }
+        .about-content img{
+            float: right;
         }
     </style>
 
@@ -158,77 +170,66 @@
             <div class="clearfix"> </div>
         </div>
     </div>
+    <div class="about">
+        <div class="product_index index_title" style="padding-top: 3rem">
+            <p class="product_title">关于我们
+                <span>About Us</span>
+            </p>
+            <p class="product_subtitle">{{$data['about']->brief}}</p>
+        </div>
+        <div class="about-content">
+            <img src="{{asset('images/pic9.jpg')}}">
+            <p>&nbsp;&nbsp;&nbsp;&nbsp;{!! $data['about']->describe !!}</p>
+        </div>
+    </div>
     <div id="example1">
-    <section id="team">
-        <div class="container">
-            <div class="row product_index">
-                <h1 class="title text-center wow fadeInDown product_title" data-wow-duration="500ms" data-wow-delay="300ms">企业展示</h1>
-                <p class="text-center wow fadeInDown product_subtitle" data-wow-duration="400ms" data-wow-delay="400ms">
-                    本公司占地500亩，拥有全套生产设备，标准化流水线，专业员工。
-                </p>
-                <div id="team-carousel" class="carousel slide wow fadeIn" data-ride="carousel" data-wow-duration="400ms" data-wow-delay="400ms">
-                    <!-- Indicators -->
-                    <ol class="carousel-indicators visible-xs">
-                        <li data-target="#team-carousel" data-slide-to="0" class="active"></li>
-                        <li data-target="#team-carousel" data-slide-to="1"></li>
-                    </ol>
-                    <!-- Wrapper for slides -->
-                    <div class="carousel-inner">
-                        <div class="item active">
-                            @if($data['about']->picture != null)
-                                <?php
-                                $pics = explode(';', $data['about']->picture);
-                                ?>
-                                @foreach($pics as $pic)
-                                        <?php $temp = explode('@', $pic);?>
-                                        <div class="col-sm-3 col-xs-6">
-                                            <div class="team-single-wrapper">
-                                                <div class="team-single">
-                                                    <div class="person-thumb">
-                                                        <img src="{{$temp[1]}}" class="img-responsive" alt="">
+        <section id="team">
+            <div class="container">
+                <div class="row product_index">
+                    <h1 class="title text-center wow fadeInDown product_title" data-wow-duration="500ms" data-wow-delay="300ms">企业展示</h1>
+                    <p class="text-center wow fadeInDown product_subtitle" data-wow-duration="400ms" data-wow-delay="400ms">
+                        本公司占地500亩，拥有全套生产设备，标准化流水线，专业员工。
+                    </p>
+                    <div id="team-carousel" class="carousel slide wow fadeIn" data-ride="carousel" data-wow-duration="400ms" data-wow-delay="400ms">
+                        <!-- Indicators -->
+                        <ol class="carousel-indicators visible-xs">
+                            <li data-target="#team-carousel" data-slide-to="0" class="active"></li>
+                            <li data-target="#team-carousel" data-slide-to="1"></li>
+                        </ol>
+                        <!-- Wrapper for slides -->
+                        <div class="carousel-inner">
+                            <div class="item active">
+                                @if($data['about']->picture != null)
+                                    <?php
+                                    $pics = explode(';', $data['about']->picture);
+                                    ?>
+                                    @foreach($pics as $pic)
+                                            <?php $temp = explode('@', $pic);?>
+                                            <div class="col-sm-3 col-xs-6">
+                                                <div class="team-single-wrapper">
+                                                    <div class="team-single">
+                                                        <div class="person-thumb">
+                                                            <img src="{{$temp[1]}}" class="img-responsive" alt="">
+                                                        </div>
+                                                    </div>
+                                                    <div class="person-info">
+                                                        <h3>{{$temp[0]}}</h3>
                                                     </div>
                                                 </div>
-                                                <div class="person-info">
-                                                    <h3>{{$temp[0]}}</h3>
-                                                </div>
                                             </div>
-                                        </div>
-                                @endforeach
-                            @endif
+                                    @endforeach
+                                @endif
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
 
-        </div>
-    </section>
-        </div>
+            </div>
+        </section>
+    </div>
 @endsection
 @section('footer')
     @include('components.myfooter')
 @endsection
 @section('custom-script')
-    <script type="text/javascript" src="http://webapi.amap.com/maps?v=1.3&key=e143b33668668e4b9be611be3584b0e7"></script>
-    <script>
-        map = new AMap.Map('map', {
-            resizeEnable: true,
-            zoom: 13,
-            center: [121.48944, 31.228947]
-        });
-
-        AMap.plugin(['AMap.ToolBar', 'AMap.Scale'],
-                function () {
-                    map.addControl(new AMap.ToolBar());
-
-                    map.addControl(new AMap.Scale());
-
-                    map.setStatus({scrollWheel: false});
-                });
-
-        marker = new AMap.Marker({
-            position: [121.48944, 31.228947],
-            title: "company name",
-            map: map
-        });
-    </script>
 @endsection

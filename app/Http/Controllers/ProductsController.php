@@ -27,10 +27,19 @@ class ProductsController extends Controller
         $news = new NewsController();
         $data['newest'] = $news->searchNewest(6);//最新新闻
         $data['about'] = About::first();
-        //默认显示第一个类型的产品
-        $data['products'] = Product::where('type',$data['ptype'])
-            ->orderby('created_at','desc')
-            ->paginate(10);
+        if($request->has('product_name')){
+            $product_name = $request->input('product_name');
+            //默认显示第一个类型的产品
+            $data['products'] = Product::where('ch_name', 'like', '%' . $product_name . '%')
+                ->orwhere('en_name', 'like', '%' . $product_name . '%')
+                ->orderby('created_at','desc')
+                ->paginate(10);
+        }else{
+            //默认显示第一个类型的产品
+            $data['products'] = Product::where('type',$data['ptype'])
+                ->orderby('created_at','desc')
+                ->paginate(10);
+        }
 
 //        return $data;
         return view('products', ['data' => $data]);

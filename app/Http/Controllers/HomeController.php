@@ -71,4 +71,18 @@ class HomeController extends Controller
         }
         return $data;
     }
+
+    public function marketIndex(Request $request){
+        $data = array();
+        $data['type'] = Protype::all();
+        if($request->has('ptype'))
+            $data['ptype'] = $request->input('ptype');
+        else
+            $data['ptype'] = $data['type'][0]->id;
+
+        $data['lang'] = HomeController::getLang();
+        $data['about'] = About::first();
+//        return $data;
+        return view('marketing',['data'=>$data]);
+    }
 }
