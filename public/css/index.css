@@ -1,0 +1,131 @@
+.module {
+    position: relative;
+    left: 0;
+    /*bottom: 5px;*/
+    width: 100%;
+    height: 98px;
+    background: url(../images/index-icon.png) repeat-x 0 0;
+}
+.module .index-center {
+    background: none;
+}
+.module .center {
+    position: absolute;
+    left: 50%;
+    top: 0;
+    width: 1000px;
+    height: 98px;
+    margin-left: -500px;
+    overflow: hidden;
+}
+.kwicks .icon01 {
+    background-image: url(../images/icon01.png);
+}
+.kwicks .icon {
+    float: left;
+    width: 115px;
+    height: 98px;
+    background-repeat: no-repeat;
+    background-position: center center;
+}
+.kwicks {
+    width: 1200px;
+    height: 98px;
+}
+.kwicks .kwick {
+    float: left;
+    width: 115px;
+    height: 98px;
+    border-right: 1px solid transparent;
+    /*background: url(../images/y-bg4.png) no-repeat right center;*/
+    overflow: hidden;
+}
+.kwicks .kwick div {
+    width: 655px;
+    height: 98px;
+    /*background: url(../images/index-icon.png) repeat-x;*/
+}
+.kwicks .icon01 {
+    background-image: url(../images/icon01.png);
+}
+.kwicks .kwick div.kwick-nr {
+    width: 503px;
+    height: 98px;
+    float: left;
+}
+.kwick-nr a {
+    color: #fff;
+    text-decoration: none;
+    cursor: pointer;
+}
+.kwick-nr p {
+    height: 98px;
+    width: 179px;
+    overflow: hidden;
+    float: left;
+}
+.kwicks img {
+    float: left;
+}
+.kwick-nr h3 {
+    color: #f1f1f1;
+    padding-top: 10px;
+    line-height: 20px;
+    margin-left: 24px;
+    width: 300px;
+    float: left;
+    font-size: 12px;
+    /*font-family: '微软雅黑';*/
+}
+
+.con_01 {
+    margin: 64px auto 0;
+    width: 1150px;
+}
+.con_01 .box {
+    padding-top: 30px;
+}
+.con_01 .box ul li {
+    /*background: url(../images/back01.jpg) no-repeat;*/
+    background: #FAFAFA;
+    width: 25rem;
+    float: left;
+    height: 18rem;
+    padding: 0 18px;
+    margin: 0 15px;
+    list-style-type: none;
+    box-shadow: 5px 5px 5px #888888;
+}
+.fl {
+    float: left;
+    margin-top: 1rem;
+}
+.pt5 {
+    padding-top: 5px;
+}
+.fr {
+    float: right;
+    margin-top: 1rem;
+}
+.span01 {
+    font-size: 15px;
+    font-weight: bold;
+}
+.cle {
+    clear: both;
+}
+.con_01 .box dl dd {
+    width: 319px;
+    overflow: hidden;
+    margin-top: 12px;
+    height: 106px;
+}
+.con_01 .box dl dd:hover img {
+    transform-origin: center center;
+    transform: scale(1.2,1.2);
+}
+.con_01 .box dl dd img {
+    transition: all 0.2s;
+    width: 20rem;
+    /*height: 20rem;*/
+}

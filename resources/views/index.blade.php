@@ -10,6 +10,7 @@
 @endsection
 
 @section('custom-style')
+    <link href="css/index.css" rel='stylesheet' type='text/css' />
     <style>
         .product_center{
             width: 80%;
@@ -58,7 +59,8 @@
         }
         .about{
             background-color: white;
-            height: 500px;
+            /*height: 500px;*/
+            padding-bottom: 5rem;
         }
         .about_top{
             padding-top: 0;
@@ -79,6 +81,10 @@
         }
         .about-content img{
             float: right;
+        }
+        .feature-box img{
+            width: 15rem;
+            height: 15rem;
         }
     </style>
 
@@ -101,131 +107,177 @@
                             </li>
                     @endforeach
                 @else
-                <li clearfix>
-                    <div class="col-sm-6 slider_right">
-                        <div class="col-sm-12 slider_caption">
-                            <h3>Socialnetwork</h3>
-                            <h4>Lorem Ipsum</h4>
-                        </div>
-                    </div>
-                    <div class="col-sm-6">
-                        <img src="images/4.png" alt=""/>
-                    </div>
-                </li>
-                <li clearfix>
-                    <div class="col-sm-6">
-                        <img src="images/9.png" alt=""/>
-                    </div>
-                    <div class="col-sm-6 slider_left">
-                        <div class="col-sm-12 slider_caption1">
-                            <h3>Entrepreneurs</h3>
-                            <h4>Lorem Ipsum</h4>
-                        </div>
-                    </div>
-                </li>
+                {{--<li clearfix>--}}
+                    {{--<div class="col-sm-6 slider_right">--}}
+                        {{--<div class="col-sm-12 slider_caption">--}}
+                            {{--<h3>Socialnetwork</h3>--}}
+                            {{--<h4>Lorem Ipsum</h4>--}}
+                        {{--</div>--}}
+                    {{--</div>--}}
+                    {{--<div class="col-sm-6">--}}
+                        {{--<img src="images/4.png" alt=""/>--}}
+                    {{--</div>--}}
+                {{--</li>--}}
+                {{--<li clearfix>--}}
+                    {{--<div class="col-sm-6">--}}
+                        {{--<img src="images/9.png" alt=""/>--}}
+                    {{--</div>--}}
+                    {{--<div class="col-sm-6 slider_left">--}}
+                        {{--<div class="col-sm-12 slider_caption1">--}}
+                            {{--<h3>Entrepreneurs</h3>--}}
+                            {{--<h4>Lorem Ipsum</h4>--}}
+                        {{--</div>--}}
+                    {{--</div>--}}
+                {{--</li>--}}
                 @endif
             </ul>
         </div>
         <div class="clearfix"> </div>
     </section>
-    <div class="product_center">
-        <div class="product_index index_title">
-            <p class="product_title">产品中心
-            <span>Product</span>
-            </p>
-            <p class="product_subtitle">主营化学试剂、塑料助剂、食品添加剂、医药中间体、化工原料等。</p>
-        </div>
-        <div class="icons_box1">
-            <div class="col-sm-6 box_1">
-                <div class="feature-box">
-                    <i class="fa fa-meh-o face"></i>
-                    <h4>化学试剂</h4>
-                    <p>It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.</p>
+    <div class="module">
+        <div class="center index-center">
+            <div class="kwicks">
+                <div class="kwick first" style="width: 655px;">
+                    <div> <span class="icon icon01" style="background-color: #00adb5;"></span>
+                        <div class="kwick-nr"> <a href="/products">
+                                <p><img src="{{asset('images/20140216214449602.jpg')}}" alt=""></p>
+                                <h3>氟化钙（萤石）、氟硅酸钠、氟化钠、氟铝酸钠（冰晶石）、氟化铝、氟化铵、氟化镁、氟化氢、氟硅酸钾、氟硼酸钾、氟硅酸镁、氟硅酸铵、氟化氢铵、氟钛酸钾、氧化铝、氢氧化铝等</h3>
+                            </a> </div>
+                    </div>
                 </div>
+                {{--<div class="kwick " style="width: 115px;">--}}
+                    {{--<div> <span class="icon icon03" style="background-color: transparent;"></span>--}}
+                        {{--<div class="kwick-nr"> <a href="/cn/yxwl/">--}}
+                                {{--<p><img src="/cn/templets/web/images/20140216214514346.jpg" alt=""></p>--}}
+                                {{--<h3>国内业务：云南、四川、重庆、贵州、广西、广东、福建、河南、湖南、湖北、河南、陕西、山东、江苏、上海、辽宁、黑龙江、乌鲁木齐、青海、北京、河北等<br>国外业务：欧洲，北美，南美，日本，东南亚等</h3>--}}
+                            {{--</a> </div>--}}
+                    {{--</div>--}}
+                {{--</div>--}}
+                {{--<div class="kwick " style="width: 115px;">--}}
+                    {{--<div> <span class="icon icon02" style="background-color: transparent;"></span>--}}
+                        {{--<div class="kwick-nr"> <a href="/cn/lxwm/">--}}
+                                {{--<p><img src="/cn/templets/web/images/20140216214544822.jpg" alt=""></p>--}}
+                                {{--<h3>--}}
+                                    {{--秦先生：13987616689<br>--}}
+                                    {{--张小姐：13708886247    15752896870<br>--}}
+                                {{--</h3>--}}
+                            {{--</a> </div>--}}
+                    {{--</div>--}}
+                {{--</div>--}}
             </div>
-            <div class="col-sm-6 box_3">
-                <div class="feature-box">
-                    <i class="fa fa-bullseye face"></i>
-                    <h4>食品添加剂</h4>
-                    <p>It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.</p>
-                </div>
-            </div>
-            <div class="clearfix"> </div>
-        </div>
-        <div class="icons_box2">
-            <div class="col-sm-6 box_1">
-                <div class="feature-box">
-                    <i class="fa fa-html5 face"></i>
-                    <h4>化工原料</h4>
-                    <p>It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.</p>
-                </div>
-            </div>
-            <div class="col-sm-6 box_3">
-                <div class="feature-box">
-                    <i class="fa fa-thumbs-o-up face"></i>
-                    <h4>塑料助剂</h4>
-                    <p>It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.</p>
-                </div>
-            </div>
-            <div class="clearfix"> </div>
         </div>
     </div>
+    <div class="con_01">
+        <div class="product_index index_title">
+            <p class="product_title">产品中心
+                <span>Product</span>
+            </p>
+            <p class="product_subtitle">主营酸类、碱类、盐类、化学试剂等。</p>
+        </div>
+        <div class="box">
+            <ul>
+                <li>
+                    <dl>
+                        <dt>
+                            <div class="fl span01">酸类</div>
+                            <div class="fr pt5"><a href="/products?ptype=3" style="color:#5fa4e9;font-family:Arial;font-size:10px;">MORE&gt;</a></div>
+                            <div class="cle"></div>
+                        </dt>
+                        <dd><img src="{{asset('images/type1.jpg')}}"></dd>
+                    </dl>
+                </li>
+                <li>
+                    <dl>
+                        <dt>
+                            <div class="fl span01">碱类</div>
+                            <div class="fr pt5"><a href="/products?ptype=5" style="color:#5fa4e9;font-family:Arial;font-size:10px;">MORE&gt;</a></div>
+                            <div class="cle"></div>
+                        </dt>
+                        <dd><img src="{{asset('images/type2.jpg')}}"></dd>
+                    </dl>
+                </li>
+                <li>
+                    <dl>
+                        <dt>
+                            <div class="fl span01">盐类</div>
+                            <div class="fr pt5"><a href="/products?ptype=6" style="color:#5fa4e9;font-family:Arial;font-size:10px;">MORE&gt;</a></div>
+                            <div class="cle"></div>
+                        </dt>
+                        <dd><img src="{{asset('images/type3.jpg')}}"></dd>
+                    </dl>
+                </li>
+                <li>
+                    <dl>
+                        <dt>
+                            <div class="fl span01">化学试剂</div>
+                            <div class="fr pt5"><a href="/products?ptype=7" style="color:#5fa4e9;font-family:Arial;font-size:10px;">MORE&gt;</a></div>
+                            <div class="cle"></div>
+                        </dt>
+                        <dd><img src="{{asset('images/type4.jpg')}}"></dd>
+                    </dl>
+                </li>
+            </ul>
+            <div class="cle"></div>
+        </div>
+    </div>
+    {{--<div class="product_center">--}}
+        {{--<div class="product_index index_title">--}}
+            {{--<p class="product_title">产品中心--}}
+            {{--<span>Product</span>--}}
+            {{--</p>--}}
+            {{--<p class="product_subtitle">主营化学试剂、塑料助剂、食品添加剂、医药中间体、化工原料等。</p>--}}
+        {{--</div>--}}
+        {{--<div class="icons_box1">--}}
+            {{--<div class="col-sm-6 box_1">--}}
+                {{--<div class="feature-box">--}}
+                    {{--<i class="fa fa-meh-o face"></i>--}}
+                    {{--<img src="{{asset('images/type1.jpg')}}"/>--}}
+                    {{--<h4>酸类</h4>--}}
+                    {{--<p>acid</p>--}}
+                {{--</div>--}}
+            {{--</div>--}}
+            {{--<div class="col-sm-6 box_3">--}}
+                {{--<div class="feature-box">--}}
+                    {{--<i class="fa fa-bullseye face"></i>--}}
+                    {{--<img src="{{asset('images/type2.jpg')}}"/>--}}
+                    {{--<h4>碱类</h4>--}}
+                    {{--<p>alkali</p>--}}
+                {{--</div>--}}
+            {{--</div>--}}
+            {{--<div class="clearfix"> </div>--}}
+        {{--</div>--}}
+        {{--<div class="icons_box2">--}}
+            {{--<div class="col-sm-6 box_1">--}}
+                {{--<div class="feature-box">--}}
+                    {{--<i class="fa fa-html5 face"></i>--}}
+                    {{--<img src="{{asset('images/type3.jpg')}}"/>--}}
+                    {{--<h4>盐类</h4>--}}
+                    {{--<p>salt</p>--}}
+                {{--</div>--}}
+            {{--</div>--}}
+            {{--<div class="col-sm-6 box_3">--}}
+                {{--<div class="feature-box">--}}
+                    {{--<i class="fa fa-thumbs-o-up face"></i>--}}
+                    {{--<img src="{{asset('images/type4.jpg')}}"/>--}}
+                    {{--<h4>化学试剂</h4>--}}
+                    {{--<p>Chemical Reagents</p>--}}
+                {{--</div>--}}
+            {{--</div>--}}
+            {{--<div class="clearfix"> </div>--}}
+        {{--</div>--}}
+    {{--</div>--}}
     <div class="about">
         <div class="product_index index_title" style="padding-top: 3rem">
             <p class="product_title">关于我们
-                <span>About Us</span>
+                {{--<span></span>--}}
             </p>
-            <p class="product_subtitle">{{$data['about']->brief}}</p>
+            {{--<p class="product_subtitle">{{$data['about']->brief}}</p>--}}
+            <p class="product_subtitle">About Us</p>
         </div>
         <div class="about-content">
-            <img src="{{asset('images/pic9.jpg')}}">
+            {{--<img src="{{asset('images/pic9.jpg')}}">--}}
             <p>&nbsp;&nbsp;&nbsp;&nbsp;{!! $data['about']->describe !!}</p>
         </div>
-    </div>
-    <div id="example1">
-        <section id="team">
-            <div class="container">
-                <div class="row product_index">
-                    <h1 class="title text-center wow fadeInDown product_title" data-wow-duration="500ms" data-wow-delay="300ms">企业展示</h1>
-                    <p class="text-center wow fadeInDown product_subtitle" data-wow-duration="400ms" data-wow-delay="400ms">
-                        本公司占地500亩，拥有全套生产设备，标准化流水线，专业员工。
-                    </p>
-                    <div id="team-carousel" class="carousel slide wow fadeIn" data-ride="carousel" data-wow-duration="400ms" data-wow-delay="400ms">
-                        <!-- Indicators -->
-                        <ol class="carousel-indicators visible-xs">
-                            <li data-target="#team-carousel" data-slide-to="0" class="active"></li>
-                            <li data-target="#team-carousel" data-slide-to="1"></li>
-                        </ol>
-                        <!-- Wrapper for slides -->
-                        <div class="carousel-inner">
-                            <div class="item active">
-                                @if($data['about']->picture != null)
-                                    <?php
-                                    $pics = explode(';', $data['about']->picture);
-                                    ?>
-                                    @foreach($pics as $pic)
-                                            <?php $temp = explode('@', $pic);?>
-                                            <div class="col-sm-3 col-xs-6">
-                                                <div class="team-single-wrapper">
-                                                    <div class="team-single">
-                                                        <div class="person-thumb">
-                                                            <img src="{{$temp[1]}}" class="img-responsive" alt="">
-                                                        </div>
-                                                    </div>
-                                                    <div class="person-info">
-                                                        <h3>{{$temp[0]}}</h3>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                    @endforeach
-                                @endif
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-            </div>
-        </section>
     </div>
 @endsection
 @section('footer')

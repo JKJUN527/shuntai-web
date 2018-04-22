@@ -89,7 +89,7 @@
             <div class="help_line">
                 <form action="/products" method="post">
                     <input class="search-product" type="text" id="product_name" name="product_name"placeholder="请输入产品名称">
-                    <input class="search-product" type="submit" id="go_search" value="立即查询">
+                    <input class="search-product" type="submit" id="go_search" value="搜索">
                 </form>
             </div>
         </div><!-- /.navbar-collapse -->

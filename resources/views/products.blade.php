@@ -11,8 +11,11 @@
 
 @section('custom-style')
     <style>
-        .padding-top {
-            padding-top: 90px;
+        .padding-top-right {
+            padding-top: 30px;
+        }
+        .padding-top-left {
+            padding-top: 70px;
         }
         .sidebar-item {
             margin-bottom: 48px;
@@ -146,7 +149,7 @@
     <section id="projects">
         <div class="container">
             <div class="row">
-                <div class="col-md-3 col-sm-4 padding-top">
+                <div class="col-md-3 col-sm-4 padding-top-left">
                     <div class="sidebar portfolio-sidebar">
                         <div class="sidebar-item categories">
                             <h3>@if($data['lang'] == 1) 产品分类 @else Product Type @endif</h3>
@@ -180,7 +183,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-md-9 col-sm-8 padding-top">
+                <div class="col-md-9 col-sm-8 padding-top-right">
                     <div class="row">
                         <h4>@if($data['lang'] == 1) 产品详情介绍 @else Product Detail @endif</h4>
                         <table class="table table-striped">

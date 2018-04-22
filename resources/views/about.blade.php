@@ -205,9 +205,9 @@
                             <h1 class="post-title">温州市顺泰化工有限公司</h1>
                         </header>
                         <section class="post-content">
-                            <blockquote>
-                                <p>{{$data['about']->brief}}</p>
-                            </blockquote>
+                            {{--<blockquote>--}}
+                                {{--<p>{{$data['about']->brief}}</p>--}}
+                            {{--</blockquote>--}}
                             <p>
                                 <img src="{{explode('@',explode(';',$data['about']->picture)[0])[1]}}" alt="{{explode('@',explode(';',$data['about']->picture)[0])[0]}}" />
                                 {!! $data['about']->describe !!}

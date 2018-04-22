@@ -57,7 +57,9 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
         #go_search{
             background-color: #00adb5;
             color: white;
-            width: 10rem;
+            width: 5rem;
+            margin-left: -0.5rem;
+            border: 1px;
         }
         .search-product{
             height: 3rem;
@@ -104,6 +106,11 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
             quickList: ['en', 'hi', 'he', 'ml', 'ta', 'fr'] //FIXME
         } );
     } );
+    $('.logo img').click(function () {
+        // window.href ="/";
+        window.location.href="/";
+        // alert(123);
+    });
 </script>
 <!-- FlexSlider -->
 <link href="css/flexslider.css" rel='stylesheet' type='text/css' />
