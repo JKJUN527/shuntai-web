@@ -52,6 +52,12 @@
                         <span>{{$data['webinfo']->describe or '无介绍'}}</span>
                     </dd>
                 </dl>
+                <dl>
+                    <dt><span>首页优势产品介绍</span></dt>
+                    <dd>
+                        <span>{{$data['webinfo']->advantage or '无介绍'}}</span>
+                    </dd>
+                </dl>
             </div>
         </div>
 
@@ -74,6 +80,9 @@
         {{--<button class="btn bg-teal waves-effect">修改副标题</button>--}}
         <button class="btn bg-teal waves-effect"
                 data-toggle="modal" data-target="#setContentModal">修改网站介绍
+        </button>
+        <button class="btn bg-teal waves-effect"
+                data-toggle="modal" data-target="#setAdvantageModal">修改优势产品介绍
         </button>
 
     </div>
@@ -231,6 +240,32 @@
             </div>
         </div>
     </div>
+    <div class="modal fade" id="setAdvantageModal" tabindex="-1" role="dialog">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title">设置优势产品介绍</h4>
+                </div>
+                <form role="form" method="post" id="set-advantage-form">
+                    <div class="modal-body">
+
+                        <div class="input-group">
+                            <div class="form-line">
+                                <textarea type="text" rows="3" id="advantage" name="advantage" class="form-control"
+                                          placeholder="首页优势产品介绍"></textarea>
+                            </div>
+                            <label id="content-error" class="error" for="advantage"></label>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-link waves-effect" data-dismiss="modal">取消</button>
+                        <button type="submit" class="btn btn-primary waves-effect">设置</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
 @endsection
 
 @section('custom-script')
@@ -422,6 +457,39 @@
 
             $.ajax({
                 url: "/admin/about/setContent",
+                type: "post",
+                dataType: 'text',
+                cache: false,
+                contentType: false,
+                processData: false,
+                data: formData,
+                success: function (data) {
+                    $("#setContentModal").modal('toggle');
+                    var result = JSON.parse(data);
+
+                    checkResult(result.status, "修改成功", result.msg, null);
+                    setTimeout(function () {
+                        location.reload();
+                    }, 1200);
+                }
+            })
+        });
+        $("#set-advantage-form").submit(function (event) {
+            event.preventDefault();
+            var content = $("#advantage");
+
+            if (content.val() === '') {
+                setError(content, 'advantage', "不能为空");
+                return;
+            } else {
+                removeError(content, 'advantage');
+            }
+
+            var formData = new FormData();
+            formData.append("content", content.val());
+
+            $.ajax({
+                url: "/admin/about/setadvantage",
                 type: "post",
                 dataType: 'text',
                 cache: false,

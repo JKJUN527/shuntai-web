@@ -121,13 +121,31 @@ class WebinfoController extends Controller {
     }
 
     public function setContent(Request $request) {
+    $uid = AdminAuthController::getUid();
+    if ($uid == 0) {
+        return redirect('admin/login');
+    }
+
+    $webinfo = About::find(1);
+    $webinfo->describe = $request->input('content');
+
+    if ($webinfo->save()) {
+        $data['status'] = 200;
+    } else {
+        $data['status'] = 400;
+        $data['msg'] = "设置失败";
+    }
+
+    return $data;
+    }
+    public function setadvantage(Request $request) {
         $uid = AdminAuthController::getUid();
         if ($uid == 0) {
             return redirect('admin/login');
         }
 
         $webinfo = About::find(1);
-        $webinfo->describe = $request->input('content');
+        $webinfo->advantage = $request->input('content');
 
         if ($webinfo->save()) {
             $data['status'] = 200;

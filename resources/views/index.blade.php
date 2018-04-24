@@ -34,41 +34,17 @@
             line-height: 24px;
             color: #626262;
         }
-        #example1{
-            /*background-color: #56CFCA;*/
-            padding-top: 0.5rem;
-            height: auto;
-            width: 90%;
-            margin-left: 5%;
-        }
-        .address-map{
-            /*background-color: #56CFCA;*/
-            padding-top: 0.5rem;
-            height: 600px;
-            /*margin-bottom: 2rem;*/
-            width: 90%;
-            margin-left: 5%;
-            /*margin-bottom: 5rem;*/
-        }
-        .company_title{
-            margin-top: 2rem;
-        }
-        .text-center{
-            /*margin-left: 15%;*/
-            margin-top: 2rem;
-        }
         .about{
             background-color: white;
             /*height: 500px;*/
             padding-bottom: 5rem;
         }
-        .about_top{
-            padding-top: 0;
+        .about .product_title{
+            color: white;
         }
-        #team-carousel{
-            margin-top: 4rem;
+        .about .product_subtitle{
+            color: white;
         }
-
         .about-content{
             margin-top: 4rem;
             margin-bottom: 4rem;
@@ -86,12 +62,15 @@
             width: 15rem;
             height: 15rem;
         }
+        .flex-control-nav{
+            bottom: 0px !important;
+        }
     </style>
 
 @endsection
 @section('content')
     <section class="slider">
-        <div class="flexslider">
+        <div id="slider" class="flexslider">
             <ul class="slides">
                 @if($data['about']->carousel != null)
                     <?php
@@ -100,35 +79,23 @@
                     $imagepath = array_shift($pics);
                     ?>
                     @foreach($imagepath as $item)
-                            <li clearfix>
-                                <div class="col-sm-6">
-                                    <img src="{{$baseurl}}{{$item}}" alt=""/>
-                                </div>
-                            </li>
+                        <li clearfix>
+                            <div class="col-sm-6">
+                                <img src="{{$baseurl}}{{$item}}" alt=""/>
+                            </div>
+                        </li>
                     @endforeach
                 @else
-                {{--<li clearfix>--}}
-                    {{--<div class="col-sm-6 slider_right">--}}
-                        {{--<div class="col-sm-12 slider_caption">--}}
-                            {{--<h3>Socialnetwork</h3>--}}
-                            {{--<h4>Lorem Ipsum</h4>--}}
-                        {{--</div>--}}
-                    {{--</div>--}}
-                    {{--<div class="col-sm-6">--}}
-                        {{--<img src="images/4.png" alt=""/>--}}
-                    {{--</div>--}}
-                {{--</li>--}}
-                {{--<li clearfix>--}}
-                    {{--<div class="col-sm-6">--}}
-                        {{--<img src="images/9.png" alt=""/>--}}
-                    {{--</div>--}}
-                    {{--<div class="col-sm-6 slider_left">--}}
-                        {{--<div class="col-sm-12 slider_caption1">--}}
-                            {{--<h3>Entrepreneurs</h3>--}}
-                            {{--<h4>Lorem Ipsum</h4>--}}
-                        {{--</div>--}}
-                    {{--</div>--}}
-                {{--</li>--}}
+                    <li clearfix>
+                        <div class="images">
+                            <img src="images/banner_1.jpg" alt=""/>
+                        </div>
+                    </li>
+                    <li clearfix>
+                        <div class="images">
+                            <img src="images/banner_3.png" alt=""/>
+                        </div>
+                    </li>
                 @endif
             </ul>
         </div>
@@ -139,9 +106,9 @@
             <div class="kwicks">
                 <div class="kwick first" style="width: 655px;">
                     <div> <span class="icon icon01" style="background-color: #00adb5;"></span>
-                        <div class="kwick-nr"> <a href="/products">
+                        <div class="kwick-nr"> <a href="/advantage">
                                 <p><img src="{{asset('images/20140216214449602.jpg')}}" alt=""></p>
-                                <h3>氟化钙（萤石）、氟硅酸钠、氟化钠、氟铝酸钠（冰晶石）、氟化铝、氟化铵、氟化镁、氟化氢、氟硅酸钾、氟硼酸钾、氟硅酸镁、氟硅酸铵、氟化氢铵、氟钛酸钾、氧化铝、氢氧化铝等</h3>
+                                <h3>{{$data['about']->advantage}}</h3>
                             </a> </div>
                     </div>
                 </div>
@@ -170,8 +137,9 @@
     <div class="con_01">
         <div class="product_index index_title">
             <p class="product_title">产品中心
-                <span>Product</span>
+                {{--<span>Product</span>--}}
             </p>
+            <p class="product_subtitle">Product</p>
             <p class="product_subtitle">主营酸类、碱类、盐类、化学试剂等。</p>
         </div>
         <div class="box">
@@ -267,7 +235,7 @@
         {{--</div>--}}
     {{--</div>--}}
     <div class="about">
-        <div class="product_index index_title" style="padding-top: 3rem">
+        <div class="product_index index_title" style="padding-top: 1.5rem; padding-bottom:1.5rem;background-color: #00adb5">
             <p class="product_title">关于我们
                 {{--<span></span>--}}
             </p>
@@ -284,4 +252,7 @@
     @include('components.myfooter')
 @endsection
 @section('custom-script')
+    <script>
+
+    </script>
 @endsection

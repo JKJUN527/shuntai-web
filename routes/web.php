@@ -97,6 +97,7 @@ Route::any('admin/about/setCode', ['uses' => 'Admin\WebinfoController@setCode'])
 Route::any('admin/about/setEmail', ['uses' => 'Admin\WebinfoController@setEmail']);
 Route::any('admin/about/setAddress', ['uses' => 'Admin\WebinfoController@setAddress']);
 Route::any('admin/about/setContent', ['uses' => 'Admin\WebinfoController@setContent']);
+Route::any('admin/about/setadvantage', ['uses' => 'Admin\WebinfoController@setadvantage']);
 
 //end
 Route::any('smstest', ['uses' => 'ValidationController@verifySmsCode']);//显示已发布的职位信息

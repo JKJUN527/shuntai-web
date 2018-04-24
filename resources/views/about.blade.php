@@ -209,7 +209,7 @@
                                 {{--<p>{{$data['about']->brief}}</p>--}}
                             {{--</blockquote>--}}
                             <p>
-                                <img src="{{explode('@',explode(';',$data['about']->picture)[0])[1]}}" alt="{{explode('@',explode(';',$data['about']->picture)[0])[0]}}" />
+                                {{--<img src="{{explode('@',explode(';',$data['about']->picture)[0])[1]}}" alt="{{explode('@',explode(';',$data['about']->picture)[0])[0]}}" />--}}
                                 {!! $data['about']->describe !!}
                             </p>
                             <hr />

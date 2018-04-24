@@ -121,11 +121,35 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
     });
     $(window).load(function(){
         $('.flexslider').flexslider({
-            animation: "slide",
+            animation: "solid", //动画效果
+            animationLoop: true, //是否循环播放
+            controlNav: true,
+            directionNav: false,
+            startAt: 0, // Integer: 开始播放的 slide，从 0 开始计数
+            slideshow: true, // Boolean: 是否自动播放
+            direction: "horizontal", // String: 滚动方向 ["horizontal"|"vertical"]
+            prevText: ' <img src="{{asset('images/left1.png')}}">',           // String: 上一个按钮文字（），
+            nextText: '<img src="{{asset('images/left2.png')}}">',           // String: 下一个按钮文字
             start: function(slider){
                 $('body').removeClass('loading');
             }
         });
+        {{--$('#slider').flexslider({--}}
+            {{--animation: "solid", //动画效果--}}
+            {{--animationLoop: true, //是否循环播放--}}
+            {{--controlNav: true,--}}
+            {{--directionNav: false,--}}
+            {{--startAt: 0, // Integer: 开始播放的 slide，从 0 开始计数--}}
+            {{--slideshow: true, // Boolean: 是否自动播放--}}
+            {{--slideshowSpeed: 3000, // Integer: ms 滚动间隔时间--}}
+            {{--animationSpeed: 600, // Integer: ms 动画滚动速度--}}
+            {{--direction: "horizontal", // String: 滚动方向 ["horizontal"|"vertical"]--}}
+            {{--prevText: ' <img src="{{asset('images/left1.png')}}">',           // String: 上一个按钮文字（），--}}
+            {{--nextText: '<img src="{{asset('images/left2.png')}}">',           // String: 下一个按钮文字--}}
+            {{--after: function (slider) {//加载完成后回调函数--}}
+                {{--console.log(slider)--}}
+            {{--}--}}
+        {{--});--}}
     });
 </script>
 <!-- FlexSlider -->
