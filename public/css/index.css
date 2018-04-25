@@ -88,11 +88,11 @@
 .con_01 .box ul li {
     /*background: url(../images/back01.jpg) no-repeat;*/
     background: #FAFAFA;
-    width: 25rem;
+    width: 22%;
     float: left;
-    height: 18rem;
+    /*height: 18rem;*/
     padding: 0 18px;
-    margin: 0 15px;
+    margin: 0 1.5%;
     list-style-type: none;
     box-shadow: 5px 5px 5px #888888;
 }
@@ -115,7 +115,7 @@
     clear: both;
 }
 .con_01 .box dl dd {
-    width: 319px;
+   /* width: 319px;*/
     overflow: hidden;
     margin-top: 12px;
     height: 106px;
