@@ -152,8 +152,8 @@ marquee {
 .navbar {
    min-height:100%;
    margin-bottom:0;
-   background: #fff;
-   padding:2em 0 1em;
+   background: #00adb5;
+   padding:1em 0 0.5em;
 }
 .navbar-collapse {
     padding:0 !important;
@@ -182,7 +182,7 @@ marquee {
 .navbar-nav > li > a {
     padding: 0 !important;
     text-align: center;
-    color: #000;
+    color: white;;
     font-weight: 100;
     font-size: 1.5rem;
     margin: 10px 12px;
@@ -1023,10 +1023,10 @@ ul.gallery li.last{
 }
 .about_banner h2{
 	color: #fff;
-    font-size:5em;
+    font-size:4em;
     text-transform: uppercase;
     margin:0.9em 0 0.4em 0;
-    font-family: 'Oswald', sans-serif;
+    font-family: 'Microsoft Yahei';
     font-weight: 100;
 }
 a.home {
@@ -2634,7 +2634,7 @@ h3.post-title_1 a:hover{
 }
 .post-content p{
 	font: 100 15px/25px 'PT Sans', sans-serif;
-    color: #999;
+    /*color: #999;*/
     margin-bottom: 1em;
 }
 a.post_content_readmore{

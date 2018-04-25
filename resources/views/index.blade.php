@@ -140,7 +140,7 @@
                 {{--<span>Product</span>--}}
             </p>
             <p class="product_subtitle">Product</p>
-            <p class="product_subtitle">主营酸类、碱类、盐类、化学试剂等。</p>
+            <p class="product_subtitle">主营酸类、碱类、盐类、化学试剂等</p>
         </div>
         <div class="box">
             <ul>
