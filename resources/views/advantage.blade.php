@@ -2,7 +2,7 @@
 @section('title', '温江顺泰化工|优势产品介绍')
 
 @section('header-tab')
-    @include('components.headerTab')
+    @include('components.headerTab',['lang'=>$data['lang']])
 @endsection
 
 @section('header-nav')
@@ -150,21 +150,23 @@
                 <div class="col-md-3 col-sm-4 padding-top-left">
                     <div class="sidebar portfolio-sidebar">
                         <div class="sidebar-item categories">
-                            <h3>@if($data['lang'] == 1) 产品分类 @else Product Type @endif</h3>
-                            <ul class="nav navbar-stacked">
-                                @foreach($data['type'] as $type)
-                                    <li @if($data['ptype'] == $type->id) class="active" @endif>
-                                        <a href="/advantage?ptype={{$type->id}}">
-                                            @if($data['lang'] == 1)
-                                                {{$type->ch_name}}
-                                            @else
-                                                {{$type->en_name}}
-                                            @endif
-                                            {{--<span class="pull-right">(1)</span>--}}
-                                        </a>
-                                    </li>
-                                @endforeach
-                            </ul>
+                            <div class="widget">
+                                <h3>@if($data['lang'] == 1) 产品分类 @else Product Type @endif</h3>
+                                <ul class="nav navbar-stacked">
+                                    @foreach($data['type'] as $type)
+                                        <li @if($data['ptype'] == $type->id) class="active" @endif>
+                                            <a href="/advantage?ptype={{$type->id}}">
+                                                @if($data['lang'] == 1)
+                                                    {{$type->ch_name}}
+                                                @else
+                                                    {{$type->en_name}}
+                                                @endif
+                                                {{--<span class="pull-right">(1)</span>--}}
+                                            </a>
+                                        </li>
+                                    @endforeach
+                                </ul>
+                            </div>
                         </div>
                         <div class="sidebar-item  recent">
                             <div class="widget">
@@ -183,7 +185,7 @@
                 </div>
                 <div class="col-md-9 col-sm-8 padding-top-right">
                     <div class="row">
-                        <h4>@if($data['lang'] == 1) 优势产品介绍 @else Advantage Products Detail @endif</h4>
+                        <h4><b>@if($data['lang'] == 1) 优势产品介绍 @else Advantage Products Detail @endif</b></h4>
                         <table class="table table-striped">
                             <thead>
                             <tr>

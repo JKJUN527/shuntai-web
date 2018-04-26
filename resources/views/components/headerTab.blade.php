@@ -18,9 +18,11 @@
                 <ul>
                     {{--<li><a href="#" class="btn btn-default btn-default_2 pull-left" data-toggle="modal" data-target="#applyModal">Login</a></li>--}}
                     {{--<li><a href="#" class="btn btn-default btn-default_2 pull-left" data-toggle="modal" data-target="#applyModal_1">Register</a></li>--}}
-                    <li><a href="/index?lang=ch" class="lang">中文版</a></li>
-                    <li><a href="/index?lang=en" class="lang">English</a></li>
+                    <li><a href="/index?lang=ch" class="lang @if($lang == 1) active @endif">中文版</a></li>
+                    <li><a href="/index?lang=en" class="lang @if($lang == 2) active @endif">English</a></li>
                 </ul>
+                <br>
+                <p style="margin: 0;">@if($lang == 1) 咨询热线 @else  Hot-Line @endif：李先生13738713800</p>
             </div>
             <div class="clearfix"> </div>
         </div>

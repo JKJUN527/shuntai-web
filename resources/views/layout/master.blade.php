@@ -57,7 +57,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
         #go_search{
             background-color: #00adb5;
             color: white;
-            width: 5rem;
+            width: auto;
             /*margin-left: -0.5rem;*/
             border: 1px;
         }
@@ -66,6 +66,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
             width: 18rem;
 			border: 1px solid white;
 			color: white;
+            padding-left: 15px;
 			background: rgba(0, 0, 0, 0);
 			border-top-right-radius: 10px;
 			border-top-left-radius: 10px;
@@ -75,6 +76,14 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
         .logo-left{
             height: 5rem;
         }
+        .sidebar-item{
+            box-shadow: 5px 5px 5px #888888;
+        }
+        .sidebar .widget {
+            background: #FAFAFA !important;
+            padding: 21px 30px;
+        }
+
     </style>
     @section('custom-style')
         @show

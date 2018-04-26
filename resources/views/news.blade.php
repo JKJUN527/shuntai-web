@@ -2,7 +2,7 @@
 @section('title', '温江顺泰化工|新闻动态')
 
 @section('header-tab')
-    @include('components.headerTab')
+    @include('components.headerTab',['lang'=>$data['lang']])
 @endsection
 
 @section('header-nav')

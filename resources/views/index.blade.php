@@ -2,7 +2,7 @@
 @section('title', '温江顺泰化工|首页')
 
 @section('header-tab')
-    @include('components.headerTab')
+    @include('components.headerTab',['lang'=>$data['lang']])
 @endsection
 
 @section('header-nav')
@@ -64,6 +64,13 @@
         }
         .flex-control-nav{
             bottom: 0px !important;
+        }
+        .qingfusuan_xsygg2 {
+            background: url({{asset('images/dtz.jpg')}}) no-repeat center 0;
+            height: 930px;
+            display: block;
+            width: 80%;
+            margin-left: 10%;
         }
     </style>
 
@@ -246,6 +253,7 @@
             {{--<img src="{{asset('images/pic9.jpg')}}">--}}
             <p>&nbsp;&nbsp;&nbsp;&nbsp;{!! $data['about']->describe !!}</p>
         </div>
+        <div class="qingfusuan_xsygg2"></div>
     </div>
 @endsection
 @section('footer')

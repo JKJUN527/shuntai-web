@@ -4,7 +4,8 @@
     /*bottom: 5px;*/
     width: 100%;
     height: 98px;
-    background: url(../images/index-icon.png) repeat-x 0 0;
+    /*background: url(../images/index-icon.png) repeat-x 0 0;*/
+    background-color: #FAFAFA;
 }
 .module .index-center {
     background: none;
@@ -15,7 +16,7 @@
     top: 0;
     width: 1000px;
     height: 98px;
-    margin-left: -500px;
+    margin-left: -350px;
     overflow: hidden;
 }
 .kwicks .icon01 {

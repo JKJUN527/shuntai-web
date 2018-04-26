@@ -2,7 +2,7 @@ body{
 	padding:0;
 	margin:0;
 	font-family: "Microsoft Yahei";
-	background: #F1F1F1;
+	background: white;
 }
 body a{
     transition:0.5s all;
@@ -95,7 +95,7 @@ span.highlight{
     border-radius: 0;
 }
 .top-menu ul li a.active {
-	background:#ffbb42;
+	background:#56CFCA;
 	color:#fff;
 	padding:6px 15px;
 }
@@ -136,7 +136,8 @@ marquee {
 }
 .help_line {
     float: right;
-    margin:10px 0 0 0;
+    /*margin:10px 0 0 0;*/
+    margin: 10px 12px;
 }
 .navbar-default {
     background-color:#f1b458 !important;
@@ -997,7 +998,9 @@ ul.gallery li.last{
 }
 .footer_bottom{
 	background-color: #292a2c;
-	padding:3em 0;
+	/*padding:3em 0;*/
+    padding-top:3em;
+    padding-bottom:1em;
 	text-align: center;
 }
 .copy p{
@@ -2634,7 +2637,7 @@ h3.post-title_1 a:hover{
 	color:#F3DB28;
 }
 .post-content p{
-	font: 100 15px/25px 'PT Sans', sans-serif;
+	/*font: 100 15px/25px 'PT Sans', sans-serif;*/
     /*color: #999;*/
     margin-bottom: 1em;
 }

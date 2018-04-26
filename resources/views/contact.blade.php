@@ -2,7 +2,7 @@
 @section('title', '温江顺泰化工|联系我们')
 
 @section('header-tab')
-    @include('components.headerTab')
+    @include('components.headerTab',['lang'=>$data['lang']])
 @endsection
 
 @section('header-nav')
@@ -37,7 +37,11 @@
         }
         .contact-info{
             background: #ffffff;
-            padding: 21px 30px;
+            /*padding: 21px 30px;*/
+        }
+        .contact-info a{
+            color: black;
+            /*padding: 21px 30px;*/
         }
         .contact-info h2{
             margin-top: 0;
@@ -53,7 +57,7 @@
             content: "";
             width: 90px;
             height: 1px;
-            background: #e67e22;
+            background: #00adb5;
             position: absolute;
             left: 0;
             bottom: -1px;
@@ -74,7 +78,7 @@
         }
 
         .post{
-            padding: 35px;
+            /*padding: 35px;*/
             background: #ffffff;
             margin-bottom: 35px;
             position: relative;
@@ -225,20 +229,20 @@
                 </div>
                 <div class="col-md-9 col-sm-8 padding-top">
                     <article class="post page">
-                        <div class="lm_t">联系我们</div>
+                        <div class="lm_t"> @if($data['lang'] == 1) 联系我们 @else Contact Us @endif</div>
                         <div class="box">
                             <p>
-                                地址：{{$data['about']->address}}
+                                @if($data['lang'] == 1) 地址 @else Address @endif：{{$data['about']->address}}
                                 <br>
-                                邮编：{{$data['about']->postcodes}}
+                                    @if($data['lang'] == 1) 邮编 @else Postcode @endif：{{$data['about']->postcodes}}
                                 <br>
-                                电话：{{$data['about']->tel}}
+                                    @if($data['lang'] == 1) 电话 @else Phone @endif：{{$data['about']->tel}}
                                 <br>
-                                传真：{{$data['about']->fax}}
+                                    @if($data['lang'] == 1) 传真 @else Fax @endif：{{$data['about']->fax}}
                                 <br>
-                                E-mail：{{$data['about']->email}}
+                                    @if($data['lang'] == 1) 邮箱 @else E-mail @endif：{{$data['about']->email}}
                                 <br>
-                                网址：http://www.wzshuntaichem.com
+                                    @if($data['lang'] == 1) 网址 @else Website @endif：http://www.wzshuntaichem.com
                                 <br>
                             </p>
                             <p id="map"></p>
@@ -251,9 +255,12 @@
 
     <div class="container">
         <div class="raw">
-            <h1 class="title text-center wow fadeInDown" data-wow-duration="500ms" data-wow-delay="300ms">给我留言</h1>
-            <p class="text-center wow fadeInDown" style="margin-bottom: 80px;" data-wow-duration="400ms" data-wow-delay="400ms">
-                欢迎您光临本公司网站，请您填写以下信息，我们将会与您保持联系，谢谢!
+            <h1 class="title text-center wow fadeInDown" data-wow-duration="500ms" data-wow-delay="300ms">@if($data['lang'] == 1) 给我留言 @else Leaving a message @endif</h1>
+            <p class="text-center wow fadeInDown" style="margin-bottom: 20px;" data-wow-duration="400ms" data-wow-delay="400ms">
+                @if($data['lang'] == 1) 欢迎您光临本公司网站，请您填写以下信息，我们将会与您保持联系，谢谢! @else
+
+                    Welcome to our website. Please fill in the following information. We will keep in touch with you. Thank you!
+                @endif
             </p>
             <div class="col-md-4 col-sm-6">
                 <div class="contact-info bottom">
@@ -275,16 +282,16 @@
                     {{--<h2>联系我们</h2>--}}
                     <form id="main-contact-form" name="contact-form" method="post">
                         <div class="form-group">
-                            <input type="text" name="name" class="form-control" required="required" placeholder="Name">
+                            <input type="text" name="name" class="form-control" required="required" placeholder="@if($data['lang'] == 1) 您的姓名 @else Name @endif">
                         </div>
                         <div class="form-group">
-                            <input type="email" name="email" class="form-control" required="required" placeholder="Email Id">
+                            <input type="email" name="email" class="form-control" required="required" placeholder="@if($data['lang'] == 1) 您的邮箱 @else E-mail @endif">
                         </div>
                         <div class="form-group">
-                            <textarea name="message" id="message" required="required" class="form-control" rows="3" placeholder="Your text here"></textarea>
+                            <textarea name="message" id="message" required="required" class="form-control" rows="3" placeholder="@if($data['lang'] == 1) 留言 @else Leaving a message @endif"></textarea>
                         </div>
                         <div class="form-group">
-                            <input type="submit" name="submit" class="btn btn-submit" value="Submit">
+                            <input type="submit" name="submit" class="btn btn-submit" value="@if($data['lang'] == 1) 提交 @else Submit @endif">
                         </div>
                     </form>
                 </div>

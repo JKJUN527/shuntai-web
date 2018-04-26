@@ -2,7 +2,7 @@
 @section('title', '温江顺泰化工|营销网络')
 
 @section('header-tab')
-    @include('components.headerTab')
+    @include('components.headerTab',['lang'=>$data['lang']])
 @endsection
 
 @section('header-nav')
@@ -196,7 +196,7 @@
                                     <span>国外网络：</span>{{$data['about']->market_out}}
                                 </li>
                             </ul>
-                            <img src="{{asset('images/marking.jpg')}}">
+                            <img src="">
                         </div>
 
                     </article>
