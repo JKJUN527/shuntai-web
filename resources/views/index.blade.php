@@ -99,12 +99,12 @@
                     </li>
                     <li clearfix>
                         <div class="images">
-                            <img src="images/banner_5.png" alt=""/>
+                            <img src="images/banner_5.jpg" alt=""/>
                         </div>
                     </li>
                     <li clearfix>
                         <div class="images">
-                            <img src="images/banner_3.png" alt=""/>
+                            <img src="images/banner_3.jpg" alt=""/>
                         </div>
                     </li>
                 @endif
