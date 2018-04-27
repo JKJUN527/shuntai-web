@@ -1,5 +1,5 @@
 @extends('layout.master')
-@section('title', '温江顺泰化工|优势产品介绍')
+@section('title', '温州顺泰化工|优势产品介绍')
 
 @section('header-tab')
     @include('components.headerTab',['lang'=>$data['lang']])
@@ -135,13 +135,20 @@
             width: 52px;
             height: 52px;
         }
+        .about_banner{
+            background:url({{asset('images/head2.jpg')}})no-repeat center top;
+            background-size:cover;
+            -webkit-background-size:cover;
+            -moz-background-size:cover;
+            -o-background-size:cover;
+        }
     </style>
 @endsection
 @section('content')
     <div class="about_banner">
         <div class="container">
-            <h2>顺泰化工</h2>
-            <span class="breadcrumbs"><a href="/"><i class="fa fa-home home_1"></i></a> / <span>优势产品</span></span>
+            {{--<h2>顺泰化工</h2>--}}
+            {{--<span class="breadcrumbs"><a href="/"><i class="fa fa-home home_1"></i></a> / <span>优势产品</span></span>--}}
         </div>
     </div>
     <section id="projects">

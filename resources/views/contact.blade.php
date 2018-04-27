@@ -1,5 +1,5 @@
 @extends('layout.master')
-@section('title', '温江顺泰化工|联系我们')
+@section('title', '温州顺泰化工|联系我们')
 
 @section('header-tab')
     @include('components.headerTab',['lang'=>$data['lang']])
@@ -132,7 +132,7 @@
             margin-top: 5rem;
         }
         .sidebar .widget {
-            background: #ffffff;
+            background: #FAFAFA !important;
             padding: 21px 30px;
         }
         .widget {
@@ -176,16 +176,26 @@
             padding: 25px 12px 0;
             font-size: 14px;
         }
+        .padding-top form{
+            padding: 25px 12px 0;
+        }
         #map{
             height: 300px;
+        }
+        .about_banner{
+            background:url({{asset('images/head6.jpg')}})no-repeat center top;
+            background-size:cover;
+            -webkit-background-size:cover;
+            -moz-background-size:cover;
+            -o-background-size:cover;
         }
     </style>
 @endsection
 @section('content')
     <div class="about_banner">
         <div class="container">
-            <h2>顺泰化工</h2>
-            <span class="breadcrumbs"><a href="/"><i class="fa fa-home home_1"></i></a> / <span>联系我们</span></span>
+            {{--<h2>顺泰化工</h2>--}}
+            {{--<span class="breadcrumbs"><a href="/"><i class="fa fa-home home_1"></i></a> / <span>联系我们</span></span>--}}
         </div>
     </div>
     <section class="content-wrap">
@@ -253,34 +263,34 @@
         </div>
     </section>
 
-    <div class="container">
-        <div class="raw">
-            <h1 class="title text-center wow fadeInDown" data-wow-duration="500ms" data-wow-delay="300ms">@if($data['lang'] == 1) 给我留言 @else Leaving a message @endif</h1>
-            <p class="text-center wow fadeInDown" style="margin-bottom: 20px;" data-wow-duration="400ms" data-wow-delay="400ms">
-                @if($data['lang'] == 1) 欢迎您光临本公司网站，请您填写以下信息，我们将会与您保持联系，谢谢! @else
-
-                    Welcome to our website. Please fill in the following information. We will keep in touch with you. Thank you!
-                @endif
-            </p>
-            <div class="col-md-4 col-sm-6">
-                <div class="contact-info bottom">
-                    <h2>@if($data['lang'] == 1) 联系方式 @else Contacts @endif</h2>
-                    <address>
-                        <p> @if($data['lang'] == 1) 邮箱 @else E-mail @endif: <a href="mailto:{{$data['about']->email}}">{{$data['about']->email}}</a></p>
-                        <p> @if($data['lang'] == 1) 电话 @else Phone  @endif: {{$data['about']->tel}}</p>
-                        <p> @if($data['lang'] == 1) 传真 @else Fax    @endif: {{$data['about']->fax}}</p>
-                        <p> @if($data['lang'] == 1) 公司地址 @else Address @endif:{{$data['about']->address}}</p>
-                    </address>
-
-                    {{--<h2></h2>--}}
-                    {{--<address>--}}
-                       {{--<p>{{$data['about']->address}}</p>--}}
-                    {{--</address>--}}
+    <section class="content-wrap">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-3 col-sm-4 padding-top">
+                    <div class="sidebar portfolio-sidebar">
+                        <div class="sidebar-item  recent">
+                            <div class="widget">
+                                <h3 class="title">@if($data['lang']==1) 联系我们 @else Contact Us @endif</h3>
+                                <div class="content community">
+                                    <p>@if($data['lang']==1) 电话 @else Phone @endif：{{$data['about']->tel}}</p>
+                                    <p>@if($data['lang']==1) 邮箱 @else E-mail @endif：{{$data['about']->email}}</p>
+                                    <p>@if($data['lang']==1) 传真 @else Fax @endif：{{$data['about']->fax}}</p>
+                                    <p>@if($data['lang']==1) 公司地址 @else Address @endif：{{$data['about']->address}}</p>
+                                    {{--<p><a href="http://wenda.ghostchina.com/" title="Ghost中文网问答社区" target="_blank" onclick="_hmt.push(['_trackEvent', 'big-button', 'click', '问答社区'])"><i class="fa fa-comments"></i> 问答社区</a></p>--}}
+                                    {{--<p><a href="http://weibo.com/ghostchinacom" title="Ghost中文网官方微博" target="_blank" onclick="_hmt.push(['_trackEvent', 'big-button', 'click', '官方微博'])"><i class="fa fa-weibo"></i> 官方微博</a></p>--}}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-            </div>
-            <div class="col-md-8 col-sm-12">
-                <div class="contact-form bottom">
-                    {{--<h2>联系我们</h2>--}}
+                <div class="col-md-9 col-sm-8 padding-top">
+                    <h1 class="title text-center wow fadeInDown" data-wow-duration="500ms" data-wow-delay="300ms">@if($data['lang'] == 1) 给我留言 @else Leaving a message @endif</h1>
+                    <p class="text-center wow fadeInDown" style="margin-bottom: 20px;" data-wow-duration="400ms" data-wow-delay="400ms">
+                        @if($data['lang'] == 1) 欢迎您光临本公司网站，请您填写以下信息，我们将会与您保持联系，谢谢! @else
+
+                            Welcome to our website. Please fill in the following information. We will keep in touch with you. Thank you!
+                        @endif
+                    </p>
                     <form id="main-contact-form" name="contact-form" method="post">
                         <div class="form-group">
                             <input type="text" name="name" class="form-control" required="required" placeholder="@if($data['lang'] == 1) 您的姓名 @else Name @endif">
@@ -297,8 +307,8 @@
                     </form>
                 </div>
             </div>
-    </div>
-    </div>
+        </div>
+    </section>
 
 @endsection
 @section('footer')

@@ -1,5 +1,5 @@
 @extends('layout.master')
-@section('title', '温江顺泰化工|首页')
+@section('title', '温州顺泰化工|首页')
 
 @section('header-tab')
     @include('components.headerTab',['lang'=>$data['lang']])
@@ -94,7 +94,12 @@
                 @else
                     <li clearfix>
                         <div class="images">
-                            <img src="images/banner_1.jpg" alt=""/>
+                            <img src="images/banner_4.jpg" alt=""/>
+                        </div>
+                    </li>
+                    <li clearfix>
+                        <div class="images">
+                            <img src="images/banner_5.png" alt=""/>
                         </div>
                     </li>
                     <li clearfix>
@@ -110,7 +115,7 @@
     <div class="module">
         <div class="center index-center">
             <div class="kwicks">
-                <div class="kwick first" style="width: 655px;">
+                <div class="kwick first">
                     <div> <span class="icon icon01" style="background-color: #00adb5;"></span>
                         <div class="kwick-nr"> <a href="/advantage">
                                 <p><img src="{{asset('images/20140216214449602.jpg')}}" alt=""></p>

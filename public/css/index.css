@@ -17,7 +17,7 @@
     width: 1000px;
     height: 98px;
     margin-left: -350px;
-    overflow: hidden;
+    /*overflow: hidden;*/
 }
 .kwicks .icon01 {
     background-image: url(../images/icon01.png);
@@ -35,14 +35,14 @@
 }
 .kwicks .kwick {
     float: left;
-    width: 115px;
+    /*width: 115px;*/
     height: 98px;
     border-right: 1px solid transparent;
     /*background: url(../images/y-bg4.png) no-repeat right center;*/
     /*overflow: hidden;*/
 }
 .kwicks .kwick div {
-    width: 655px;
+    /*width: 655px;*/
     height: 98px;
     /*background: url(../images/index-icon.png) repeat-x;*/
 }
@@ -50,7 +50,7 @@
     background-image: url(../images/icon01.png);
 }
 .kwicks .kwick div.kwick-nr {
-    width: 503px;
+    /*width: 503px;*/
     height: 98px;
     float: left;
 }
@@ -73,9 +73,9 @@
     padding-top: 10px;
     line-height: 20px;
     margin-left: 24px;
-    width: 650px;
+    width: 680px;
     float: left;
-    font-size: 12px;
+    font-size: 16px;
     /*font-family: '微软雅黑';*/
 }
 

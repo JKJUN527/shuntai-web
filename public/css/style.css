@@ -1017,12 +1017,12 @@ ul.gallery li.last{
 }
 /*----------------about---------------*/
 .about_banner{
-	background:url(../images/about.jpg)no-repeat center top;
+	/*background:url(../images/head1.jpg)no-repeat center top;*/
 	background-size:cover;
 	-webkit-background-size:cover;
 	-moz-background-size:cover;
 	-o-background-size:cover;
-	min-height:270px;
+	min-height:220px;
 	text-align:center;
 }
 .about_banner h2{
