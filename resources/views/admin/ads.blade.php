@@ -43,11 +43,15 @@
                     ?>
                     @foreach($pics as $pic)
                         <?php $temp = explode('@', $pic);?>
+                        @if(sizeof($temp) >=2)
                         <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12 operate-btn big-image--btn">
                             <img src="{{$temp[1]}}"/>
                             <h5>{{$temp[0]}}</h5>
                             <input class="delete" type="button" data-content="{{$temp[1]}}" value="删除"/>
                         </div>
+                        @else
+                            <p>暂无图片</p>
+                        @endif
                     @endforeach
                     <div style="clear:both;"></div>
                 </div>

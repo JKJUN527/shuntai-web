@@ -79,16 +79,15 @@
     <section class="slider">
         <div id="slider" class="flexslider">
             <ul class="slides">
-                @if($data['about']->carousel != null)
+                @if($data['about']->picture != null)
                     <?php
-                    $pics = explode('@', $data['about']->carousel);
-                    $baseurl = $pics[0];
-                    $imagepath = array_shift($pics);
+                    $temps = explode(';', $data['about']->picture);
                     ?>
-                    @foreach($imagepath as $item)
+                    @foreach($temps as $item)
+                            <?php  $pic = explode('@', $item);?>
                         <li clearfix>
-                            <div class="col-sm-6">
-                                <img src="{{$baseurl}}{{$item}}" alt=""/>
+                            <div class="images">
+                                <img src="{{$pic[1]}}" alt="{{$pic[0]}}"/>
                             </div>
                         </li>
                     @endforeach
@@ -143,18 +142,18 @@
     </div>
     <div class="con_01">
         <div class="product_index index_title">
-            <p class="product_title">产品中心
+            <p class="product_title">@if($data['lang'] == 1) 产品中心 @else Product @endif
                 {{--<span>Product</span>--}}
             </p>
-            <p class="product_subtitle">Product</p>
-            <p class="product_subtitle">主营酸类、碱类、盐类、化学试剂等</p>
+            {{--<p class="product_title">Product</p>--}}
+            <p class="product_subtitle">@if($data['lang'] == 1) 主营酸类、碱类、盐类、化学试剂等 @else Main acids, alkaloids, salts, chemical reagents, etc. @endif</p>
         </div>
         <div class="box">
             <ul>
                 <li>
                     <dl>
                         <dt>
-                            <div class="fl span01">酸类</div>
+                            <div class="fl span01">@if($data['lang'] == 1) 酸类 @else Acids @endif</div>
                             <div class="fr pt5"><a href="/products?ptype=3" style="color:#5fa4e9;font-family:Arial;font-size:10px;">MORE&gt;</a></div>
                             <div class="cle"></div>
                         </dt>
@@ -164,7 +163,7 @@
                 <li>
                     <dl>
                         <dt>
-                            <div class="fl span01">碱类</div>
+                            <div class="fl span01">@if($data['lang'] == 1) 碱类 @else Alkaloids @endif</div>
                             <div class="fr pt5"><a href="/products?ptype=5" style="color:#5fa4e9;font-family:Arial;font-size:10px;">MORE&gt;</a></div>
                             <div class="cle"></div>
                         </dt>
@@ -174,7 +173,7 @@
                 <li>
                     <dl>
                         <dt>
-                            <div class="fl span01">盐类</div>
+                            <div class="fl span01">@if($data['lang'] == 1) 盐类 @else Salts @endif</div>
                             <div class="fr pt5"><a href="/products?ptype=6" style="color:#5fa4e9;font-family:Arial;font-size:10px;">MORE&gt;</a></div>
                             <div class="cle"></div>
                         </dt>
@@ -184,7 +183,7 @@
                 <li>
                     <dl>
                         <dt>
-                            <div class="fl span01">化学试剂</div>
+                            <div class="fl span01">@if($data['lang'] == 1) 化学试剂 @else Chemical reagents @endif</div>
                             <div class="fr pt5"><a href="/products?ptype=7" style="color:#5fa4e9;font-family:Arial;font-size:10px;">MORE&gt;</a></div>
                             <div class="cle"></div>
                         </dt>
@@ -243,11 +242,11 @@
     {{--</div>--}}
     <div class="about">
         <div class="product_index index_title" style="padding-top: 1.5rem; padding-bottom:1.5rem;background-color: #00adb5">
-            <p class="product_title">关于我们
+            <p class="product_title">@if($data['lang']==1) 关于我们 @else About Us @endif
                 {{--<span></span>--}}
             </p>
             {{--<p class="product_subtitle">{{$data['about']->brief}}</p>--}}
-            <p class="product_subtitle">About Us</p>
+            {{--<p class="product_subtitle">About Us</p>--}}
         </div>
         <div class="about-content">
             {{--<img src="{{asset('images/pic9.jpg')}}">--}}

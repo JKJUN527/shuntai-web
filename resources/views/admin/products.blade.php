@@ -201,24 +201,24 @@
             } else {
                 removeError(en_name, 'en_name');
             }
-            if (model.val() === '') {
-                setError(model, 'model', '不能为空');
-                return;
-            } else {
-                removeError(model, 'model');
-            }
-            if (package1.val() === '') {
-                setError(package1, 'package1', '不能为空');
-                return;
-            } else {
-                removeError(package1, 'package1');
-            }
-            if (cas.val() === '') {
-                setError(cas, 'cas', '不能为空');
-                return;
-            } else {
-                removeError(cas, 'cas');
-            }
+//            if (model.val() === '') {
+//                setError(model, 'model', '不能为空');
+//                return;
+//            } else {
+//                removeError(model, 'model');
+//            }
+//            if (package1.val() === '') {
+//                setError(package1, 'package1', '不能为空');
+//                return;
+//            } else {
+//                removeError(package1, 'package1');
+//            }
+//            if (cas.val() === '') {
+//                setError(cas, 'cas', '不能为空');
+//                return;
+//            } else {
+//                removeError(cas, 'cas');
+//            }
 
             var formData = new FormData();
             formData.append("ch_name", ch_name.val());

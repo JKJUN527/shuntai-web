@@ -82,7 +82,7 @@
         <div class="card">
             <div class="header">
                 <h2>
-                    新增企业展示照片
+                    新增首页轮播图片
                 </h2>
             </div>
             <div class="top-border operate-content">
@@ -145,13 +145,13 @@
                     showCancelButton: true,
                     showConfirmButton: false
                 });
-            } else if (file.size > 2 * 1024 * 1024) {
+            } else if (file.size > 5 * 1024 * 1024) {
                 isCorrect = false;
                 $("#picture-big").val("");
                 swal({
                     title: "错误",
                     type: "error",
-                    text: "图片文件最大支持：2MB",
+                    text: "图片文件最大支持：5MB",
                     cancelButtonText: "关闭",
                     showCancelButton: true,
                     showConfirmButton: false
@@ -167,20 +167,20 @@
                         var height = image.height;
                         console.log(width + "//" + height);
 
-                        if (width !== 480 || height !== 480) {
+                        if (width < 1580 || height < 450) {
                             isCorrect = false;
                             $("#picture-big").val("");
                             swal({
                                 title: "错误",
                                 type: "error",
-                                text: "当前选择图片分辨率为: " + width + "px * " + height + "px \n大图片广告分辨率应为 480像素 * 480像素",
+                                text: "当前选择图片分辨率为: " + width + "px * " + height + "px \n大图片广告分辨率应为 1580像素 * 450像素",
                                 cancelButtonText: "关闭",
                                 showCancelButton: true,
                                 showConfirmButton: false
                             });
                         } else if (isCorrect) {
                             $("#preview-holder-big").html("<div class='image-preview'>" +
-                                "<img src='" + objectUrl + "' width='200' height='200'>" +
+                                "<img src='" + objectUrl + "' width='316' height='90'>" +
                                 "<i class='material-icons delete-image' onclick='deleteBigImage(this)'>close</i></div>");
                         }
                     };
@@ -226,7 +226,7 @@
 
             if (file.prop("files")[0] === undefined) {
                 console.log("file is empty");
-                setError(file, 'picture-big', "请上传广告图片200像素 * 200像素");
+                setError(file, 'picture-big', "请上传广告图片1580像素 * 450像素");
                 return;
             } else {
                 removeError(file, 'picture-big');
@@ -245,6 +245,9 @@
                 success: function (data) {
                     var result = JSON.parse(data);
                     checkResult(result.status, "添加成功", result.msg, null);
+                     setTimeout(function () {
+                         location.href="/admin/ads";
+                     }, 500);
                 },
                 error: function (xhr, ajaxOptions, thrownError) {
                     swal(xhr.status + "：" + thrownError);

@@ -269,12 +269,13 @@
                         <p> @if($data['lang'] == 1) 邮箱 @else E-mail @endif: <a href="mailto:{{$data['about']->email}}">{{$data['about']->email}}</a></p>
                         <p> @if($data['lang'] == 1) 电话 @else Phone  @endif: {{$data['about']->tel}}</p>
                         <p> @if($data['lang'] == 1) 传真 @else Fax    @endif: {{$data['about']->fax}}</p>
+                        <p> @if($data['lang'] == 1) 公司地址 @else Address @endif:{{$data['about']->address}}</p>
                     </address>
 
-                    <h2>@if($data['lang'] == 1) 公司地址 @else Address @endif</h2>
-                    <address>
-                       <p>{{$data['about']->address}}</p>
-                    </address>
+                    {{--<h2></h2>--}}
+                    {{--<address>--}}
+                       {{--<p>{{$data['about']->address}}</p>--}}
+                    {{--</address>--}}
                 </div>
             </div>
             <div class="col-md-8 col-sm-12">
