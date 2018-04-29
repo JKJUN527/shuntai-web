@@ -105,7 +105,7 @@
 
 @endsection
 @section('footer')
-    @include('components.myfooter')
+    @include('components.myfooter',['lang'=>$data['lang']])
 @endsection
 @section('custom-script')
     <script>

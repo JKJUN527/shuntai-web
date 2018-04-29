@@ -66,7 +66,7 @@
             bottom: 0px !important;
         }
         .qingfusuan_xsygg2 {
-            background: url({{asset('images/dtz.jpg')}}) no-repeat center 0;
+            background: url({{asset('images/dtz_ch.jpg')}}) no-repeat center 0;
             height: 930px;
             display: block;
             width: 80%;
@@ -255,13 +255,17 @@
         </div>
         <div class="about-content">
             {{--<img src="{{asset('images/pic9.jpg')}}">--}}
-            <p>&nbsp;&nbsp;&nbsp;&nbsp;{!! $data['about']->describe !!}</p>
+            @if($data['lang']==1)
+                <p>&nbsp;&nbsp;&nbsp;&nbsp;{!! $data['about']->describe !!}</p>
+            @else
+                <p>&nbsp;&nbsp;&nbsp;&nbsp;{!! $data['about']->describe_en !!}</p>
+            @endif
         </div>
         <div class="qingfusuan_xsygg2"></div>
     </div>
 @endsection
 @section('footer')
-    @include('components.myfooter')
+    @include('components.myfooter',['lang'=>$data['lang']])
 @endsection
 @section('custom-script')
     <script>

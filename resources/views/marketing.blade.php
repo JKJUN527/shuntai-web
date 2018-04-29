@@ -183,7 +183,7 @@
                                     <p>@if($data['lang']==1) 电话 @else Phone @endif：{{$data['about']->tel}}</p>
                                     <p>@if($data['lang']==1) 邮箱 @else E-mail @endif：{{$data['about']->email}}</p>
                                     <p>@if($data['lang']==1) 传真 @else Fax @endif：{{$data['about']->fax}}</p>
-                                    <p>@if($data['lang']==1) 公司地址 @else Address @endif：{{$data['about']->address}}</p>
+                                    <p>@if($data['lang']==1) 公司地址：{{$data['about']->address}} @else Address ：{{$data['about']->address_en}}@endif</p>
                                     {{--<p><a href="http://wenda.ghostchina.com/" title="Ghost中文网问答社区" target="_blank" onclick="_hmt.push(['_trackEvent', 'big-button', 'click', '问答社区'])"><i class="fa fa-comments"></i> 问答社区</a></p>--}}
                                     {{--<p><a href="http://weibo.com/ghostchinacom" title="Ghost中文网官方微博" target="_blank" onclick="_hmt.push(['_trackEvent', 'big-button', 'click', '官方微博'])"><i class="fa fa-weibo"></i> 官方微博</a></p>--}}
                                 </div>
@@ -193,18 +193,33 @@
                 </div>
                 <div class="col-md-9 col-sm-8 padding-top">
                     <article class="post page">
-                        <div class="lm_t">营销网络</div>
-                        <div class="box">
-                            <ul class="news_ul">
-                                <li class="news-body">
-                                    <span>国内网络：</span>{{$data['about']->market_in}}
-                                </li>
-                                <li class="news-body">
-                                    <span>国外网络：</span>{{$data['about']->market_out}}
-                                </li>
-                            </ul>
-                            <img src="">
-                        </div>
+                        @if($data['lang']==1)
+                            <div class="lm_t">营销网络</div>
+                            <div class="box">
+                                <ul class="news_ul">
+                                    <li class="news-body">
+                                        <span>国内网络：</span>{{$data['about']->market_in}}
+                                    </li>
+                                    <li class="news-body">
+                                        <span>国外网络：</span>{{$data['about']->market_out}}
+                                    </li>
+                                </ul>
+                                <img src="">
+                            </div>
+                        @else
+                            <div class="lm_t">Marketing Network</div>
+                            <div class="box">
+                                <ul class="news_ul">
+                                    <li class="news-body">
+                                        <span>Domestic：</span>{{$data['about']->market_in_en}}
+                                    </li>
+                                    <li class="news-body">
+                                        <span>Foreign：</span>{{$data['about']->market_out_en}}
+                                    </li>
+                                </ul>
+                                <img src="">
+                            </div>
+                        @endif
 
                     </article>
                 </div>
@@ -214,7 +229,7 @@
 
 @endsection
 @section('footer')
-    @include('components.myfooter')
+    @include('components.myfooter',['lang'=>$data['lang']])
 @endsection
 @section('custom-script')
     <script>

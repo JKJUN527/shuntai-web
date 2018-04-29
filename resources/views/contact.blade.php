@@ -242,7 +242,7 @@
                         <div class="lm_t"> @if($data['lang'] == 1) 联系我们 @else Contact Us @endif</div>
                         <div class="box">
                             <p>
-                                @if($data['lang'] == 1) 地址 @else Address @endif：{{$data['about']->address}}
+                                @if($data['lang'] == 1) 地址：{{$data['about']->address}}@else Address：{{$data['about']->address_en}} @endif
                                 <br>
                                     @if($data['lang'] == 1) 邮编 @else Postcode @endif：{{$data['about']->postcodes}}
                                 <br>
@@ -275,7 +275,7 @@
                                     <p>@if($data['lang']==1) 电话 @else Phone @endif：{{$data['about']->tel}}</p>
                                     <p>@if($data['lang']==1) 邮箱 @else E-mail @endif：{{$data['about']->email}}</p>
                                     <p>@if($data['lang']==1) 传真 @else Fax @endif：{{$data['about']->fax}}</p>
-                                    <p>@if($data['lang']==1) 公司地址 @else Address @endif：{{$data['about']->address}}</p>
+                                    <p>@if($data['lang']==1) 公司地址：{{$data['about']->address}} @else Address ：{{$data['about']->address_en}}@endif</p>
                                     {{--<p><a href="http://wenda.ghostchina.com/" title="Ghost中文网问答社区" target="_blank" onclick="_hmt.push(['_trackEvent', 'big-button', 'click', '问答社区'])"><i class="fa fa-comments"></i> 问答社区</a></p>--}}
                                     {{--<p><a href="http://weibo.com/ghostchinacom" title="Ghost中文网官方微博" target="_blank" onclick="_hmt.push(['_trackEvent', 'big-button', 'click', '官方微博'])"><i class="fa fa-weibo"></i> 官方微博</a></p>--}}
                                 </div>
@@ -312,7 +312,7 @@
 
 @endsection
 @section('footer')
-    @include('components.myfooter')
+    @include('components.myfooter',['lang'=>$data['lang']])
 @endsection
 @section('custom-script')
     <script type="text/javascript" src="http://webapi.amap.com/maps?v=1.3&key=e143b33668668e4b9be611be3584b0e7"></script>

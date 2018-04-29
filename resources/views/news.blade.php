@@ -239,7 +239,7 @@
                                     <p>@if($data['lang']==1) 电话 @else Phone @endif：{{$data['about']->tel}}</p>
                                     <p>@if($data['lang']==1) 邮箱 @else E-mail @endif：{{$data['about']->email}}</p>
                                     <p>@if($data['lang']==1) 传真 @else Fax @endif：{{$data['about']->fax}}</p>
-                                    <p>@if($data['lang']==1) 公司地址 @else Address @endif：{{$data['about']->address}}</p>
+                                    <p>@if($data['lang']==1) 公司地址：{{$data['about']->address}} @else Address ：{{$data['about']->address_en}}@endif</p>
                                     {{--<p><a href="http://wenda.ghostchina.com/" title="Ghost中文网问答社区" target="_blank" onclick="_hmt.push(['_trackEvent', 'big-button', 'click', '问答社区'])"><i class="fa fa-comments"></i> 问答社区</a></p>--}}
                                     {{--<p><a href="http://weibo.com/ghostchinacom" title="Ghost中文网官方微博" target="_blank" onclick="_hmt.push(['_trackEvent', 'big-button', 'click', '官方微博'])"><i class="fa fa-weibo"></i> 官方微博</a></p>--}}
                                 </div>
@@ -249,7 +249,7 @@
                 </div>
                 <div class="col-md-9 col-sm-8 padding-top">
                     <article class="post page">
-                        <div class="lm_t">新闻中心</div>
+                        <div class="lm_t">@if($data['lang']==1) 新闻中心 @else News Center @endif</div>
                         <div class="box">
                             <ul class="news_ul">
                                 @foreach($data['newest'] as $news)
@@ -258,7 +258,7 @@
                                             <p>{{mb_substr($news->title, 0, 16)}}</p>
                                         </div>
                                         <div class="fr">
-                                            <span style="color: #cacaca">发布时间: {{mb_substr($news->created_at,0,10,'utf-8')}}</span>
+                                            <span style="color: #cacaca">@if($data['lang']==1) 发布时间 @else Release time @endif: {{mb_substr($news->created_at,0,10,'utf-8')}}</span>
                                         </div>
                                         <div class="cle"></div>
                                     </li>
@@ -277,7 +277,7 @@
 
 @endsection
 @section('footer')
-    @include('components.myfooter')
+    @include('components.myfooter',['lang'=>$data['lang']])
 @endsection
 @section('custom-script')
     <script>
