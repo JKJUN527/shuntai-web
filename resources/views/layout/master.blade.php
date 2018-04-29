@@ -49,6 +49,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
         });
     </script>
     <style>
+        html,body { width:100%;overflow-y:scroll}
         .lang:hover {
             color: #fff;
             background-color: #56CFCA !important;

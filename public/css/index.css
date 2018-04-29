@@ -14,7 +14,7 @@
     position: absolute;
     left: 45%;
     top: 0;
-    width: 1000px;
+    /*width: 100%;*/
     height: 98px;
     margin-left: -350px;
     /*overflow: hidden;*/
@@ -30,7 +30,7 @@
     background-position: center center;
 }
 .kwicks {
-    width: 1200px;
+    width: 100%;
     height: 98px;
 }
 .kwicks .kwick {
@@ -81,7 +81,7 @@
 
 .con_01 {
     margin: 64px auto 0;
-    width: 1150px;
+    width: 100%;
 }
 .con_01 .box {
     padding-top: 30px;
@@ -127,6 +127,6 @@
 }
 .con_01 .box dl dd img {
     transition: all 0.2s;
-    width: 20rem;
+    width: 100%;
     /*height: 20rem;*/
 }
