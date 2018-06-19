@@ -66,7 +66,11 @@
             bottom: 0px !important;
         }
         .qingfusuan_xsygg2 {
-            background: url({{asset('images/dtz_ch.jpg')}}) no-repeat center 0;
+            @if($data['lang'] == 1)
+                background: url({{asset('images/dtz_ch.jpg')}}) no-repeat center 0;
+            @else
+                background: url({{asset('images/dtz_en.jpg')}}) no-repeat center 0;
+            @endif
             height: 930px;
             display: block;
             width: 80%;
@@ -79,32 +83,45 @@
     <section class="slider">
         <div id="slider" class="flexslider">
             <ul class="slides">
-                @if($data['about']->picture != null)
-                    <?php
-                    $temps = explode(';', $data['about']->picture);
-                    ?>
-                    @foreach($temps as $item)
-                            <?php  $pic = explode('@', $item);?>
+                @if($data['lang'] == 1)
+                    @if($data['about']->picture != null)
+                            <?php
+                            $temps = explode(';', $data['about']->picture);
+                            ?>
+                            @foreach($temps as $item)
+                                    <?php  $pic = explode('@', $item);?>
+                                <li clearfix>
+                                    <div class="images">
+                                        <img src="{{$pic[1]}}" alt="{{$pic[0]}}"/>
+                                    </div>
+                                </li>
+                            @endforeach
+                    @else
                         <li clearfix>
                             <div class="images">
-                                <img src="{{$pic[1]}}" alt="{{$pic[0]}}"/>
+                                <img src="images/banner_4.jpg" alt=""/>
                             </div>
                         </li>
-                    @endforeach
+                        <li clearfix>
+                            <div class="images">
+                                <img src="images/banner_5.jpg" alt=""/>
+                            </div>
+                        </li>
+                        <li clearfix>
+                            <div class="images">
+                                <img src="images/banner_3.jpg" alt=""/>
+                            </div>
+                        </li>
+                    @endif
                 @else
                     <li clearfix>
                         <div class="images">
-                            <img src="images/banner_4.jpg" alt=""/>
+                            <img src="images/banner1_en.jpg" alt=""/>
                         </div>
                     </li>
                     <li clearfix>
                         <div class="images">
-                            <img src="images/banner_5.jpg" alt=""/>
-                        </div>
-                    </li>
-                    <li clearfix>
-                        <div class="images">
-                            <img src="images/banner_3.jpg" alt=""/>
+                            <img src="images/banner2_en.jpg" alt=""/>
                         </div>
                     </li>
                 @endif

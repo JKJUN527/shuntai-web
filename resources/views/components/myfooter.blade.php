@@ -11,7 +11,7 @@
             <div class="copy">
                 <p>Copyright © 2018 Wenzhou Shun Tai Chemical Co., Ltd. All rights reserved. Zhejiang ICP preparation No. 18012553.</p>
                 <p>TEL:0577-88624378  FAX：0577-88620778 E-mail：<a>280722223@qq.com</a></p>
-                <p>ADDRESS：No. twenty-five Binhai Road, Wenzhou economic and Technological Development Zone, No. 422, Wenzhou Jinhai chemical market, A504</p>
+                <p>ADDRESS：A504，Wenzhou Jinhai chemical market，No. 422, No. twenty-five Binhai Road,Wenzhou economic and Technological Development Zone,Wenzhou，China.</p>
                 <p>Technical support: Four2Nine.<a>jkjun0527@foxmail.com</a></p>
             </div>
         @endif
