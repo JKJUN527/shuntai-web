@@ -65,14 +65,9 @@
         .flex-control-nav{
             bottom: 0px !important;
         }
-        .qingfusuan_xsygg2 {
-            @if($data['lang'] == 1)
-                background: url({{asset('images/dtz_ch.jpg')}}) no-repeat center 0;
-            @else
-                background: url({{asset('images/dtz_en.jpg')}}) no-repeat center 0;
-            @endif
-            height: 930px;
-            display: block;
+        .qingfusuan_xsygg2  img{
+            /*height: 930px;*/
+            /*display: block;*/
             width: 80%;
             margin-left: 10%;
         }
@@ -116,12 +111,12 @@
                 @else
                     <li clearfix>
                         <div class="images">
-                            <img src="images/banner1_en.jpg" alt=""/>
+                            <img src="images/banner2_en.jpg" alt=""/>
                         </div>
                     </li>
                     <li clearfix>
                         <div class="images">
-                            <img src="images/banner2_en.jpg" alt=""/>
+                            <img src="images/banner1_en.jpg" alt=""/>
                         </div>
                     </li>
                 @endif
@@ -278,7 +273,14 @@
                 <p>&nbsp;&nbsp;&nbsp;&nbsp;{!! $data['about']->describe_en !!}</p>
             @endif
         </div>
-        <div class="qingfusuan_xsygg2"></div>
+        <div class="qingfusuan_xsygg2">
+            @if($data['lang'] == 1)
+                <img src="{{asset('images/dtz_ch.jpg')}}">
+            @else
+                <img src="{{asset('images/dtz_en.jpg')}}">
+            @endif
+
+        </div>
     </div>
 @endsection
 @section('footer')
