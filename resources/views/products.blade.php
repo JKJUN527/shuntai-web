@@ -1,5 +1,5 @@
 @extends('layout.master')
-@section('title', '温州顺泰化工|产品中心')
+@section('title', '温州市顺泰化工有限公司|产品中心')
 
 @section('header-tab')
     @include('components.headerTab',['lang'=>$data['lang']])
@@ -138,11 +138,11 @@
             height: 52px;
         }
         .about_banner{
-            background:url({{asset('images/head1.jpg')}})no-repeat center top;
+            background:url({{asset('images/head11.jpg')}})no-repeat center top;
             background-size:cover;
-            -webkit-background-size:cover;
-            -moz-background-size:cover;
-            -o-background-size:cover;
+            /*-webkit-background-size:cover;*/
+            /*-moz-background-size:cover;*/
+            /*-o-background-size:cover;*/
         }
     </style>
 @endsection

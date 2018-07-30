@@ -1,5 +1,5 @@
 @extends('layout.master')
-@section('title', '温州顺泰化工|首页')
+@section('title', '温州市顺泰化工有限公司|首页')
 
 @section('header-tab')
     @include('components.headerTab',['lang'=>$data['lang']])
