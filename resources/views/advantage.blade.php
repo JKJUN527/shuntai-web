@@ -217,7 +217,7 @@
                         </table>
                         <div class="portfolio-pagination">
                             <nav>
-                                {!! $data['products']->render() !!}
+                                {!! $data['products']->appends(['ptype'=>$data['ptype']])->links() !!}
                             </nav>
                         </div>
                     </div>
