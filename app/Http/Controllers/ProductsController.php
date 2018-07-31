@@ -33,12 +33,12 @@ class ProductsController extends Controller
             $data['products'] = Product::where('ch_name', 'like', '%' . $product_name . '%')
                 ->orwhere('en_name', 'like', '%' . $product_name . '%')
                 ->orderby('created_at','desc')
-                ->paginate(10);
+                ->paginate(20);
         }else{
             //默认显示第一个类型的产品
             $data['products'] = Product::where('type',$data['ptype'])
                 ->orderby('created_at','desc')
-                ->paginate(10);
+                ->paginate(20);
         }
 
 //        return $data;
@@ -61,12 +61,12 @@ class ProductsController extends Controller
             $data['products'] = Product::where('is_urgency', 1)
                 ->where('type', $data['ptype'])
                 ->orderby('created_at', 'desc')
-                ->paginate(10);
+                ->paginate(20);
         }else{
             $data['products'] = Product::where('is_urgency', 1)
 //                ->where('type', $data['ptype'])
                 ->orderby('created_at', 'desc')
-                ->paginate(10);
+                ->paginate(20);
         }
         $data['about'] = About::first();
 
