@@ -1,24 +1,27 @@
-/*
-Navicat MySQL Data Transfer
+-- MySQL dump 10.13  Distrib 5.7.18, for Linux (x86_64)
+--
+-- Host: localhost    Database: db_shuntai
+-- ------------------------------------------------------
+-- Server version	5.7.18-log
 
-Source Server         : localhost
-Source Server Version : 50505
-Source Host           : localhost:3306
-Source Database       : db_shuntai
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!40101 SET NAMES utf8 */;
+/*!40103 SET @OLD_TIME_ZONE=@@TIME_ZONE */;
+/*!40103 SET TIME_ZONE='+00:00' */;
+/*!40014 SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0 */;
+/*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
+/*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
+/*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
-Target Server Type    : MYSQL
-Target Server Version : 50505
-File Encoding         : 65001
+--
+-- Table structure for table `st_admin`
+--
 
-Date: 2018-03-27 14:46:05
-*/
-
-SET FOREIGN_KEY_CHECKS=0;
-
--- ----------------------------
--- Table structure for `st_admin`
--- ----------------------------
 DROP TABLE IF EXISTS `st_admin`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `st_admin` (
   `aid` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `role` int(11) DEFAULT '0',
@@ -30,17 +33,25 @@ CREATE TABLE `st_admin` (
   `last_login` timestamp NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   PRIMARY KEY (`aid`)
 ) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
 
--- ----------------------------
--- Records of st_admin
--- ----------------------------
-INSERT INTO `st_admin` VALUES ('1', '1', 'admin', '$2y$10$Mk4BtG4FAbEdkDxwqFkEhOTLzMHLNzi/Cmg.hzhWR8INm8JWxBEgq', '0', '2018-03-20 20:55:22', '2018-03-27 14:30:09', '2018-03-27 14:30:09');
-INSERT INTO `st_admin` VALUES ('3', '0', 'jkjun', '$2y$10$VvrQ2rC67AOVvs6Sr6sWeuSdF0gyBQa/v1mFv8sVFYfsMzpQ/hZ12', '0', '2018-03-20 21:42:23', '2018-03-21 13:35:27', '2018-03-21 13:35:27');
+--
+-- Dumping data for table `st_admin`
+--
 
--- ----------------------------
--- Table structure for `st_message`
--- ----------------------------
+LOCK TABLES `st_admin` WRITE;
+/*!40000 ALTER TABLE `st_admin` DISABLE KEYS */;
+INSERT INTO `st_admin` VALUES (1,1,'admin','$2y$10$Mk4BtG4FAbEdkDxwqFkEhOTLzMHLNzi/Cmg.hzhWR8INm8JWxBEgq',0,'2018-03-20 12:55:22','2018-08-03 01:58:09','2018-08-03 01:58:09'),(3,0,'jkjun','$2y$10$VvrQ2rC67AOVvs6Sr6sWeuSdF0gyBQa/v1mFv8sVFYfsMzpQ/hZ12',0,'2018-03-20 13:42:23','2018-03-21 05:35:27','2018-03-21 05:35:27');
+/*!40000 ALTER TABLE `st_admin` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `st_message`
+--
+
 DROP TABLE IF EXISTS `st_message`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `st_message` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `name` varchar(100) DEFAULT NULL,
@@ -49,17 +60,26 @@ CREATE TABLE `st_message` (
   `created_at` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
   `updated_at` timestamp NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
 
--- ----------------------------
--- Records of st_message
--- ----------------------------
-INSERT INTO `st_message` VALUES ('5', '发大师傅', '631642753@qq.com', '法撒旦法', '2018-03-27 14:29:45', '2018-03-27 14:29:45');
+--
+-- Dumping data for table `st_message`
+--
 
--- ----------------------------
--- Table structure for `st_news`
--- ----------------------------
+LOCK TABLES `st_message` WRITE;
+/*!40000 ALTER TABLE `st_message` DISABLE KEYS */;
+INSERT INTO `st_message` VALUES (7,'李瑞琛','280722223@qq.com','生意兴隆','2018-04-26 14:13:32','2018-04-26 14:13:32'),(8,'小丽','943640397@qq.com','想咨询一下你们公司最牛逼的产品，请速回','2018-06-23 05:11:08','2018-06-23 05:11:08');
+/*!40000 ALTER TABLE `st_message` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `st_news`
+--
+
 DROP TABLE IF EXISTS `st_news`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `st_news` (
   `nid` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `title` varchar(255) DEFAULT NULL COMMENT '新闻标题',
@@ -72,20 +92,25 @@ CREATE TABLE `st_news` (
   `created_at` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
   `updated_at` timestamp NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   PRIMARY KEY (`nid`)
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
 
--- ----------------------------
--- Records of st_news
--- ----------------------------
-INSERT INTO `st_news` VALUES ('2', 'new2', '风华网', '导语：电子竞技产业作为国内增速最快的市场近年来吸引了众多资本涌入，根据相关数据显示电竞产业在今年有望达到700亿元产值。然而电子竞技之所以有如此之大的发展潜能，其中主要得益于女性玩家参与度的持续增长。随着电竞普及程度的不断增加，越来越多的女性参与到电子竞技的产业中，不仅是作为观众，同时还有电竞玩家、电竞选手、游戏设计师、俱乐部运营等等众多的角色。<br>然而电子竞技对待女性玩家的态度似乎并没有随着女性群体的增长而改变，相反纵观国内外电竞圈，女性电竞从业者目前仍处在一个较为尴尬的位置。恒一文化传播有限公司（以下简称恒一文化）作为电竞教育的核心企业，一直不断关注电竞产业内的不均衡发展现象；针对目前电竞行业所存在的“性别歧视”问题，恒一文化认为除了不断规范以外，电竞教育或许是解决问题的新途径。<br>从传统体育到电子竞技<br>纵观体育运动的发展，在竞技体育的发展初期，体育运动的文化形象一直传达着一种女性不属于运动的讯息，这种“性别歧视”让许多女性丧失了运动机会、资源、并带来报酬上的不平等。反观电子竞技的发展历程，女性玩家一直以来都占据着游戏玩家总人口的半壁江山，但她们在竞技类游戏中却只占据着很小一部分。而导致女性玩家在竞技游戏这个大市场中缺席的一个最重要的因素，则是在游戏中普遍存在的性别歧视。<br>在85%的玩家为男性玩家的大背景影响下，竞技游戏中一直不断上演网络辱骂、骚扰等恶劣事件，种种原因阻碍了许多女性投入到电竞游戏当中来。尽管如此，也有不少女性尝试加入职业电竞行业，但是结果往往不尽如人意。<br>[图片1]<br>女性电竞人坎坷追梦<br>大家熟知的《英雄联盟》解说小苍就曾组建过中国首支《英雄联盟》女子战队——英雄联盟adies，不幸的是由于缺乏比赛机会，这支战队在2013年4月宣布解散。对于女子电竞选手来说，很多人都被直接与作秀画上等号。尽管一些女性职业选手在技战水平和训练时长方面都不输男性选手，但相较于男性选手而言女选手的机会和收入都相对较少。<br>除此之外，当前电竞和直播行业呈现出快速崛起的趋势，但就目前的发展状况来看，绝大多数的观众对女主播的关注还是主要集中在外貌以及个人生活方面，他们看重的往往不是该女性玩家的真实技术，而仅仅是她的性别本身。<br>壁垒打破需教育引导<br>针对目前电竞行业存在的“性别歧视”，一些赛事也开始关注到这些问题。前段时间所举办的2017WESG新增设女子组比赛，旨在推动电竞运动中的男女平等；然而一些外媒却认为，将男女分开竞技并不是一个能解决在电竞游戏中女性玩家偏少的好方法，它只会加深那些潜在的问题。而经年累月下，当整个电竞游戏市场变动更加成熟、更为主流化之后，这一顽疾只会变得更加根深蒂固。<br>[图片2]<br>针对目前所存在的种种问题，恒一文化认为教育或许是打破这一壁垒的新途径。作为最早一批涉足电竞教育的企业，恒一团队一直在致力于推动电竞产业良性发展。一方面，教育的引导客观上会打破“男女差距”的认知；另一方面，电竞教育也为女性提供了更多的条件，无论是职业电竞选手还是有志于从事电竞行业的女性，电竞教育为她们拓宽了未来职业选择的方向。<br>结语：电子竞技是一种公平竞技运动。推动电竞运动中的男女平等，首先应鼓励更多的女性参与到电竞产业的各个环节中来。根据目前的发展态势，竞技类游戏的市场规模在2018年有望达到11亿美元，随着未来电竞产业的发展，女性的持续参与显得至关重要。如今，整个行业都逐渐开始支持和鼓励女从业者和女玩家们，恒一文化相信随着电竞教育的推动以及产业制度的不断完善，阻碍女性电竞人发展的“性别壁垒”终将会被打破。', 'http://eshunter.com/storage/newspic/1@2017-10-17-05-44-30-59e598bea31e1news1.png;2@2017-10-17-05-44-30-59e598bea43f3news2.png;', null, null, '13', '2018-03-21 11:58:56', '2018-03-27 11:04:44');
-INSERT INTO `st_news` VALUES ('3', 'new3', '风华网', '导语：电子竞技产业作为国内增速最快的市场近年来吸引了众多资本涌入，根据相关数据显示电竞产业在今年有望达到700亿元产值。然而电子竞技之所以有如此之大的发展潜能，其中主要得益于女性玩家参与度的持续增长。随着电竞普及程度的不断增加，越来越多的女性参与到电子竞技的产业中，不仅是作为观众，同时还有电竞玩家、电竞选手、游戏设计师、俱乐部运营等等众多的角色。<br>然而电子竞技对待女性玩家的态度似乎并没有随着女性群体的增长而改变，相反纵观国内外电竞圈，女性电竞从业者目前仍处在一个较为尴尬的位置。恒一文化传播有限公司（以下简称恒一文化）作为电竞教育的核心企业，一直不断关注电竞产业内的不均衡发展现象；针对目前电竞行业所存在的“性别歧视”问题，恒一文化认为除了不断规范以外，电竞教育或许是解决问题的新途径。<br>从传统体育到电子竞技<br>纵观体育运动的发展，在竞技体育的发展初期，体育运动的文化形象一直传达着一种女性不属于运动的讯息，这种“性别歧视”让许多女性丧失了运动机会、资源、并带来报酬上的不平等。反观电子竞技的发展历程，女性玩家一直以来都占据着游戏玩家总人口的半壁江山，但她们在竞技类游戏中却只占据着很小一部分。而导致女性玩家在竞技游戏这个大市场中缺席的一个最重要的因素，则是在游戏中普遍存在的性别歧视。<br>在85%的玩家为男性玩家的大背景影响下，竞技游戏中一直不断上演网络辱骂、骚扰等恶劣事件，种种原因阻碍了许多女性投入到电竞游戏当中来。尽管如此，也有不少女性尝试加入职业电竞行业，但是结果往往不尽如人意。<br>[图片1]<br>女性电竞人坎坷追梦<br>大家熟知的《英雄联盟》解说小苍就曾组建过中国首支《英雄联盟》女子战队——英雄联盟adies，不幸的是由于缺乏比赛机会，这支战队在2013年4月宣布解散。对于女子电竞选手来说，很多人都被直接与作秀画上等号。尽管一些女性职业选手在技战水平和训练时长方面都不输男性选手，但相较于男性选手而言女选手的机会和收入都相对较少。<br>除此之外，当前电竞和直播行业呈现出快速崛起的趋势，但就目前的发展状况来看，绝大多数的观众对女主播的关注还是主要集中在外貌以及个人生活方面，他们看重的往往不是该女性玩家的真实技术，而仅仅是她的性别本身。<br>壁垒打破需教育引导<br>针对目前电竞行业存在的“性别歧视”，一些赛事也开始关注到这些问题。前段时间所举办的2017WESG新增设女子组比赛，旨在推动电竞运动中的男女平等；然而一些外媒却认为，将男女分开竞技并不是一个能解决在电竞游戏中女性玩家偏少的好方法，它只会加深那些潜在的问题。而经年累月下，当整个电竞游戏市场变动更加成熟、更为主流化之后，这一顽疾只会变得更加根深蒂固。<br>[图片2]<br>针对目前所存在的种种问题，恒一文化认为教育或许是打破这一壁垒的新途径。作为最早一批涉足电竞教育的企业，恒一团队一直在致力于推动电竞产业良性发展。一方面，教育的引导客观上会打破“男女差距”的认知；另一方面，电竞教育也为女性提供了更多的条件，无论是职业电竞选手还是有志于从事电竞行业的女性，电竞教育为她们拓宽了未来职业选择的方向。<br>结语：电子竞技是一种公平竞技运动。推动电竞运动中的男女平等，首先应鼓励更多的女性参与到电竞产业的各个环节中来。根据目前的发展态势，竞技类游戏的市场规模在2018年有望达到11亿美元，随着未来电竞产业的发展，女性的持续参与显得至关重要。如今，整个行业都逐渐开始支持和鼓励女从业者和女玩家们，恒一文化相信随着电竞教育的推动以及产业制度的不断完善，阻碍女性电竞人发展的“性别壁垒”终将会被打破。', 'http://eshunter.com/storage/newspic/1@2017-10-17-05-44-30-59e598bea31e1news1.png;2@2017-10-17-05-44-30-59e598bea43f3news2.png;', null, null, '26', '2018-03-21 11:58:57', '2018-03-27 13:38:38');
-INSERT INTO `st_news` VALUES ('4', '上课玩游戏？杭州高校开出电竞课', 'fsdfs', '1\\safsadf<br>[图片1]<br>2\\fgadfaf<br>[图片2]', 'http://localhost/storage/newspic/1@2018-03-21-13-49-48-5ab1f27cc262fnews1.jpg;2@2018-03-21-13-49-48-5ab1f27cc4a61news2.jpg;', null, null, '37', '2018-03-21 13:49:48', '2018-03-27 10:38:28');
-INSERT INTO `st_news` VALUES ('5', '电竞选手基数大 衍生产业急需专业人才', 'fsdafd', 'fasfdsafsad<br>[图片1]<br>34fdsafasdf<br>[图片2]', 'http://localhost/storage/newspic/1@2018-03-21-14-22-16-5ab1fa186aecfnews1.png;2@2018-03-21-14-22-16-5ab1fa186d2cbnews2.jpg;', null, null, '62', '2018-03-21 14:22:16', '2018-03-27 11:48:14');
+--
+-- Dumping data for table `st_news`
+--
 
--- ----------------------------
--- Table structure for `st_product`
--- ----------------------------
+LOCK TABLES `st_news` WRITE;
+/*!40000 ALTER TABLE `st_news` DISABLE KEYS */;
+/*!40000 ALTER TABLE `st_news` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `st_product`
+--
+
 DROP TABLE IF EXISTS `st_product`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `st_product` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `type` int(11) DEFAULT NULL,
@@ -99,19 +124,26 @@ CREATE TABLE `st_product` (
   `created_at` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
   `updated_at` timestamp NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=42 DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
 
--- ----------------------------
--- Records of st_product
--- ----------------------------
-INSERT INTO `st_product` VALUES ('1', '1', '测试1', 'test1', null, null, '111', null, '0', '2018-03-21 10:13:58', '2018-03-27 11:36:02');
-INSERT INTO `st_product` VALUES ('2', '1', '测试2', 'test2', null, null, '222', null, '1', '2018-03-21 10:13:59', '2018-03-27 11:36:03');
-INSERT INTO `st_product` VALUES ('3', '2', '测试3', 'test3', null, null, '333', null, '1', '2018-03-21 10:14:13', '2018-03-27 11:36:04');
+--
+-- Dumping data for table `st_product`
+--
 
--- ----------------------------
--- Table structure for `st_product_type`
--- ----------------------------
+LOCK TABLES `st_product` WRITE;
+/*!40000 ALTER TABLE `st_product` DISABLE KEYS */;
+INSERT INTO `st_product` VALUES (5,3,'磷酸','Phosphorous acid',NULL,NULL,'7664-38-2',NULL,1,'2018-04-28 08:24:48','2018-04-28 08:24:54'),(6,5,'片碱','Caustic soda',NULL,NULL,'1310-73-2',NULL,1,'2018-04-28 08:26:37','2018-04-28 08:27:52'),(7,3,'氢氟酸','hydrofluoric acid',NULL,NULL,'7664-39-3',NULL,1,'2018-04-28 08:27:44','2018-04-28 08:27:57'),(8,6,'氟化铵','ammonium fluoride',NULL,NULL,'12125-01-8',NULL,1,'2018-04-28 08:29:03','2018-04-28 08:29:42'),(9,6,'氟化氢铵','ammonium bifluoride',NULL,NULL,'1341-49-7',NULL,1,'2018-04-28 08:30:44','2018-04-28 08:30:51'),(10,6,'磷酸二氢钠','Sodium phosphate monobasic',NULL,NULL,'7558-80-7',NULL,0,'2018-05-15 01:13:49','2018-05-15 01:13:49'),(11,6,'无水乙酸钠','Sodium acetate anhydrous',NULL,NULL,'53744-42-6',NULL,0,'2018-05-15 01:15:28','2018-05-15 01:15:28'),(12,5,'食用片碱','Edible alkali',NULL,NULL,'1310-73-2',NULL,0,'2018-05-15 01:16:51','2018-05-15 01:16:51'),(13,5,'硫化碱','Sodium sulfide',NULL,NULL,'1313-82-2',NULL,0,'2018-05-15 01:51:12','2018-05-15 01:51:12'),(14,8,'聚丙烯酰胺','Polyacrylamide',NULL,NULL,'9003-05-8',NULL,0,'2018-05-15 01:53:43','2018-05-15 01:53:43'),(15,6,'纯碱','sodium carbonate',NULL,NULL,'497-19-8',NULL,0,'2018-07-27 03:20:53','2018-07-27 03:20:53'),(16,3,'醋酸','Acetic acid',NULL,NULL,'64-19-7',NULL,0,'2018-07-27 05:50:10','2018-07-27 05:50:10'),(17,6,'磷酸氢二钠 DSP',':Disodium hydrogen phosphate',NULL,NULL,'7558-79-4',NULL,0,'2018-07-27 05:52:43','2018-07-27 05:52:43'),(18,6,'氟化钠','sodium fluoride',NULL,NULL,'7681-49-4',NULL,0,'2018-07-27 05:54:06','2018-07-27 05:54:06'),(19,6,'氟硅酸钠','sodium hexafluorosilicate',NULL,NULL,'16893-85-9',NULL,0,'2018-07-27 05:55:11','2018-07-27 05:55:11'),(20,3,'草酸','Oxalic acid',NULL,NULL,'144-62-7',NULL,0,'2018-07-27 05:56:37','2018-07-27 05:56:37'),(21,6,'氟硅酸铵','ammonium silicofluoride',NULL,NULL,'16919-19-0',NULL,0,'2018-07-27 05:59:05','2018-07-27 05:59:05'),(22,6,'冰晶石','sodium aluminofluoride',NULL,NULL,'15096-52-3',NULL,0,'2018-07-27 06:22:21','2018-07-27 06:22:21'),(23,6,'氟化铝','aluminium fluoride',NULL,NULL,'7784-18-1',NULL,0,'2018-07-27 06:24:57','2018-07-27 06:24:57'),(24,6,'氟硅酸镁','magnesium fluorosilicate',NULL,NULL,'16961-83-4',NULL,0,'2018-07-27 06:31:43','2018-07-27 06:31:43'),(25,7,'硬脂酸锌','zinc stearate',NULL,NULL,'557-05-1',NULL,0,'2018-07-30 06:58:20','2018-07-30 06:58:20'),(26,7,'硬脂酸钡','barium stearate',NULL,NULL,'6865-35-6',NULL,0,'2018-07-30 07:00:05','2018-07-30 07:00:05'),(27,7,'硬脂酸铅','lead stearate',NULL,NULL,'1072-35-1',NULL,0,'2018-07-30 07:01:30','2018-07-30 07:01:30'),(28,7,'氢氧化钠 AR','caustic soda AR',NULL,NULL,'1310-73-2',NULL,0,'2018-07-30 07:02:52','2018-07-30 07:02:52'),(29,6,'硫酸亚铁','ferrous sulfate',NULL,NULL,'7782-63-0',NULL,0,'2018-07-30 07:04:28','2018-07-30 07:04:28'),(30,7,'硫酸亚铁 AR CP','ferrous sulfate AR CP',NULL,NULL,NULL,NULL,0,'2018-07-30 09:47:24','2018-07-30 09:47:24'),(31,7,'硫氰酸钾 AR CP','Potassium thiocyanate AR CP',NULL,NULL,'333-20-0',NULL,0,'2018-07-31 00:51:02','2018-07-31 00:51:02'),(32,7,'亚铁氰化钾 AR CP','Potassium hexacyanoferrate（II） AR CP',NULL,NULL,'13943-58-3',NULL,0,'2018-07-31 00:54:27','2018-07-31 00:54:27'),(33,7,'铁氰化钾','Potassium ferricyanide',NULL,NULL,'13746-66-2',NULL,0,'2018-07-31 00:56:12','2018-07-31 00:56:12'),(34,7,'碳酸氢钾 AR CP','Potassium hydrogen carbonate AR CP',NULL,NULL,'298-14-6',NULL,0,'2018-07-31 00:57:42','2018-07-31 00:57:42'),(35,7,'碳酸钾 AR CP','Potassium carbonate AR CP',NULL,NULL,'584-08-7',NULL,0,'2018-07-31 00:59:26','2018-07-31 00:59:26'),(36,7,'氢氧化钾 AR','Potassium hydroxide AR',NULL,NULL,'1310-58-3',NULL,0,'2018-07-31 01:01:13','2018-07-31 01:01:13'),(37,7,'氯化钾 AR CP','Potassium chloride AR CP',NULL,NULL,'7447-40-7',NULL,0,'2018-07-31 01:02:24','2018-07-31 01:02:24'),(38,7,'硫氰酸钠','Sodium thiocyanate',NULL,NULL,'540-72-7',NULL,0,'2018-07-31 01:05:44','2018-07-31 01:05:44'),(39,7,'硫代硫酸钠','Sodium thiosulfate',NULL,NULL,'10102-17-7',NULL,0,'2018-07-31 01:06:59','2018-07-31 01:06:59'),(40,7,'硫酸氢钠','Sodium bisulfate',NULL,NULL,'7681-38-1',NULL,0,'2018-07-31 01:07:50','2018-07-31 01:07:50'),(41,7,'二硬脂酸铝 AR CP','Aluminium distearate AR CP',NULL,NULL,'300-92-5',NULL,0,'2018-07-31 01:10:41','2018-07-31 01:10:41');
+/*!40000 ALTER TABLE `st_product` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `st_product_type`
+--
+
 DROP TABLE IF EXISTS `st_product_type`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `st_product_type` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `ch_name` varchar(100) DEFAULT NULL COMMENT '产品类别——中文名称',
@@ -120,35 +152,67 @@ CREATE TABLE `st_product_type` (
   `created_at` timestamp NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   `updated_at` timestamp NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
 
--- ----------------------------
--- Records of st_product_type
--- ----------------------------
-INSERT INTO `st_product_type` VALUES ('1', '分类1', 'type1', null, '2018-03-21 10:14:42', '2018-03-21 10:14:42');
-INSERT INTO `st_product_type` VALUES ('2', '分类2', 'type2', null, '2018-03-21 10:13:20', '2018-03-21 10:13:20');
+--
+-- Dumping data for table `st_product_type`
+--
 
--- ----------------------------
--- Table structure for `st_webinfo`
--- ----------------------------
+LOCK TABLES `st_product_type` WRITE;
+/*!40000 ALTER TABLE `st_product_type` DISABLE KEYS */;
+INSERT INTO `st_product_type` VALUES (3,'酸类','Acids',NULL,'2018-04-19 13:58:42','2018-04-19 13:58:42'),(5,'碱类','Alkali',NULL,'2018-04-19 14:01:23','2018-04-19 14:01:23'),(6,'盐类','Salts',NULL,'2018-04-19 14:03:12','2018-04-19 14:03:12'),(7,'化学试剂','Chemical Reagents',NULL,'2018-04-19 14:03:49','2018-04-19 14:03:49'),(8,'其他','Others',NULL,'2018-04-19 14:04:24','2018-04-19 14:04:24');
+/*!40000 ALTER TABLE `st_product_type` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `st_webinfo`
+--
+
 DROP TABLE IF EXISTS `st_webinfo`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `st_webinfo` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `tel` varchar(200) DEFAULT NULL COMMENT '电话',
   `fax` varchar(100) DEFAULT NULL,
   `email` varchar(200) DEFAULT NULL COMMENT '邮箱',
+  `address_en` varchar(200) DEFAULT NULL,
   `address` varchar(200) DEFAULT NULL COMMENT '地址',
   `postcodes` varchar(100) DEFAULT NULL COMMENT '邮编',
   `brief` varchar(1000) DEFAULT NULL COMMENT '企业简介',
   `describe` longtext COMMENT '企业详情介绍描述',
+  `describe_en` longtext COMMENT '英文描述',
   `picture` varchar(1000) DEFAULT NULL COMMENT '企业展示图片',
   `carousel` varchar(1000) DEFAULT NULL COMMENT '首页轮播图',
+  `market_in_en` varchar(1000) DEFAULT NULL,
+  `market_in` varchar(1000) DEFAULT NULL COMMENT '营销网络国内',
+  `market_out_en` varchar(1000) DEFAULT NULL,
+  `market_out` varchar(1000) DEFAULT NULL COMMENT '营销网络国外',
+  `advantage` varchar(1000) DEFAULT NULL COMMENT '首页优势产品介绍',
   `created_at` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
   `updated_at` timestamp NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
 
--- ----------------------------
--- Records of st_webinfo
--- ----------------------------
-INSERT INTO `st_webinfo` VALUES ('1', '13738713800', '400123', '280722223@qq.com', '温州经济技术开发区滨海二十五路422号（温州市金海化学品市场）A504号', '325000', '温州市顺泰化工有限公司（原温州市化学用料厂）坐落在浙江省温州市沿江工业区33#地块，占地面积11301.01m2，建筑面积12386.8m2。本厂创办于1975年，是原化工部第一批定点生产化学试剂的专业生产厂家，从事化学试剂行业已有40多年的历史，在化学试剂行业中有很大的知名度和影响力。', '目前我们单位是中国化学试剂工业协会常务理事单位；浙江省化学试剂工业协会副会长单位；全国化学标准化技术委员会化学试剂分会委员,并单独组织修订了HG/T 2630 -2010 化学试剂 三水合乙酸铅(乙酸铅)标准。\r\n我公司资金实力雄厚，技术装备精良，技术人员占本厂人数20%以上，注重节能减排、科技创新。特别是最近10年间企业在这方面投入了大量的资金并取得了很好的成效，同时我公司也非常重视产品质量、安全生产和环境保护。我公司是国内第一批获得二级质检机构国家认证的企业之一；还先后通过ISO9001：2008质量管理体系认证、ISO14001：2008环境管理体系认证和温州市安全标准化认证;浙江省科技型中小企业；A级纳税信用企业。\r\n吉象”牌注册商标已有二十多年历史，产品用户遍布全国，部分产品远销欧美及东南亚等国，赢得了海内外用户的信赖和好评，吉象人将一如继往地为您提供优质的产品和最佳的服务。 稳定的产品质量，良好的经营信誉，完善的售后服务是我们对您的承诺。 “吉象”人愿与您携手共创美好未来！ ', '车间图@http://localhost/storage/adpic/2018-03-26-17-18-15-5ab8bad737cadadpic.jpg;车间流水线@http://localhost/storage/adpic/2018-03-26-17-31-31-5ab8bdf3ed4a3adpic.jpg', null, '2018-03-20 20:49:03', '2018-03-27 09:46:04');
+--
+-- Dumping data for table `st_webinfo`
+--
+
+LOCK TABLES `st_webinfo` WRITE;
+/*!40000 ALTER TABLE `st_webinfo` DISABLE KEYS */;
+INSERT INTO `st_webinfo` VALUES (1,'13738713800','0577-88620778','280722223@qq.com','A504，Wenzhou Jinhai chemical market，No. 422, No. twenty-five Binhai Road,Wenzhou economic and Technological Development Zone,Wenzhou，China.','温州市经济技术开发区滨海二十五路422号A504号','325000','没有完美的个人，只有完美的团队。','温州市顺泰化工有限公司成立于2003年。历经十多年的经营与开拓，顺泰化工现已发展成为知名的化工产品生产、销售、仓储、物流业务于一体的综合性现代化工公司。公司拥有一支年轻活力、具有国际化和前瞻性视野的高素质员工团队，80%以上具有本科及以上学历。公司在发展现有业务的同时，积极开拓绿色经济、新能源、精细化工等新兴领域，并致力“一带一路”、“中国 制造2025”、“互联网+传统产业”、“工业4.0”等新趋势，从而为供应商和客户提供更优质的服务和专业支持。我们将坚守“诚信为本，厚德载物”的企业核心价值观，秉承“创业与创新是顺泰的基因”的企业精神， 致力于成为工业化工的优质供应商，以认真负责、勇于拼搏的 经营团队，期待为您提供专业、优质、高效的服务。','Wenzhou Shuntai Chemical Co., Ltd. was founded in 2003. Having been operating and developing for over 10 years, Shuntai has grown into a renowned conglomerate that integrates chemicals trade and storage operations in East China and Yangtze River Delta in particular. Our workforce is young and energetic with international visions and high professionalism, over 80% of it hold an undergraduate or above degree. Building upon current operations, the Company is also actively pushing into emerging areas of green economy, new energy and fine chemicals, and committed to new trends of the Belt and Road Initiative, Made in China 2025, Internet + Traditional Industries, and Industry 4.0, to provide quality service and support to vendors and clients. We uphold the core value of honesty and moral integrity, and the corporate ethos of entrepreneurship and innovation, in devoting ourselves to become a trustworthy supplier of industrial chemicals. Our team is dedicated, brave and professional, looking forward to providing professional, quality and efficient service to you.','',NULL,'\r\n\r\nProvinces of Yunnan, Sichuan, Chongqing, Guizhou, Guangxi, Guangdong, Fujian, Henan, Hunan, Hubei, Henan, Shaanxi, Shandong\r\n\r\n\r\nProvinces of Yunnan, Sichuan, Chongqing, Guizhou, Guangxi, Guangdong, Fujian, Henan, Hunan, Hubei, Henan, Shaanxi, Shandong\r\nProvinces of Yunnan, Sichuan, Chongqing, Guizhou, Guangxi, Guangdong, Fujian, Henan, Hunan, Hubei, Henan, Shaanxi, Shandong','云南、四川、重庆、贵州、广西、广东、福建、河南、湖南、湖北、河南、陕西、山东、江苏、上海、辽宁、黑龙江、乌鲁木齐、青海、北京、河北、浙江、安徽、吉林','Europe, North America, South America, Japan, Southeast Asia, etc.','欧洲，北美，南美，日本，东南亚等','片碱 磷酸 氢氟酸 氟化铵 氟化氢铵 硬脂酸盐','2018-03-20 12:49:03','2018-08-03 01:58:28');
+/*!40000 ALTER TABLE `st_webinfo` ENABLE KEYS */;
+UNLOCK TABLES;
+/*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
+
+/*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
+/*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;
+/*!40014 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS */;
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+/*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
+
+-- Dump completed on 2019-08-25 16:04:33
